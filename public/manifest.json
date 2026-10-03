@@ -1,0 +1,26 @@
+{
+  "name": "Ambur Leather Works",
+  "short_name": "Ambur Leather",
+  "description": "Artisanal full-grain leather wallets and belts handcrafted in Ambur, Tamil Nadu. Factory-direct pricing with complimentary custom initial embossing.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FDFBF7",
+  "theme_color": "#1A1412",
+  "scope": "/",
+  "categories": ["shopping", "lifestyle"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

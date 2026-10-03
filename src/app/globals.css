@@ -1,0 +1,123 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+@theme {
+  --color-deep-saddle: #1A1412;
+  --color-ambur-tan: #C89D66;
+  --color-rich-cream: #FDFBF7;
+  --color-heritage-brass: #B38F4D;
+
+  --color-saddle-950: #120D0B;
+  --color-saddle-900: #1A1412;
+  --color-saddle-850: #221B18;
+  --color-saddle-800: #2D2421;
+  --color-saddle-700: #3D322E;
+  --color-saddle-600: #5A4B45;
+  --color-saddle-500: #7A6860;
+  --color-saddle-400: #9C8980;
+  --color-saddle-300: #C4B6AF;
+  --color-saddle-200: #E4DCD7;
+  --color-saddle-100: #F4EFEA;
+  --color-saddle-50: #FAF7F5;
+
+  --color-tan-900: #5A3F1F;
+  --color-tan-800: #7C582B;
+  --color-tan-700: #9E7238;
+  --color-tan-600: #B88647;
+  --color-tan-500: #C89D66;
+  --color-tan-400: #D6B284;
+  --color-tan-300: #E3C7A3;
+  --color-tan-200: #F0DEC4;
+  --color-tan-100: #F9F1E6;
+  --color-tan-50: #FCF8F2;
+
+  --color-brass-700: #7E6332;
+  --color-brass-600: #9B7B3E;
+  --color-brass-500: #B38F4D;
+  --color-brass-400: #CCA662;
+  --color-brass-300: #E0C07F;
+
+  --color-cream-default: #FDFBF7;
+  --color-cream-50: #FFFFFF;
+  --color-cream-100: #FDFBF7;
+  --color-cream-200: #F7F2E8;
+  --color-cream-300: #EDE4D3;
+  --color-cream-400: #DFD2BD;
+
+  --font-serif: var(--font-cormorant), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-plus-jakarta), "Inter", system-ui, sans-serif;
+  --font-editorial: var(--font-cormorant), Georgia, serif;
+
+  --shadow-micro: 0 1px 2px rgba(26, 20, 18, 0.05);
+  --shadow-subtle: 0 4px 14px -2px rgba(26, 20, 18, 0.07);
+  --shadow-elevated: 0 12px 28px -4px rgba(26, 20, 18, 0.12);
+  --shadow-leather: 0 20px 40px -10px rgba(26, 20, 18, 0.22);
+  --shadow-brass: 0 0 20px -3px rgba(179, 143, 77, 0.35);
+}
+
+:root {
+  --background: #FDFBF7;
+  --foreground: #1A1412;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-plus-jakarta), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Leather Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #F4EFEA;
+}
+::-webkit-scrollbar-thumb {
+  background: #C89D66;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9E7238;
+}
+
+/* Selection Color */
+::selection {
+  background-color: #C89D66;
+  color: #1A1412;
+}
+
+/* iOS Safe Area & Mobile PWA Utilities */
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+}
+.pt-safe {
+  padding-top: max(0.5rem, env(safe-area-inset-top, 0px));
+}
+.mb-safe {
+  margin-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
+}
+
+/* Hide Scrollbar for Carousels */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* GPU acceleration for 60fps mobile transitions */
+.gpu-layer {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Smooth touch momentum */
+.touch-momentum {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
