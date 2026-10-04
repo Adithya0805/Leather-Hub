@@ -37,7 +37,7 @@ export default function Home() {
       : PRODUCTS.filter((p) => p.category === selectedCategory);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen pb-28 md:pb-12">
       {/* HERO SECTION */}
       <section className="relative bg-[#1A1412] text-[#FDFBF7] pt-12 pb-24 lg:pt-20 lg:pb-32 overflow-hidden border-b border-[#2D2421]">
         {/* Subtle Warm Ambur Glow */}

@@ -1,3 +1,5 @@
+export type ProductCategory = "wallets" | "cardholders" | "belts" | "gift-sets";
+
 export interface ProductColor {
   name: string;
   hex: string;
@@ -7,7 +9,7 @@ export interface ProductColor {
 export interface Product {
   id: string;
   name: string;
-  category: "wallets" | "cardholders" | "belts" | "gift-sets";
+  category: ProductCategory;
   categoryLabel: string;
   tag?: string;
   price: number;
@@ -213,7 +215,22 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
-export const BRAND_STORY = {
+export interface BrandStoryHighlight {
+  title: string;
+  desc: string;
+}
+
+export interface BrandStory {
+  city: string;
+  state: string;
+  country: string;
+  pincode: string;
+  tagline: string;
+  heritageYears: number;
+  highlights: BrandStoryHighlight[];
+}
+
+export const BRAND_STORY: BrandStory = {
   city: "Ambur",
   state: "Tamil Nadu",
   country: "India",
@@ -239,3 +256,23 @@ export const BRAND_STORY = {
     },
   ],
 };
+
+export const DEFAULT_PRODUCT: Product = PRODUCTS[0];
+
+export function getProductById(id?: string): Product | undefined {
+  if (!id) return undefined;
+  return PRODUCTS.find((p) => p.id === id);
+}
+
+export function getProductsByCategory(category?: string): Product[] {
+  if (!category || category === "all") return PRODUCTS;
+  return PRODUCTS.filter((p) => p.category === category);
+}
+
+export function getSafeProduct(productOrId?: Product | string | null): Product {
+  if (!productOrId) return DEFAULT_PRODUCT;
+  if (typeof productOrId === "string") {
+    return getProductById(productOrId) || DEFAULT_PRODUCT;
+  }
+  return productOrId;
+}

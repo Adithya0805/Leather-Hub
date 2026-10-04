@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect, useId } from "react";
 import Image from "next/image";
@@ -23,6 +23,7 @@ import { useCartStore, CartItem } from "@/store/useCartStore";
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919443263580";
 
 export function WhatsAppCheckoutModal() {
+  const [isMounted, setIsMounted] = useState(false);
   const {
     isCheckoutOpen,
     closeCheckout,
@@ -42,6 +43,10 @@ export function WhatsAppCheckoutModal() {
   const [selectedBeltSize, setSelectedBeltSize] = useState('34" (Medium)');
   const [copied, setCopied] = useState(false);
   const [showErrors, setShowErrors] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Generate unique Order ID once per modal session
   useEffect(() => {
@@ -66,7 +71,7 @@ export function WhatsAppCheckoutModal() {
     };
   }, [isCheckoutOpen]);
 
-  if (!isCheckoutOpen) return null;
+  if (!isMounted || !isCheckoutOpen) return null;
 
   // Items to checkout: either direct buy item or the bag items
   const activeItems: CartItem[] = checkoutDirectItem
@@ -117,12 +122,12 @@ export function WhatsAppCheckoutModal() {
   const isSingleItem = activeItems.length === 1;
 
   const productTitle = isSingleItem
-    ? primaryItem.product.name
-    : activeItems.map((it) => `${it.product.name} (x${it.quantity})`).join(", ");
+    ? primaryItem?.product?.name || "Ambur Leather Goods"
+    : activeItems.map((it) => `${it.product?.name || "Leather Item"} (x${it.quantity})`).join(", ");
 
   const colorVariant = isSingleItem
-    ? primaryItem.selectedColor
-    : activeItems.map((it) => `${it.product.name}: ${it.selectedColor}`).join("; ");
+    ? primaryItem?.selectedColor || "Standard"
+    : activeItems.map((it) => `${it.product?.name || "Item"}: ${it.selectedColor || "Standard"}`).join("; ");
 
   const beltSizeText = hasBeltItem ? selectedBeltSize : "N/A";
 
@@ -260,8 +265,8 @@ Please confirm my order and share UPI payment details!`;
                 <div key={item.id} className="pt-2 first:pt-0 flex items-center gap-3">
                   <div className="relative w-14 h-14 rounded-lg bg-[#FAF7F5] border border-[#E4DCD7] overflow-hidden shrink-0">
                     <Image
-                      src={item.product.imageAngles[0]}
-                      alt={item.product.name}
+                      src={item.product?.imageAngles?.[0] || "/icon.svg"}
+                      alt={item.product?.name || "Ambur Leather Goods"}
                       fill
                       className="object-cover"
                       sizes="56px"
@@ -270,7 +275,7 @@ Please confirm my order and share UPI payment details!`;
 
                   <div className="flex-1 min-w-0 text-xs">
                     <div className="font-serif font-bold text-sm text-[#1A1412] truncate">
-                      {item.product.name}
+                      {item.product?.name || "Handcrafted Leather Article"}
                     </div>
                     <div className="text-[11px] text-[#5A4B45] flex items-center gap-2 mt-0.5">
                       <span>Color: <strong>{item.selectedColor}</strong></span>

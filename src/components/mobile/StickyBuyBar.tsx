@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -7,6 +7,7 @@ import { PRODUCTS, Product } from "@/data/products";
 import { useCartStore } from "@/store/useCartStore";
 
 export function StickyBuyBar() {
+  const [isMounted, setIsMounted] = useState(false);
   const [visible, setVisible] = useState(false);
   const [activeProduct, setActiveProduct] = useState<Product>(PRODUCTS[0]);
   const [added, setAdded] = useState(false);
@@ -14,6 +15,7 @@ export function StickyBuyBar() {
   const { openCheckout, addItem } = useCartStore();
 
   useEffect(() => {
+    setIsMounted(true);
     const handleScroll = () => {
       // Show when scrolled past hero fold (> 450px)
       const shouldShow = window.scrollY > 450;
@@ -24,13 +26,13 @@ export function StickyBuyBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  if (!visible) return null;
+  if (!isMounted || !visible) return null;
 
   const handleWhatsAppOrder = () => {
     openCheckout({
-      id: `${activeProduct.id}-${activeProduct.colors[0]?.name}`,
+      id: `${activeProduct.id}-${activeProduct.colors?.[0]?.name || "Ambur Tan"}`,
       product: activeProduct,
-      selectedColor: activeProduct.colors[0]?.name || "Ambur Tan",
+      selectedColor: activeProduct.colors?.[0]?.name || "Ambur Tan",
       quantity: 1,
       addedAt: Date.now(),
     });
@@ -45,15 +47,15 @@ export function StickyBuyBar() {
   return (
     <div
       aria-label="Quick Mobile Checkout Bar"
-      className="md:hidden fixed bottom-14 inset-x-0 z-30 bg-[#1A1412]/95 backdrop-blur-md border-t border-[#3D322E] px-3.5 py-2.5 shadow-2xl gpu-layer animate-fadeIn"
+      className="md:hidden fixed bottom-[calc(3.5rem+env(safe-area-inset-bottom,0px))] inset-x-0 z-30 bg-[#1A1412]/95 backdrop-blur-md border-t border-[#3D322E] px-3.5 py-2.5 shadow-2xl gpu-layer animate-fadeIn"
     >
       <div className="flex items-center justify-between gap-3 max-w-md mx-auto">
         {/* Product Thumbnail & Price */}
         <div className="flex items-center gap-2.5 min-w-0">
           <div className="relative w-11 h-11 rounded-lg bg-[#2D2421] border border-[#3D322E] overflow-hidden shrink-0">
             <Image
-              src={activeProduct.imageAngles[0]}
-              alt={activeProduct.name}
+              src={activeProduct?.imageAngles?.[0] || "/icon.svg"}
+              alt={activeProduct?.name || "Ambur Leather"}
               fill
               className="object-cover"
               sizes="44px"

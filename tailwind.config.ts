@@ -80,6 +80,15 @@ const config: Config = {
           "50%": { transform: "translateY(-6px)" },
         },
       },
+      spacing: {
+        safe: "env(safe-area-inset-bottom, 1rem)",
+        "safe-top": "env(safe-area-inset-top, 0.5rem)",
+        "safe-bottom": "env(safe-area-inset-bottom, 1rem)",
+      },
+      padding: {
+        safe: "env(safe-area-inset-bottom, 1rem)",
+        "safe-bottom": "env(safe-area-inset-bottom, 1rem)",
+      },
     },
   },
   plugins: [],

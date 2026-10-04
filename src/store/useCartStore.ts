@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
@@ -68,7 +68,7 @@ export const useCartStore = create<CartStore>()(
         embossingStyle = "blind",
         beltSize = ""
       ) => {
-        const colorName = selectedColor || product.colors[0]?.name || "Standard";
+        const colorName = selectedColor || product?.colors?.[0]?.name || "Standard";
         const cleanEmbossing = embossingText.trim().toUpperCase();
         const cleanBeltSize = beltSize.trim();
         const cartItemId = `${product.id}-${colorName}-${cleanEmbossing}-${embossingStyle}-${cleanBeltSize}`;
@@ -123,7 +123,7 @@ export const useCartStore = create<CartStore>()(
 
       getSubtotal: () => {
         return get().items.reduce(
-          (total, item) => total + item.product.price * item.quantity,
+          (total, item) => total + (item.product?.price || 0) * item.quantity,
           0
         );
       },

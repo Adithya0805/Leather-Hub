@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -126,8 +126,8 @@ export function CartDrawer() {
                   {/* Thumbnail */}
                   <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-[#FAF7F5] shrink-0 border border-[#E4DCD7]">
                     <Image
-                      src={item.product.imageAngles[0]}
-                      alt={item.product.name}
+                      src={item.product?.imageAngles?.[0] || "/icon.svg"}
+                      alt={item.product?.name || "Ambur Leather"}
                       fill
                       className="object-cover"
                       sizes="80px"

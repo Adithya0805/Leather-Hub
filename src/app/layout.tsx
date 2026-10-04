@@ -9,6 +9,7 @@ import { LocalBusinessSchema } from "@/components/LocalBusinessSchema";
 import { Footer } from "@/components/Footer";
 import { BottomNav } from "@/components/mobile/BottomNav";
 import { StickyBuyBar } from "@/components/mobile/StickyBuyBar";
+import { CartProvider } from "@/context/CartContext";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -124,14 +125,16 @@ export default function RootLayout({
         <LocalBusinessSchema />
       </head>
       <body className="min-h-screen bg-[#FDFBF7] text-[#1A1412] font-sans antialiased flex flex-col selection:bg-[#C89D66] selection:text-[#1A1412] pb-28 md:pb-0">
-        <AnnouncementBar />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <CartDrawer />
-        <WhatsAppCheckoutModal />
-        <StickyBuyBar />
-        <BottomNav />
-        <Footer />
+        <CartProvider>
+          <AnnouncementBar />
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <CartDrawer />
+          <WhatsAppCheckoutModal />
+          <StickyBuyBar />
+          <BottomNav />
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

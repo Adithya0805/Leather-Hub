@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect } from "react";
 import { Sparkles, X, Check, Flame } from "lucide-react";
@@ -20,8 +20,13 @@ export function EmbossingBottomSheet({
   productName = "Ambur Bovine Leather",
   onConfirm,
 }: EmbossingBottomSheetProps) {
+  const [isMounted, setIsMounted] = useState(false);
   const [initials, setInitials] = useState(currentInitials);
   const [style, setStyle] = useState<"gold" | "blind">(currentStyle);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     setInitials(currentInitials);
@@ -39,7 +44,7 @@ export function EmbossingBottomSheet({
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!isMounted || !isOpen) return null;
 
   const handleApply = () => {
     onConfirm(initials.trim().toUpperCase(), style);

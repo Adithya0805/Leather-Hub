@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useRef, useEffect, TouchEvent } from "react";
 import Image from "next/image";
@@ -10,7 +10,7 @@ interface MobileGalleryProps {
   tag?: string;
 }
 
-export function MobileGallery({ images, productName, tag }: MobileGalleryProps) {
+export function MobileGallery({ images = [], productName, tag }: MobileGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomCoords, setZoomCoords] = useState({ x: 50, y: 50 });
@@ -92,7 +92,7 @@ export function MobileGallery({ images, productName, tag }: MobileGalleryProps) 
             className="w-full shrink-0 snap-center relative aspect-[4/3] sm:aspect-square bg-[#221B18] overflow-hidden cursor-zoom-in"
           >
             <Image
-              src={src}
+              src={src || "/icon.svg"}
               alt={`${productName} - ${angleLabels[idx] || `Angle ${idx + 1}`}`}
               fill
               priority={idx === 0}
