@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Sparkles, CheckCircle2, Shield, Flame, MessageCircle, ShoppingBag } from "lucide-react";
-import { useCartStore } from "@/store/useCartStore";
+import { useCart } from "@/context/CartContext";
 import { PRODUCTS } from "@/data/products";
 
 export function EmbossingStudioTeaser() {
@@ -11,7 +11,7 @@ export function EmbossingStudioTeaser() {
   const [selectedProduct, setSelectedProduct] = useState(PRODUCTS[0]);
   const [feedback, setFeedback] = useState(false);
 
-  const { addItem, openCheckout } = useCartStore();
+  const { addItem, openCheckout } = useCart();
 
   const handleApplyToCart = () => {
     addItem(selectedProduct, selectedProduct.colors[0]?.name, initials, style);
@@ -32,7 +32,7 @@ export function EmbossingStudioTeaser() {
   };
 
   return (
-    <section className="py-20 bg-[#FBF9F5] text-[#2C1A11] relative overflow-hidden border-b border-[#EADDD3]">
+    <section id="customizer-section" className="py-20 bg-[#FBF9F5] text-[#2C1A11] relative overflow-hidden border-b border-[#EADDD3]">
       {/* Decorative Leather Grain Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7A3E1D]/5 rounded-full blur-3xl pointer-events-none" />
 

@@ -60,7 +60,7 @@ export function AmburStorySection() {
               </h3>
 
               <p className="text-xs sm:text-sm text-[#6B5B52] leading-relaxed">
-                Most mall brands sell &ldquo;bonded leather&rdquo;&mdash;reconstituted scrap dust glued together that peels within six months. Ambur Craft works exclusively with tight-grain bovine hides drum-dyed with oils and natural waxes. It doesn&rsquo;t deteriorate; it matures into a magnificent, glossy heirloom.
+                Most mall brands sell &ldquo;bonded leather&rdquo;&mdash;reconstituted scrap dust glued together that peels within six months. Dino Leathers works exclusively with tight-grain bovine hides drum-dyed with oils and natural waxes. It doesn&rsquo;t deteriorate; it matures into a magnificent, glossy heirloom.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-xs">
@@ -91,17 +91,26 @@ export function AmburStorySection() {
               <h4 className="font-serif text-lg font-bold text-[#2C1A11] mb-4 pb-3 border-b border-[#EADDD3] flex justify-between items-center">
                 <span>The Authenticity Test</span>
                 <span className="text-[11px] font-sans text-[#7A3E1D] font-bold uppercase tracking-wider">
-                  Ambur vs. Commercial
+                  Dino vs. Commercial
                 </span>
               </h4>
 
               <div className="space-y-4 text-xs">
-                <div className="p-3.5 rounded-xl bg-white border border-[#EADDD3] border-l-4 border-l-[#7A3E1D] shadow-sm">
-                  <div className="font-bold text-[#7A3E1D] mb-0.5">
-                    Ambur Craft Full-Grain Bovine
-                  </div>
-                  <div className="text-[#6B5B52] leading-relaxed">
-                    Retains natural dermal pores. Heals light scratches with thumb friction. Ages gracefully with rich caramel depth.
+                <div className="p-3.5 rounded-xl bg-white border border-[#EADDD3] border-l-4 border-l-[#7A3E1D] shadow-sm flex items-start gap-3">
+                  <Image
+                    src="/images/logo.png"
+                    alt="Dino Leathers Seal"
+                    width={40}
+                    height={40}
+                    className="rounded-full shadow-sm shrink-0 object-cover mt-0.5"
+                  />
+                  <div>
+                    <div className="font-bold text-[#7A3E1D] mb-0.5">
+                      Dino Leathers Full-Grain Bovine
+                    </div>
+                    <div className="text-[#6B5B52] leading-relaxed">
+                      Retains natural dermal pores. Heals light scratches with thumb friction. Ages gracefully with rich caramel depth.
+                    </div>
                   </div>
                 </div>
 

@@ -1,6 +1,6 @@
 {
-  "name": "Ambur Leather Works",
-  "short_name": "Ambur Leather",
+  "name": "Dino Leathers",
+  "short_name": "Dino Leathers",
   "description": "Artisanal full-grain leather wallets and belts handcrafted in Ambur, Tamil Nadu. Factory-direct pricing with complimentary custom initial embossing.",
   "start_url": "/",
   "display": "standalone",
@@ -11,15 +11,15 @@
   "categories": ["shopping", "lifestyle"],
   "icons": [
     {
-      "src": "/icon.svg",
+      "src": "/images/logo.png",
       "sizes": "192x192 512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icon.svg",
+      "src": "/images/logo.png",
       "sizes": "192x192 512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "maskable"
     }
   ]

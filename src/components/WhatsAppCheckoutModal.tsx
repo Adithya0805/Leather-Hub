@@ -17,13 +17,12 @@ import {
   AlertCircle,
   ChevronRight,
 } from "lucide-react";
-import { useCartStore, CartItem } from "@/store/useCartStore";
+import { useCart, CartItem } from "@/context/CartContext";
 
 // Official Ambur Tannery Direct WhatsApp Desk Hotline
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919443263580";
 
 export function WhatsAppCheckoutModal() {
-  const [isMounted, setIsMounted] = useState(false);
   const {
     isCheckoutOpen,
     closeCheckout,
@@ -31,7 +30,8 @@ export function WhatsAppCheckoutModal() {
     items,
     getSubtotal,
     getTotalCount,
-  } = useCartStore();
+    isMounted,
+  } = useCart();
 
   const [orderId, setOrderId] = useState("");
   const [customerName, setCustomerName] = useState("");
@@ -44,16 +44,13 @@ export function WhatsAppCheckoutModal() {
   const [copied, setCopied] = useState(false);
   const [showErrors, setShowErrors] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   // Generate unique Order ID once per modal session
   useEffect(() => {
     if (isCheckoutOpen) {
-      // 6-digit numeric suffix e.g. AMB-849201
-      const randomSuffix = Math.floor(100000 + Math.random() * 900000);
-      setOrderId(`AMB-${randomSuffix}`);
+      // 4-digit numeric suffix e.g. DINO-4892
+      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+      setOrderId(`DINO-${randomSuffix}`);
       setShowErrors(false);
       setCopied(false);
     }
@@ -162,7 +159,9 @@ export function WhatsAppCheckoutModal() {
   // Address: [Full Address, City, PIN Code]
   // Phone: [Customer Mobile]
   // Please confirm my order and share UPI payment details!"
-  const whatsAppMessage = `🌟 NEW ORDER: #${orderId} 🌟
+  const whatsAppMessage = `🦕 DINO LEATHERS — AMBUR 🦕
+NEW ORDER: #${orderId}
+-------------------------------
 Product: ${productTitle}
 Color/Variant: ${colorVariant}
 Belt Size: ${beltSizeText}
@@ -218,11 +217,15 @@ Please confirm my order and share UPI payment details!`;
       {/* Modal Container */}
       <div className="relative w-full max-w-2xl bg-white text-[#2C1A11] rounded-3xl border border-[#EADDD3] shadow-2xl overflow-hidden z-10 my-auto animate-fadeIn max-h-[92vh] flex flex-col">
         {/* Header */}
-        <div className="bg-[#FBF9F5] text-[#2C1A11] px-6 py-4.5 border-b border-[#EADDD3] flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full bg-[#F3ECE5] border border-[#EADDD3] flex items-center justify-center text-[#7A3E1D]">
-              <MessageCircle className="w-4 h-4" />
-            </div>
+        <div className="bg-[#FBF9F5] text-[#2C1A11] px-5 py-3.5 sm:px-6 sm:py-4 border-b border-[#EADDD3] flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/images/logo.png"
+              alt="Dino Leathers Ambur"
+              width={40}
+              height={40}
+              className="rounded-full shadow-sm object-cover shrink-0 border border-[#EADDD3]"
+            />
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="font-serif text-lg sm:text-xl font-bold tracking-wide text-[#2C1A11]">
@@ -233,7 +236,7 @@ Please confirm my order and share UPI payment details!`;
                 </span>
               </div>
               <p className="text-[11px] text-[#6B5B52]">
-                Zero advance fee • Instant UPI QR via Ambur Tannery Hotline
+                Zero advance fee • Instant UPI QR via Dino Leathers WhatsApp Hotline
               </p>
             </div>
           </div>

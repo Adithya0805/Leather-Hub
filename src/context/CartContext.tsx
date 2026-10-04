@@ -47,7 +47,11 @@ interface CartProviderProps {
 export function CartProvider({ children }: CartProviderProps) {
   const [isMounted, setIsMounted] = useState(false);
 
-  // Sync with zustand store
+  // Subscribe directly to Zustand state slices so this provider and its consumers re-render immediately on changes
+  const items = useCartStore((state) => state.items);
+  const isOpen = useCartStore((state) => state.isOpen);
+  const isCheckoutOpen = useCartStore((state) => state.isCheckoutOpen);
+  const checkoutDirectItem = useCartStore((state) => state.checkoutDirectItem);
   const store = useCartStore();
 
   useEffect(() => {
@@ -120,24 +124,25 @@ export function CartProvider({ children }: CartProviderProps) {
     store.clearCart();
   }, [store]);
 
+  // Guarantee server-rendered HTML matches initial client hydration exactly
+  const safeItems = isMounted ? items : [];
+
   const getTotalCount = useCallback(() => {
-    if (!isMounted) return 0;
-    return store.getTotalCount();
-  }, [isMounted, store]);
+    return safeItems.reduce((total, item) => total + item.quantity, 0);
+  }, [safeItems]);
 
   const getSubtotal = useCallback(() => {
-    if (!isMounted) return 0;
-    return store.getSubtotal();
-  }, [isMounted, store]);
-
-  // Guarantee server-rendered HTML matches initial client hydration exactly
-  const safeItems = isMounted ? store.items : [];
+    return safeItems.reduce(
+      (total, item) => total + (item.product?.price || 0) * item.quantity,
+      0
+    );
+  }, [safeItems]);
 
   const contextValue: CartContextType = {
     items: safeItems,
-    isOpen: store.isOpen,
-    isCheckoutOpen: store.isCheckoutOpen,
-    checkoutDirectItem: store.checkoutDirectItem,
+    isOpen,
+    isCheckoutOpen,
+    checkoutDirectItem,
     isMounted,
     openCart,
     closeCart,
@@ -161,14 +166,19 @@ export function CartProvider({ children }: CartProviderProps) {
 
 export function useCart(): CartContextType {
   const context = useContext(CartContext);
+  const items = useCartStore((state) => state.items);
+  const isOpen = useCartStore((state) => state.isOpen);
+  const isCheckoutOpen = useCartStore((state) => state.isCheckoutOpen);
+  const checkoutDirectItem = useCartStore((state) => state.checkoutDirectItem);
+  const store = useCartStore();
+
   if (!context) {
     // Graceful fallback to zustand store if used outside provider
-    const store = useCartStore();
     return {
-      items: store.items,
-      isOpen: store.isOpen,
-      isCheckoutOpen: store.isCheckoutOpen,
-      checkoutDirectItem: store.checkoutDirectItem,
+      items,
+      isOpen,
+      isCheckoutOpen,
+      checkoutDirectItem,
       isMounted: true,
       openCart: store.openCart,
       closeCart: store.closeCart,
@@ -179,8 +189,8 @@ export function useCart(): CartContextType {
       removeItem: store.removeItem,
       updateQuantity: store.updateQuantity,
       clearCart: store.clearCart,
-      getTotalCount: store.getTotalCount,
-      getSubtotal: store.getSubtotal,
+      getTotalCount: () => items.reduce((total, item) => total + item.quantity, 0),
+      getSubtotal: () => items.reduce((total, item) => total + (item.product?.price || 0) * item.quantity, 0),
     };
   }
   return context;

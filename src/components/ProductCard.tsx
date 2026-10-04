@@ -10,7 +10,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { Product } from "@/data/products";
-import { useCartStore } from "@/store/useCartStore";
+import { useCart } from "@/context/CartContext";
 import { MobileGallery } from "@/components/mobile/MobileGallery";
 import { EmbossingBottomSheet } from "@/components/mobile/EmbossingBottomSheet";
 
@@ -25,7 +25,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const [embossingStyle, setEmbossingStyle] = useState<"blind" | "gold">("gold");
   const [added, setAdded] = useState(false);
 
-  const { addItem, openCheckout } = useCartStore();
+  const { addItem, openCheckout } = useCart();
 
   const handleAddToCart = () => {
     addItem(product, selectedColor, embossingText, embossingStyle);

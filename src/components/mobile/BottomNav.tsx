@@ -2,17 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import { Home, Wallet, ShieldCheck, Gift, ShoppingBag } from "lucide-react";
-import { useCartStore } from "@/store/useCartStore";
+import { useCart } from "@/context/CartContext";
 
 export function BottomNav() {
   const [activeTab, setActiveTab] = useState<string>("home");
-  const [mounted, setMounted] = useState(false);
-
-  const { openCart, getTotalCount } = useCartStore();
+  const { openCart, items, isMounted } = useCart();
 
   useEffect(() => {
-    setMounted(true);
-
     const handleScroll = () => {
       const scrollPos = window.scrollY + 200;
       const walletsEl = document.getElementById("wallets");
@@ -34,7 +30,9 @@ export function BottomNav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const totalCount = mounted ? getTotalCount() : 0;
+  const totalCount = isMounted
+    ? items.reduce((total, item) => total + item.quantity, 0)
+    : 0;
 
   const scrollToSection = (id: string, tabKey: string) => {
     setActiveTab(tabKey);

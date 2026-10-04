@@ -14,7 +14,7 @@ import {
   Truck,
   MessageCircle,
 } from "lucide-react";
-import { useCartStore } from "@/store/useCartStore";
+import { useCart } from "@/context/CartContext";
 
 export function CartDrawer() {
   const {
@@ -24,14 +24,12 @@ export function CartDrawer() {
     openCheckout,
     updateQuantity,
     removeItem,
+    clearCart,
     getSubtotal,
-    getTotalCount,
-  } = useCartStore();
-
-  const [mounted, setMounted] = useState(false);
+    isMounted,
+  } = useCart();
 
   useEffect(() => {
-    setMounted(true);
     // Escape key listener to close drawer
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeCart();
@@ -48,10 +46,10 @@ export function CartDrawer() {
     };
   }, [isOpen, closeCart]);
 
-  if (!mounted || !isOpen) return null;
+  if (!isMounted || !isOpen) return null;
 
   const subtotal = getSubtotal();
-  const totalCount = getTotalCount();
+  const totalCount = items.reduce((total, item) => total + item.quantity, 0);
   const freeShippingThreshold = 799;
   const isFreeShipping = subtotal >= freeShippingThreshold || totalCount > 0;
 
@@ -69,7 +67,13 @@ export function CartDrawer() {
           {/* Header */}
           <div className="p-5 bg-white text-[#2C1A11] flex items-center justify-between border-b border-[#EADDD3]">
             <div className="flex items-center gap-2.5">
-              <ShoppingBag className="w-5 h-5 text-[#7A3E1D]" />
+              <Image
+                src="/images/logo.png"
+                alt="Dino Leathers"
+                width={32}
+                height={32}
+                className="rounded-full shadow-sm object-cover shrink-0"
+              />
               <h2 className="font-serif text-xl font-bold tracking-wide text-[#2C1A11]">
                 Your Leather Bag
               </h2>
@@ -77,13 +81,25 @@ export function CartDrawer() {
                 {totalCount} {totalCount === 1 ? "item" : "items"}
               </span>
             </div>
-            <button
-              onClick={closeCart}
-              className="p-1.5 rounded-full text-[#6B5B52] hover:text-[#2C1A11] hover:bg-[#F3ECE5] transition-colors focus:outline-none"
-              aria-label="Close cart"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            <div className="flex items-center gap-2">
+              {items.length > 0 && (
+                <button
+                  type="button"
+                  onClick={clearCart}
+                  className="text-[11px] text-[#9A8C84] hover:text-rose-600 transition-colors px-2 py-1 font-medium focus:outline-none"
+                  aria-label="Clear all items in bag"
+                >
+                  Clear Bag
+                </button>
+              )}
+              <button
+                onClick={closeCart}
+                className="p-1.5 rounded-full text-[#6B5B52] hover:text-[#2C1A11] hover:bg-[#F3ECE5] transition-colors focus:outline-none"
+                aria-label="Close cart"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
           </div>
 
           {/* Free Shipping / Provenance Banner */}
@@ -101,8 +117,14 @@ export function CartDrawer() {
           <div className="flex-1 overflow-y-auto p-5 space-y-4">
             {items.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12 px-4">
-                <div className="w-16 h-16 rounded-full bg-[#F3ECE5] flex items-center justify-center mb-4 text-[#7A3E1D] border border-[#EADDD3]">
-                  <ShoppingBag className="w-8 h-8" />
+                <div className="relative mb-4 flex items-center justify-center">
+                  <Image
+                    src="/images/logo.png"
+                    alt="Dino Leathers Emblem"
+                    width={72}
+                    height={72}
+                    className="rounded-full opacity-35 shadow-sm object-cover"
+                  />
                 </div>
                 <h3 className="font-serif text-2xl font-bold text-[#2C1A11] mb-1">
                   Your bag is empty

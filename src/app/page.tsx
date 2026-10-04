@@ -37,7 +37,7 @@ export default function Home() {
       : PRODUCTS.filter((p) => p.category === selectedCategory);
 
   return (
-    <div className="flex flex-col min-h-screen pb-28 md:pb-12 bg-[#FBF9F5] text-[#2C1A11]">
+    <div className="flex flex-col min-h-screen pb-32 md:pb-12 bg-[#FBF9F5] text-[#2C1A11]">
       {/* HERO SECTION */}
       <section className="relative bg-[#FBF9F5] text-[#2C1A11] pt-12 pb-24 lg:pt-20 lg:pb-32 overflow-hidden border-b border-[#EADDD3]">
         {/* Subtle Warm Ambur Atelier Glow */}
@@ -175,13 +175,17 @@ export default function Home() {
                 </div>
 
                 {/* Secondary Accent Floating Card */}
-                <div className="hidden sm:flex absolute -bottom-6 -left-8 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-[#EADDD3] shadow-warm items-center gap-3 max-w-[240px]">
-                  <div className="w-10 h-10 rounded-xl bg-[#F3ECE5] text-[#7A3E1D] flex items-center justify-center font-bold shrink-0 border border-[#EADDD3]">
-                    <ShieldCheck className="w-5 h-5" />
-                  </div>
+                <div className="hidden sm:flex absolute -bottom-6 -left-8 bg-white/95 backdrop-blur-md p-3 rounded-2xl border border-[#EADDD3] shadow-warm items-center gap-3 max-w-[250px]">
+                  <Image
+                    src="/images/logo.png"
+                    alt="Dino Leathers Certified Seal"
+                    width={42}
+                    height={42}
+                    className="rounded-full shadow-sm shrink-0 object-cover border border-[#EADDD3]"
+                  />
                   <div className="text-xs">
-                    <div className="font-bold text-[#2C1A11]">100% Bovine</div>
-                    <div className="text-[10px] text-[#6B5B52]">Unbonded Full Grain</div>
+                    <div className="font-bold text-[#2C1A11]">Dino Leathers</div>
+                    <div className="text-[10px] text-[#6B5B52]">100% Ambur Bovine Grain</div>
                   </div>
                 </div>
               </div>

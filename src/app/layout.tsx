@@ -26,11 +26,12 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://amburleather.in"),
-  title: "Ambur Leather Works | Genuine Full-Grain Wallets & Belts",
+  metadataBase: new URL("https://dinoleathers.in"),
+  title: "Dino Leathers | Handcrafted Genuine Leather Goods from Ambur",
   description:
     "Artisanal full-grain leather wallets and belts handcrafted in Ambur, Tamil Nadu. Factory-direct pricing with complimentary custom initial embossing.",
   keywords: [
+    "Dino Leathers",
     "Ambur leather",
     "Tamil Nadu leather craftsmanship",
     "genuine leather wallet India",
@@ -44,15 +45,15 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Ambur Leather",
+    title: "Dino Leathers",
   },
   icons: {
-    icon: "/icon.svg",
-    apple: "/icon.svg",
+    icon: "/images/logo.png",
+    apple: "/images/logo.png",
   },
-  authors: [{ name: "Ambur Leather Works" }],
-  creator: "Ambur Leather Works",
-  publisher: "Ambur Leather Works",
+  authors: [{ name: "Dino Leathers" }],
+  creator: "Dino Leathers",
+  publisher: "Dino Leathers",
   formatDetection: {
     telephone: true,
     address: true,
@@ -62,31 +63,21 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Ambur Leather Works | Genuine Full-Grain Wallets & Belts",
+    title: "Dino Leathers | Handcrafted Genuine Leather Goods from Ambur",
     description:
       "Artisanal full-grain leather wallets and belts handcrafted in Ambur, Tamil Nadu. Factory-direct pricing with complimentary custom initial embossing.",
-    url: "https://amburleather.in",
-    siteName: "Ambur Leather Works",
+    url: "https://dinoleathers.in",
+    siteName: "Dino Leathers",
     locale: "en_IN",
     type: "website",
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&h=630&q=85",
-        width: 1200,
-        height: 630,
-        alt: "Ambur Leather Works - Personalized 2-in-1 Executive Gift Set in Keepsake Box",
-        type: "image/jpeg",
-      },
-    ],
+    images: ["/images/logo.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ambur Leather Works | Genuine Full-Grain Wallets & Belts",
+    title: "Dino Leathers | Handcrafted Genuine Leather Goods from Ambur",
     description:
       "Artisanal full-grain leather wallets and belts handcrafted in Ambur, Tamil Nadu. Factory-direct pricing with complimentary custom initial embossing.",
-    images: [
-      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&h=630&q=85",
-    ],
+    images: ["/images/logo.png"],
   },
   robots: {
     index: true,
@@ -124,7 +115,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <LocalBusinessSchema />
       </head>
-      <body className="min-h-screen bg-[#FBF9F5] text-[#2C1A11] font-sans antialiased flex flex-col selection:bg-[#7A3E1D] selection:text-white pb-28 md:pb-0">
+      <body className="min-h-screen bg-[#FBF9F5] text-[#2C1A11] font-sans antialiased flex flex-col selection:bg-[#7A3E1D] selection:text-white pb-32 md:pb-0">
         <CartProvider>
           <AnnouncementBar />
           <Navbar />

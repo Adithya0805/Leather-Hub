@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ShoppingBag,
   Menu,
@@ -11,17 +12,15 @@ import {
   ShieldCheck,
   Search,
 } from "lucide-react";
-import { useCartStore } from "@/store/useCartStore";
+import { useCart } from "@/context/CartContext";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
-  const { openCart, getTotalCount } = useCartStore();
+  const { openCart, items, isMounted } = useCart();
 
   useEffect(() => {
-    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -29,7 +28,9 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const totalCount = mounted ? getTotalCount() : 0;
+  const totalCount = isMounted
+    ? items.reduce((total, item) => total + item.quantity, 0)
+    : 0;
 
   const navLinks = [
     { label: "Wallets", href: "#wallets", badge: "Bestseller" },
@@ -48,7 +49,7 @@ export function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-[60px]">
             {/* Left: Mobile Menu Toggle & Desktop Quick Nav */}
             <div className="flex items-center gap-4">
               <button
@@ -58,9 +59,9 @@ export function Navbar() {
                 aria-label="Toggle navigation menu"
               >
                 {mobileMenuOpen ? (
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5" />
                 ) : (
-                  <Menu className="w-6 h-6" />
+                  <Menu className="w-5 h-5" />
                 )}
               </button>
 
@@ -69,7 +70,7 @@ export function Navbar() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="group relative text-sm font-medium tracking-wide text-[#6B5B52] hover:text-[#7A3E1D] transition-colors py-2"
+                    className="group relative text-sm font-medium tracking-wide text-[#6B5B52] hover:text-[#7A3E1D] transition-colors py-1.5"
                   >
                     <span>{link.label}</span>
                     {link.badge && (
@@ -84,17 +85,22 @@ export function Navbar() {
             </div>
 
             {/* Center: Brand Logo Lockup */}
-            <div className="flex-1 md:flex-initial text-center md:text-center">
-              <Link href="/" className="inline-block group focus:outline-none">
-                <div className="flex flex-col items-center">
-                  <span className="text-[10px] font-sans tracking-[0.35em] uppercase text-[#C29B38] font-bold mb-0.5 group-hover:text-[#7A3E1D] transition-colors">
-                    EST. 1974 • AMBUR
+            <div className="flex-1 md:flex-initial text-center">
+              <Link href="/" className="inline-flex items-center gap-2.5 sm:gap-3 group focus:outline-none py-1">
+                <Image
+                  src="/images/logo.png"
+                  alt="Dino Leathers Ambur"
+                  width={44}
+                  height={44}
+                  className="rounded-full shadow-sm w-9 h-9 sm:w-11 sm:h-11 object-cover shrink-0"
+                  priority
+                />
+                <div className="flex flex-col items-start sm:items-center text-left sm:text-center">
+                  <span className="font-serif text-lg sm:text-2xl font-bold tracking-tight text-[#2C1A11] group-hover:text-[#7A3E1D] transition-colors leading-none sm:leading-tight">
+                    DINO LEATHERS
                   </span>
-                  <span className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#2C1A11] group-hover:text-[#7A3E1D] transition-colors">
-                    AMBUR CRAFT
-                  </span>
-                  <span className="text-[9px] font-sans tracking-[0.25em] uppercase text-[#6B5B52] hidden sm:block">
-                    GENUINE BOVINE LEATHER
+                  <span className="text-[8px] sm:text-[9px] font-sans tracking-[0.25em] uppercase text-[#6B5B52] font-semibold mt-0.5">
+                    EST. AMBUR • TN
                   </span>
                 </div>
               </Link>

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   MapPin,
   ShieldCheck,
@@ -19,23 +20,29 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-[#EADDD3]">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex flex-col items-start">
-              <span className="text-[10px] font-sans tracking-[0.35em] uppercase text-[#7A3E1D] font-bold mb-1">
-                EST. 1974 • AMBUR
-              </span>
-              <span className="font-serif text-2xl font-bold tracking-tight text-[#2C1A11]">
-                AMBUR CRAFT
-              </span>
-              <span className="text-[10px] font-sans tracking-[0.25em] uppercase text-[#6B5B52] font-semibold">
-                AUTHENTIC BOVINE LEATHER
-              </span>
+            <div className="flex items-center gap-4">
+              <Image
+                src="/images/logo.png"
+                alt="Dino Leathers Medallion"
+                width={72}
+                height={72}
+                className="rounded-full shadow-md object-cover shrink-0"
+              />
+              <div className="flex flex-col items-start">
+                <span className="text-[10px] font-sans tracking-[0.35em] uppercase text-[#7A3E1D] font-bold mb-1">
+                  EST. AMBUR • TN
+                </span>
+                <span className="font-serif text-2xl font-bold tracking-tight text-[#2C1A11]">
+                  DINO LEATHERS
+                </span>
+                <span className="text-[10px] font-sans tracking-[0.25em] uppercase text-[#6B5B52] font-semibold">
+                  AUTHENTIC BOVINE LEATHER
+                </span>
+              </div>
             </div>
 
-            <p className="text-xs text-[#6B5B52] max-w-sm leading-relaxed">
-              Dispatched directly from the historic tannery belt of Ambur, Tamil
-              Nadu. We handcraft indestructible wallets, cardholders, and belts
-              from genuine bovine full-grain leather, delivered with free custom
-              initials embossing across India.
+            <p className="text-xs text-[#6B5B52] max-w-sm leading-relaxed font-medium">
+              Dino Leathers — Handcrafted in Ambur, Tamil Nadu. Built for a Lifetime of Character.
             </p>
 
             <div className="pt-2 flex items-center gap-2 text-xs text-[#7A3E1D] font-medium">
@@ -130,13 +137,13 @@ export function Footer() {
         {/* Bottom Credits & Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#6B5B52]">
           <div className="flex items-center gap-1">
-            <span>© {new Date().getFullYear()} Ambur Craft Leather Co. Handcrafted with pride in Ambur, Tamil Nadu.</span>
+            <span>© {new Date().getFullYear()} Dino Leathers. All rights reserved.</span>
           </div>
 
           <div className="flex items-center gap-4 text-[11px] text-[#8C7E76]">
             <span>100% Genuine Bovine</span>
             <span>•</span>
-            <span>Factory Direct</span>
+            <span>Handcrafted in Ambur</span>
             <span>•</span>
             <span>Tamil Nadu, India</span>
           </div>

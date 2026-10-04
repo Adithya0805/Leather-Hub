@@ -5,16 +5,16 @@ export function LocalBusinessSchema() {
   const localBusinessData = {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "Store", "Organization"],
-    "@id": "https://amburleather.in/#organization",
-    "name": "Ambur Leather Works",
-    "alternateName": ["Ambur Craft", "Ambur Bovine Leather Co."],
-    "url": "https://amburleather.in",
-    "logo": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=80",
-    "image": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&h=630&q=85",
+    "@id": "https://dinoleathers.in/#organization",
+    "name": "Dino Leathers",
+    "alternateName": ["Dino Leathers Ambur", "Dino Leather Co."],
+    "url": "https://dinoleathers.in",
+    "logo": "https://dinoleathers.in/images/logo.png",
+    "image": "https://dinoleathers.in/images/logo.png",
     "description":
       "Artisanal full-grain leather wallets and belts handcrafted in Ambur, Tamil Nadu. Factory-direct pricing with complimentary custom initial embossing.",
     "telephone": "+91-94432-63580",
-    "email": "craft@amburleather.in",
+    "email": "craft@dinoleathers.in",
     "priceRange": "₹₹",
     "currenciesAccepted": "INR",
     "paymentAccepted": "Cash, UPI, Credit Card, Debit Card, Net Banking",
@@ -52,7 +52,7 @@ export function LocalBusinessSchema() {
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Ambur Genuine Leather Products",
+      "name": "Dino Leathers Genuine Leather Products",
       "itemListElement": PRODUCTS.map((product) => ({
         "@type": "OfferCatalog",
         "name": product.name,
@@ -84,14 +84,14 @@ export function LocalBusinessSchema() {
         "description": product.description,
         "image": product.imageAngles,
         "sku": product.id,
-        "mpn": `AMB-${product.id.toUpperCase()}`,
+        "mpn": `DINO-${product.id.toUpperCase()}`,
         "brand": {
           "@type": "Brand",
-          "name": "Ambur Leather Works",
+          "name": "Dino Leathers",
         },
         "manufacturer": {
           "@type": "Organization",
-          "name": "Ambur Leather Works",
+          "name": "Dino Leathers",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Ambur",
