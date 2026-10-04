@@ -32,25 +32,25 @@ export function EmbossingStudioTeaser() {
   };
 
   return (
-    <section className="py-20 bg-[#1A1412] text-[#FDFBF7] relative overflow-hidden">
+    <section className="py-20 bg-[#FBF9F5] text-[#2C1A11] relative overflow-hidden border-b border-[#EADDD3]">
       {/* Decorative Leather Grain Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C89D66]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7A3E1D]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Text */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D66]/20 border border-[#C89D66]/40 text-[#C89D66] text-xs font-semibold uppercase tracking-widest">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F3ECE5] border border-[#EADDD3] text-[#7A3E1D] text-xs font-semibold uppercase tracking-widest">
+              <Sparkles className="w-3.5 h-3.5 text-[#C29B38]" />
               <span>Complimentary Personalization</span>
             </div>
 
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight text-[#FDFBF7]">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#2C1A11]">
               Crafted in Ambur. <br />
-              <span className="text-[#C89D66] italic">Branded in Your Name.</span>
+              <span className="text-[#7A3E1D] italic">Branded in Your Name.</span>
             </h2>
 
-            <p className="text-sm sm:text-base text-[#C4B6AF] leading-relaxed">
+            <p className="text-sm sm:text-base text-[#6B5B52] leading-relaxed">
               Every wallet, belt, and gift box leaves our Ambur workshop bearing
               the indelible mark of its owner. We never charge for personalization.
               Type your initials or family moniker below to preview live.
@@ -59,7 +59,7 @@ export function EmbossingStudioTeaser() {
             {/* Input Controls */}
             <div className="space-y-4 pt-2">
               <div>
-                <label className="block text-xs uppercase tracking-wider text-[#9C8980] font-semibold mb-2">
+                <label className="block text-xs uppercase tracking-wider text-[#6B5B52] font-semibold mb-2">
                   Enter Initials or Monogram (Up to 8 characters)
                 </label>
                 <div className="flex gap-2">
@@ -69,16 +69,16 @@ export function EmbossingStudioTeaser() {
                     value={initials}
                     onChange={(e) => setInitials(e.target.value.toUpperCase())}
                     placeholder="E.G. AKM"
-                    className="flex-1 bg-[#2D2421] border border-[#3D322E] rounded-xl px-4 py-3 text-lg font-mono tracking-widest uppercase text-[#FDFBF7] focus:outline-none focus:border-[#C89D66] focus:ring-1 focus:ring-[#C89D66]"
+                    className="flex-1 bg-white border border-[#EADDD3] rounded-xl px-4 py-3 text-lg font-mono tracking-widest uppercase text-[#2C1A11] placeholder:text-[#9A8C84] focus:outline-none focus:border-[#7A3E1D] focus:ring-1 focus:ring-[#7A3E1D] shadow-sm"
                   />
-                  <div className="flex bg-[#2D2421] p-1 rounded-xl border border-[#3D322E]">
+                  <div className="flex bg-[#F3ECE5] p-1 rounded-xl border border-[#EADDD3]">
                     <button
                       type="button"
                       onClick={() => setStyle("gold")}
                       className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
                         style === "gold"
-                          ? "bg-[#C89D66] text-[#1A1412] shadow-sm"
-                          : "text-[#C4B6AF] hover:text-[#FDFBF7]"
+                          ? "bg-white text-[#7A3E1D] shadow-sm font-bold"
+                          : "text-[#6B5B52] hover:text-[#2C1A11]"
                       }`}
                     >
                       Gold Foil
@@ -88,8 +88,8 @@ export function EmbossingStudioTeaser() {
                       onClick={() => setStyle("blind")}
                       className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
                         style === "blind"
-                          ? "bg-[#3D322E] text-[#FDFBF7] shadow-sm"
-                          : "text-[#C4B6AF] hover:text-[#FDFBF7]"
+                          ? "bg-[#2C1A11] text-white shadow-sm font-bold"
+                          : "text-[#6B5B52] hover:text-[#2C1A11]"
                       }`}
                     >
                       Blind Deboss
@@ -100,7 +100,7 @@ export function EmbossingStudioTeaser() {
 
               {/* Product Target Select */}
               <div className="pt-2">
-                <label className="block text-xs uppercase tracking-wider text-[#9C8980] font-semibold mb-2">
+                <label className="block text-xs uppercase tracking-wider text-[#6B5B52] font-semibold mb-2">
                   Choose Article for Embossing
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -109,14 +109,14 @@ export function EmbossingStudioTeaser() {
                       key={prod.id}
                       type="button"
                       onClick={() => setSelectedProduct(prod)}
-                      className={`p-2.5 rounded-xl border text-left text-xs transition-all ${
+                      className={`p-2.5 rounded-xl border text-left text-xs transition-all shadow-sm ${
                         selectedProduct.id === prod.id
-                          ? "border-[#C89D66] bg-[#C89D66]/10 text-[#FDFBF7]"
-                          : "border-[#3D322E] bg-[#221B18] text-[#9C8980] hover:text-[#FDFBF7]"
+                          ? "border-[#7A3E1D] bg-[#F3ECE5] text-[#2C1A11] font-semibold"
+                          : "border-[#EADDD3] bg-white text-[#6B5B52] hover:border-[#7A3E1D] hover:text-[#2C1A11]"
                       }`}
                     >
                       <div className="font-semibold truncate">{prod.name}</div>
-                      <div className="text-[11px] text-[#C89D66]">₹{prod.price}</div>
+                      <div className="text-[11px] text-[#7A3E1D] font-bold">₹{prod.price}</div>
                     </button>
                   ))}
                 </div>
@@ -126,7 +126,7 @@ export function EmbossingStudioTeaser() {
                 <button
                   type="button"
                   onClick={handleDirectWhatsAppOrder}
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-widest transition-all shadow-subtle active:scale-95 group"
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#7A3E1D] hover:bg-[#633216] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-warm active:scale-95 group"
                 >
                   <MessageCircle className="w-4 h-4 fill-white" />
                   <span>Order on WhatsApp with &ldquo;{initials || "INITIALS"}&rdquo;</span>
@@ -135,21 +135,21 @@ export function EmbossingStudioTeaser() {
                 <button
                   type="button"
                   onClick={handleApplyToCart}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#2D2421] border border-[#3D322E] hover:border-[#C89D66] text-[#FDFBF7] font-semibold text-xs uppercase tracking-widest hover:bg-[#3D322E] transition-all active:scale-95"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white border border-[#EADDD3] hover:border-[#7A3E1D] text-[#2C1A11] font-semibold text-xs uppercase tracking-widest hover:bg-[#F3ECE5] transition-all active:scale-95 shadow-sm"
                 >
-                  <ShoppingBag className="w-4 h-4 text-[#C89D66]" />
+                  <ShoppingBag className="w-4 h-4 text-[#7A3E1D]" />
                   <span>{feedback ? "Added to Bag!" : "+ Add to Bag"}</span>
                 </button>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[#3D322E] text-xs text-[#C4B6AF]">
+            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[#EADDD3] text-xs text-[#6B5B52]">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#C89D66]" />
+                <CheckCircle2 className="w-4 h-4 text-[#7A3E1D]" />
                 <span>Zero extra charge forever</span>
               </div>
               <div className="flex items-center gap-2">
-                <Flame className="w-4 h-4 text-[#C89D66]" />
+                <Flame className="w-4 h-4 text-[#7A3E1D]" />
                 <span>Heated brass die stamping</span>
               </div>
             </div>
@@ -157,15 +157,15 @@ export function EmbossingStudioTeaser() {
 
           {/* Right Live Visual Leather Swatch */}
           <div className="lg:col-span-6 flex justify-center">
-            <div className="relative w-full max-w-md aspect-square rounded-3xl bg-gradient-to-br from-[#7C582B] via-[#5A3F1F] to-[#2D2421] p-8 sm:p-12 shadow-2xl border-4 border-[#3D322E] flex flex-col justify-between overflow-hidden">
+            <div className="relative w-full max-w-md aspect-square rounded-3xl bg-gradient-to-br from-[#8C532B] via-[#633818] to-[#3B1F0E] p-8 sm:p-12 shadow-2xl border-4 border-[#EADDD3] flex flex-col justify-between overflow-hidden">
               {/* Decorative Corner Brass Rivets */}
-              <div className="absolute top-4 left-4 w-3 h-3 rounded-full bg-[#B38F4D] border border-[#7E6332] shadow-inner" />
-              <div className="absolute top-4 right-4 w-3 h-3 rounded-full bg-[#B38F4D] border border-[#7E6332] shadow-inner" />
-              <div className="absolute bottom-4 left-4 w-3 h-3 rounded-full bg-[#B38F4D] border border-[#7E6332] shadow-inner" />
-              <div className="absolute bottom-4 right-4 w-3 h-3 rounded-full bg-[#B38F4D] border border-[#7E6332] shadow-inner" />
+              <div className="absolute top-4 left-4 w-3 h-3 rounded-full bg-[#C29B38] border border-[#917024] shadow-inner" />
+              <div className="absolute top-4 right-4 w-3 h-3 rounded-full bg-[#C29B38] border border-[#917024] shadow-inner" />
+              <div className="absolute bottom-4 left-4 w-3 h-3 rounded-full bg-[#C29B38] border border-[#917024] shadow-inner" />
+              <div className="absolute bottom-4 right-4 w-3 h-3 rounded-full bg-[#C29B38] border border-[#917024] shadow-inner" />
 
               {/* Top Provenance Watermark */}
-              <div className="flex justify-between items-center text-[10px] uppercase tracking-[0.25em] text-[#C89D66]/70 font-semibold">
+              <div className="flex justify-between items-center text-[10px] uppercase tracking-[0.25em] text-[#E0C07F]/80 font-semibold">
                 <span>AMBUR WORKSHOP</span>
                 <span>OIL PULL-UP GRAIN</span>
               </div>
@@ -175,21 +175,21 @@ export function EmbossingStudioTeaser() {
                 <div
                   className={`font-serif text-4xl sm:text-6xl font-bold tracking-[0.3em] uppercase transition-all duration-300 ${
                     style === "gold"
-                      ? "text-[#E0C07F] drop-shadow-[0_2px_10px_rgba(200,157,102,0.4)]"
-                      : "text-[#2A1D17] drop-shadow-[0_-1px_1px_rgba(0,0,0,0.8)] [text-shadow:_0_1px_2px_rgba(255,255,255,0.15)]"
+                      ? "text-[#F3DFAC] drop-shadow-[0_2px_10px_rgba(194,155,56,0.5)]"
+                      : "text-[#24130A] drop-shadow-[0_-1px_1px_rgba(0,0,0,0.8)] [text-shadow:_0_1px_2px_rgba(255,255,255,0.2)]"
                   }`}
                 >
                   {initials || "YOUR INITIALS"}
                 </div>
-                <div className="mt-4 text-[10px] tracking-[0.3em] uppercase text-[#C4B6AF]/80">
+                <div className="mt-4 text-[10px] tracking-[0.3em] uppercase text-[#F3DFAC]/70 font-semibold">
                   {style === "gold" ? "24K Foil Heat-Fused" : "Deep Thermal Blind Deboss"}
                 </div>
               </div>
 
               {/* Bottom Guarantee */}
-              <div className="pt-4 border-t border-[#C89D66]/20 flex items-center justify-between text-[11px] text-[#C4B6AF]">
+              <div className="pt-4 border-t border-[#EADDD3]/30 flex items-center justify-between text-[11px] text-[#F3DFAC]/90">
                 <span>Selected: {selectedProduct.name}</span>
-                <span className="text-[#C89D66] font-bold">₹{selectedProduct.price}</span>
+                <span className="text-[#F3DFAC] font-bold">₹{selectedProduct.price}</span>
               </div>
             </div>
           </div>

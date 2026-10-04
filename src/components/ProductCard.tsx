@@ -46,7 +46,7 @@ export function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="group relative bg-[#FDFBF7] rounded-3xl border border-[#E4DCD7] overflow-hidden shadow-micro hover:shadow-leather transition-all duration-500 flex flex-col justify-between">
+    <div className="group relative bg-white rounded-2xl border border-[#EADDD3] overflow-hidden shadow-warm hover:shadow-elevated transition-all duration-500 flex flex-col justify-between">
       {/* Touch-Optimized Swipeable Mobile Gallery with Zoom */}
       <MobileGallery
         images={product.imageAngles}
@@ -58,32 +58,32 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
         <div>
           {/* Category & Rating */}
-          <div className="flex items-center justify-between text-xs text-[#7A6860] mb-1.5">
-            <span className="uppercase tracking-wider font-bold text-[10px] text-[#B38F4D]">
+          <div className="flex items-center justify-between text-xs text-[#6B5B52] mb-1.5">
+            <span className="uppercase tracking-wider font-bold text-[10px] text-[#7A3E1D]">
               {product.categoryLabel}
             </span>
-            <div className="flex items-center gap-1 text-[11px] font-semibold text-[#1A1412]">
-              <Star className="w-3.5 h-3.5 fill-[#C89D66] text-[#C89D66]" />
+            <div className="flex items-center gap-1 text-[11px] font-semibold text-[#2C1A11]">
+              <Star className="w-3.5 h-3.5 fill-[#C29B38] text-[#C29B38]" />
               <span>{product.rating}</span>
-              <span className="text-[#9C8980]">({product.reviewsCount})</span>
+              <span className="text-[#9A8C84]">({product.reviewsCount})</span>
             </div>
           </div>
 
           {/* Product Title */}
-          <h3 className="font-serif text-lg sm:text-xl font-bold text-[#1A1412] leading-tight group-hover:text-[#9E7238] transition-colors">
+          <h3 className="font-serif text-lg sm:text-xl font-bold text-[#2C1A11] leading-tight group-hover:text-[#7A3E1D] transition-colors">
             {product.name}
           </h3>
 
-          <p className="text-xs text-[#5A4B45] mt-1.5 line-clamp-2 leading-relaxed">
+          <p className="text-xs text-[#6B5B52] mt-1.5 line-clamp-2 leading-relaxed">
             {product.shortDescription}
           </p>
         </div>
 
         {/* Color Swatches */}
-        <div className="pt-2 border-t border-[#E4DCD7]/60 flex items-center justify-between text-xs">
+        <div className="pt-2 border-t border-[#EADDD3] flex items-center justify-between text-xs">
           <div className="flex items-center gap-1.5">
-            <span className="text-[11px] text-[#7A6860]">Color:</span>
-            <span className="text-[11px] font-semibold text-[#1A1412]">
+            <span className="text-[11px] text-[#6B5B52]">Color:</span>
+            <span className="text-[11px] font-semibold text-[#2C1A11]">
               {selectedColor}
             </span>
           </div>
@@ -97,7 +97,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 title={color.name}
                 className={`min-w-[28px] min-h-[28px] rounded-full border-2 transition-all active:scale-90 ${
                   selectedColor === color.name
-                    ? "border-[#1A1412] scale-110 shadow-sm"
+                    ? "border-[#7A3E1D] scale-110 shadow-sm"
                     : "border-transparent opacity-80 hover:opacity-100"
                 }`}
                 style={{ backgroundColor: color.hex }}
@@ -108,42 +108,42 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Bottom Sheet Personalization Trigger */}
-        <div className="bg-[#FAF7F5] rounded-2xl p-3 border border-[#E4DCD7] flex items-center justify-between text-xs">
-          <div className="flex items-center gap-2 text-[#5A4B45] min-w-0">
-            <Sparkles className="w-4 h-4 text-[#C89D66] shrink-0" />
-            <span className="text-[11px] truncate">
+        <div className="bg-[#F3ECE5] rounded-xl p-3 border border-[#EADDD3] flex items-center justify-between text-xs">
+          <div className="flex items-center gap-2 text-[#7A3E1D] min-w-0">
+            <Sparkles className="w-4 h-4 text-[#C29B38] shrink-0" />
+            <span className="text-[11px] truncate font-medium">
               {embossingText ? (
                 <span>
-                  Initials: <strong className="text-[#1A1412]">{embossingText}</strong> ({embossingStyle === "gold" ? "Gold Foil" : "Blind Deboss"})
+                  Initials: <strong className="text-[#2C1A11]">{embossingText}</strong> ({embossingStyle === "gold" ? "Gold Foil" : "Blind Deboss"})
                 </span>
               ) : (
-                <span>Free Initial Stamping (₹0)</span>
+                <span>Free Name Embossing (₹0)</span>
               )}
             </span>
           </div>
           <button
             type="button"
             onClick={() => setEmbossingSheetOpen(true)}
-            className="min-h-[36px] px-2.5 rounded-lg text-[11px] font-bold uppercase tracking-wider text-[#9E7238] hover:text-[#1A1412] shrink-0 active:scale-95 transition-all"
+            className="min-h-[36px] px-2.5 rounded-lg text-[11px] font-bold uppercase tracking-wider text-[#7A3E1D] hover:text-[#633216] shrink-0 active:scale-95 transition-all"
           >
             {embossingText ? "Edit" : "+ Add Name"}
           </button>
         </div>
 
         {/* Price & Add to Cart Action */}
-        <div className="pt-3 border-t border-[#E4DCD7] flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5">
+        <div className="pt-3 border-t border-[#EADDD3] flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5">
           <div>
             <div className="flex items-baseline gap-2">
-              <span className="font-serif text-2xl font-bold text-[#1A1412]">
+              <span className="font-serif text-2xl font-bold text-[#2C1A11]">
                 ₹{product.price.toLocaleString("en-IN")}
               </span>
               {product.originalPrice && (
-                <span className="text-xs text-[#9C8980] line-through font-normal">
+                <span className="text-xs text-[#9A8C84] line-through font-normal">
                   ₹{product.originalPrice.toLocaleString("en-IN")}
                 </span>
               )}
             </div>
-            <span className="text-[10px] text-[#7A6860] uppercase tracking-wider block">
+            <span className="text-[10px] text-[#6B5B52] uppercase tracking-wider block">
               Factory Direct • Ambur
             </span>
           </div>
@@ -153,7 +153,7 @@ export function ProductCard({ product }: ProductCardProps) {
             <button
               type="button"
               onClick={handleDirectWhatsAppOrder}
-              className="min-w-[48px] min-h-[48px] rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center transition-all shadow-micro active:scale-90"
+              className="min-w-[48px] min-h-[48px] rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center transition-all shadow-micro active:scale-90"
               title="Order directly on WhatsApp"
               aria-label="Order directly on WhatsApp"
             >
@@ -164,10 +164,10 @@ export function ProductCard({ product }: ProductCardProps) {
             <button
               type="button"
               onClick={handleAddToCart}
-              className={`min-h-[48px] inline-flex items-center justify-center gap-1.5 px-4 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-micro active:scale-95 ${
+              className={`min-h-[48px] inline-flex items-center justify-center gap-1.5 px-4 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-warm active:scale-95 ${
                 added
                   ? "bg-emerald-700 text-white"
-                  : "bg-[#1A1412] text-[#FDFBF7] hover:bg-[#C89D66] hover:text-[#1A1412]"
+                  : "bg-[#7A3E1D] text-white hover:bg-[#633216]"
               }`}
             >
               {added ? (

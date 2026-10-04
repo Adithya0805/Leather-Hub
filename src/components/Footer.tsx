@@ -14,65 +14,65 @@ import {
 
 export function Footer() {
   return (
-    <footer className="bg-[#120D0B] text-[#FDFBF7] border-t border-[#2D2421] font-sans pt-16 pb-12">
+    <footer className="bg-[#F3ECE5] text-[#2C1A11] border-t border-[#EADDD3] font-sans pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-[#2D2421]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-[#EADDD3]">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex flex-col items-start">
-              <span className="text-[10px] font-sans tracking-[0.35em] uppercase text-[#B38F4D] font-semibold mb-1">
+              <span className="text-[10px] font-sans tracking-[0.35em] uppercase text-[#7A3E1D] font-bold mb-1">
                 EST. 1974 • AMBUR
               </span>
-              <span className="font-serif text-2xl font-bold tracking-tight text-[#FDFBF7]">
+              <span className="font-serif text-2xl font-bold tracking-tight text-[#2C1A11]">
                 AMBUR CRAFT
               </span>
-              <span className="text-[10px] font-sans tracking-[0.25em] uppercase text-[#9C8980]">
+              <span className="text-[10px] font-sans tracking-[0.25em] uppercase text-[#6B5B52] font-semibold">
                 AUTHENTIC BOVINE LEATHER
               </span>
             </div>
 
-            <p className="text-xs text-[#9C8980] max-w-sm leading-relaxed">
+            <p className="text-xs text-[#6B5B52] max-w-sm leading-relaxed">
               Dispatched directly from the historic tannery belt of Ambur, Tamil
               Nadu. We handcraft indestructible wallets, cardholders, and belts
               from genuine bovine full-grain leather, delivered with free custom
               initials embossing across India.
             </p>
 
-            <div className="pt-2 flex items-center gap-2 text-xs text-[#C89D66]">
-              <MapPin className="w-4 h-4 shrink-0" />
+            <div className="pt-2 flex items-center gap-2 text-xs text-[#7A3E1D] font-medium">
+              <MapPin className="w-4 h-4 shrink-0 text-[#7A3E1D]" />
               <span>Workshop: MC Road, Ambur, Tirupattur Dist, TN 635802</span>
             </div>
           </div>
 
           {/* Quick Collection Links */}
           <div>
-            <h4 className="font-serif text-base font-semibold text-[#FDFBF7] mb-4">
+            <h4 className="font-serif text-base font-bold text-[#2C1A11] mb-4">
               Curated Offerings
             </h4>
-            <ul className="space-y-2.5 text-xs text-[#C4B6AF]">
+            <ul className="space-y-2.5 text-xs text-[#6B5B52]">
               <li>
-                <Link href="#wallets" className="hover:text-[#C89D66] transition-colors">
+                <Link href="#wallets" className="hover:text-[#7A3E1D] transition-colors">
                   Full-Grain Bi-Fold Wallets
                 </Link>
               </li>
               <li>
-                <Link href="#cardholders" className="hover:text-[#C89D66] transition-colors">
+                <Link href="#cardholders" className="hover:text-[#7A3E1D] transition-colors">
                   Slim RFID Cardholders
                 </Link>
               </li>
               <li>
-                <Link href="#belts" className="hover:text-[#C89D66] transition-colors">
+                <Link href="#belts" className="hover:text-[#7A3E1D] transition-colors">
                   Reversible Solid Brass Belts
                 </Link>
               </li>
               <li>
-                <Link href="#gift-sets" className="hover:text-[#C89D66] transition-colors">
+                <Link href="#gift-sets" className="hover:text-[#7A3E1D] transition-colors">
                   2-in-1 Executive Gift Sets
                 </Link>
               </li>
               <li>
-                <span className="text-[#C89D66] font-medium flex items-center gap-1">
-                  <Sparkles className="w-3 h-3" /> Free Initials Embossing
+                <span className="text-[#7A3E1D] font-semibold flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-[#C29B38]" /> Free Initials Embossing
                 </span>
               </li>
             </ul>
@@ -80,24 +80,24 @@ export function Footer() {
 
           {/* Provenance & Guarantees */}
           <div>
-            <h4 className="font-serif text-base font-semibold text-[#FDFBF7] mb-4">
+            <h4 className="font-serif text-base font-bold text-[#2C1A11] mb-4">
               Ambur Assurance
             </h4>
-            <ul className="space-y-2.5 text-xs text-[#C4B6AF]">
+            <ul className="space-y-2.5 text-xs text-[#6B5B52]">
               <li className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#C89D66]" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
                 <span>100% Ambur Bovine Hides</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#C89D66]" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
                 <span>5-Year Patina Warranty</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#C89D66]" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
                 <span>Zero-Risk Factory Pricing</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#C89D66]" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
                 <span>Pan-India Safe Transit</span>
               </li>
             </ul>
@@ -105,21 +105,21 @@ export function Footer() {
 
           {/* Newsletter / Direct Factory Dispatch */}
           <div>
-            <h4 className="font-serif text-base font-semibold text-[#FDFBF7] mb-4">
+            <h4 className="font-serif text-base font-bold text-[#2C1A11] mb-4">
               Direct Factory Updates
             </h4>
-            <p className="text-xs text-[#9C8980] mb-3">
+            <p className="text-xs text-[#6B5B52] mb-3 leading-relaxed">
               Receive notifications for fresh small-batch hides, rare Crazy Horse finishes, and festive gift boxes.
             </p>
             <div className="flex flex-col gap-2">
               <input
                 type="email"
                 placeholder="Enter email address"
-                className="w-full bg-[#1A1412] border border-[#2D2421] rounded-lg px-3 py-2 text-xs text-[#FDFBF7] focus:outline-none focus:border-[#C89D66]"
+                className="w-full bg-white border border-[#EADDD3] rounded-lg px-3 py-2 text-xs text-[#2C1A11] placeholder:text-[#9A8C84] focus:outline-none focus:border-[#7A3E1D] shadow-sm"
               />
               <button
                 type="button"
-                className="w-full py-2 px-3 rounded-lg bg-[#C89D66] text-[#1A1412] text-xs font-bold uppercase tracking-wider hover:bg-[#d6b284] transition-colors"
+                className="w-full py-2.5 px-3 rounded-lg bg-[#7A3E1D] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#633216] transition-colors shadow-warm"
               >
                 Join Private Guild
               </button>
@@ -128,12 +128,12 @@ export function Footer() {
         </div>
 
         {/* Bottom Credits & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#7A6860]">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#6B5B52]">
           <div className="flex items-center gap-1">
             <span>© {new Date().getFullYear()} Ambur Craft Leather Co. Handcrafted with pride in Ambur, Tamil Nadu.</span>
           </div>
 
-          <div className="flex items-center gap-4 text-[11px] text-[#9C8980]">
+          <div className="flex items-center gap-4 text-[11px] text-[#8C7E76]">
             <span>100% Genuine Bovine</span>
             <span>•</span>
             <span>Factory Direct</span>

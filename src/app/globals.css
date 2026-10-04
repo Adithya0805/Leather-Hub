@@ -2,62 +2,61 @@
 @config "../../tailwind.config.ts";
 
 @theme {
-  --color-deep-saddle: #1A1412;
-  --color-ambur-tan: #C89D66;
-  --color-rich-cream: #FDFBF7;
-  --color-heritage-brass: #B38F4D;
+  --color-canvas: #FBF9F5;
+  --color-surface: #FFFFFF;
+  --color-primary: #7A3E1D;
+  --color-primary-dark: #633216;
+  --color-heading: #2C1A11;
+  --color-body: #6B5B52;
+  --color-border-soft: #EADDD3;
+  --color-brass: #C29B38;
+  --color-biscuit: #F3ECE5;
+  --color-muted: #9A8C84;
 
-  --color-saddle-950: #120D0B;
-  --color-saddle-900: #1A1412;
-  --color-saddle-850: #221B18;
-  --color-saddle-800: #2D2421;
-  --color-saddle-700: #3D322E;
-  --color-saddle-600: #5A4B45;
-  --color-saddle-500: #7A6860;
-  --color-saddle-400: #9C8980;
-  --color-saddle-300: #C4B6AF;
-  --color-saddle-200: #E4DCD7;
-  --color-saddle-100: #F4EFEA;
-  --color-saddle-50: #FAF7F5;
+  --color-deep-saddle: #2C1A11;
+  --color-ambur-tan: #7A3E1D;
+  --color-rich-cream: #FBF9F5;
+  --color-heritage-brass: #C29B38;
 
-  --color-tan-900: #5A3F1F;
-  --color-tan-800: #7C582B;
-  --color-tan-700: #9E7238;
-  --color-tan-600: #B88647;
-  --color-tan-500: #C89D66;
-  --color-tan-400: #D6B284;
-  --color-tan-300: #E3C7A3;
-  --color-tan-200: #F0DEC4;
-  --color-tan-100: #F9F1E6;
-  --color-tan-50: #FCF8F2;
+  --color-saddle-950: #1A0F0A;
+  --color-saddle-900: #2C1A11;
+  --color-saddle-850: #3D2418;
+  --color-saddle-800: #503020;
+  --color-saddle-700: #6B5B52;
+  --color-saddle-600: #7A3E1D;
+  --color-saddle-500: #9A5228;
+  --color-saddle-400: #B87042;
+  --color-saddle-300: #D4986E;
+  --color-saddle-200: #EADDD3;
+  --color-saddle-100: #F3ECE5;
+  --color-saddle-50: #FBF9F5;
 
-  --color-brass-700: #7E6332;
-  --color-brass-600: #9B7B3E;
-  --color-brass-500: #B38F4D;
-  --color-brass-400: #CCA662;
-  --color-brass-300: #E0C07F;
-
-  --color-cream-default: #FDFBF7;
-  --color-cream-50: #FFFFFF;
-  --color-cream-100: #FDFBF7;
-  --color-cream-200: #F7F2E8;
-  --color-cream-300: #EDE4D3;
-  --color-cream-400: #DFD2BD;
+  --color-tan-900: #4D2610;
+  --color-tan-800: #633216;
+  --color-tan-700: #7A3E1D;
+  --color-tan-600: #944E27;
+  --color-tan-500: #B36737;
+  --color-tan-400: #C98555;
+  --color-tan-300: #DCA67D;
+  --color-tan-200: #EADDD3;
+  --color-tan-100: #F3ECE5;
+  --color-tan-50: #FBF9F5;
 
   --font-serif: var(--font-cormorant), "Playfair Display", Georgia, serif;
   --font-sans: var(--font-plus-jakarta), "Inter", system-ui, sans-serif;
   --font-editorial: var(--font-cormorant), Georgia, serif;
 
-  --shadow-micro: 0 1px 2px rgba(26, 20, 18, 0.05);
-  --shadow-subtle: 0 4px 14px -2px rgba(26, 20, 18, 0.07);
-  --shadow-elevated: 0 12px 28px -4px rgba(26, 20, 18, 0.12);
-  --shadow-leather: 0 20px 40px -10px rgba(26, 20, 18, 0.22);
-  --shadow-brass: 0 0 20px -3px rgba(179, 143, 77, 0.35);
+  --shadow-warm: 0 4px 20px -2px rgba(44, 26, 17, 0.05);
+  --shadow-micro: 0 1px 3px 0 rgba(44, 26, 17, 0.04);
+  --shadow-subtle: 0 2px 8px 0 rgba(44, 26, 17, 0.04);
+  --shadow-elevated: 0 10px 30px -4px rgba(44, 26, 17, 0.08);
+  --shadow-leather: 0 12px 28px -4px rgba(44, 26, 17, 0.08);
+  --shadow-brass: 0 0 16px -2px rgba(194, 155, 56, 0.25);
 }
 
 :root {
-  --background: #FDFBF7;
-  --foreground: #1A1412;
+  --background: #FBF9F5;
+  --foreground: #2C1A11;
 }
 
 body {
@@ -68,25 +67,25 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Leather Scrollbar */
+/* Custom Atelier Scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #F4EFEA;
+  background: #F3ECE5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C89D66;
+  background: #7A3E1D;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #9E7238;
+  background: #633216;
 }
 
 /* Selection Color */
 ::selection {
-  background-color: #C89D66;
-  color: #1A1412;
+  background-color: #7A3E1D;
+  color: #FFFFFF;
 }
 
 /* iOS Safe Area & Mobile PWA Utilities */

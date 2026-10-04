@@ -47,12 +47,12 @@ export function StickyBuyBar() {
   return (
     <div
       aria-label="Quick Mobile Checkout Bar"
-      className="md:hidden fixed bottom-[calc(3.5rem+env(safe-area-inset-bottom,0px))] inset-x-0 z-30 bg-[#1A1412]/95 backdrop-blur-md border-t border-[#3D322E] px-3.5 py-2.5 shadow-2xl gpu-layer animate-fadeIn"
+      className="md:hidden fixed bottom-[calc(3.5rem+env(safe-area-inset-bottom,0px))] inset-x-0 z-30 bg-white/95 backdrop-blur-md border-t border-[#EADDD3] px-3.5 py-2.5 shadow-warm gpu-layer animate-fadeIn"
     >
       <div className="flex items-center justify-between gap-3 max-w-md mx-auto">
         {/* Product Thumbnail & Price */}
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className="relative w-11 h-11 rounded-lg bg-[#2D2421] border border-[#3D322E] overflow-hidden shrink-0">
+          <div className="relative w-11 h-11 rounded-lg bg-[#FBF9F5] border border-[#EADDD3] overflow-hidden shrink-0">
             <Image
               src={activeProduct?.imageAngles?.[0] || "/icon.svg"}
               alt={activeProduct?.name || "Ambur Leather"}
@@ -62,14 +62,14 @@ export function StickyBuyBar() {
             />
           </div>
           <div className="min-w-0">
-            <div className="font-serif font-bold text-xs text-[#FDFBF7] truncate">
+            <div className="font-serif font-bold text-xs text-[#2C1A11] truncate">
               {activeProduct.name}
             </div>
             <div className="flex items-baseline gap-1.5 mt-0.5">
-              <span className="font-serif font-extrabold text-sm text-[#C89D66]">
+              <span className="font-serif font-extrabold text-sm text-[#7A3E1D]">
                 ₹{activeProduct.price}
               </span>
-              <span className="text-[10px] text-emerald-400 font-medium">
+              <span className="text-[10px] text-emerald-700 font-semibold">
                 Free Delivery
               </span>
             </div>
@@ -82,11 +82,11 @@ export function StickyBuyBar() {
           <button
             type="button"
             onClick={handleAddToCart}
-            className="min-w-[44px] min-h-[44px] rounded-full bg-[#2D2421] border border-[#3D322E] hover:border-[#C89D66] text-[#C89D66] flex items-center justify-center active:scale-90 transition-transform shadow-micro"
+            className="min-w-[44px] min-h-[44px] rounded-full bg-[#FBF9F5] border border-[#EADDD3] hover:border-[#7A3E1D] text-[#7A3E1D] flex items-center justify-center active:scale-90 transition-transform shadow-micro"
             aria-label="Add to Bag"
           >
             {added ? (
-              <Check className="w-4 h-4 text-emerald-400" />
+              <Check className="w-4 h-4 text-emerald-600" />
             ) : (
               <ShoppingBag className="w-4 h-4" />
             )}
@@ -96,10 +96,12 @@ export function StickyBuyBar() {
           <button
             type="button"
             onClick={handleWhatsAppOrder}
-            className="min-h-[44px] px-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-subtle active:scale-95 transition-all"
+            className="min-h-[44px] px-4 rounded-full bg-[#7A3E1D] hover:bg-[#633216] text-white font-bold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-warm active:scale-95 transition-all"
             aria-label="Order via WhatsApp"
           >
-            <MessageCircle className="w-4 h-4 fill-white shrink-0" />
+            <span className="w-4 h-4 rounded-full bg-[#25D366] flex items-center justify-center shrink-0">
+              <MessageCircle className="w-2.5 h-2.5 fill-white text-white" />
+            </span>
             <span>Order on WhatsApp</span>
           </button>
         </div>

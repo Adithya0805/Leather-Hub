@@ -57,16 +57,16 @@ export function MobileGallery({ images = [], productName, tag }: MobileGalleryPr
   };
 
   return (
-    <div className="relative w-full bg-[#FAF7F5] rounded-3xl overflow-hidden border border-[#E4DCD7] shadow-micro group select-none">
+    <div className="relative w-full bg-[#FBF9F5] rounded-2xl overflow-hidden border border-[#EADDD3] shadow-warm group select-none">
       {/* Permanent Quality & Provenance Badges Overlay */}
       <div className="absolute top-3 inset-x-3 z-20 flex items-center justify-between pointer-events-none">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1A1412]/90 backdrop-blur-md text-[#C89D66] text-[10px] font-bold uppercase tracking-wider border border-[#C89D66]/30 shadow-sm pointer-events-auto">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#C89D66] animate-pulse" />
+        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#7A3E1D] text-[10px] font-bold uppercase tracking-wider border border-[#EADDD3] shadow-micro pointer-events-auto">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#7A3E1D] animate-pulse" />
           <span>Ambur Full-Grain Leather</span>
         </span>
 
-        <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-[#7C582B] text-[10px] font-bold uppercase tracking-wider border border-[#C89D66]/40 shadow-sm pointer-events-auto">
-          <Sparkles className="w-3 h-3 text-[#C89D66]" />
+        <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#F3ECE5]/95 backdrop-blur-md text-[#7A3E1D] text-[10px] font-bold uppercase tracking-wider border border-[#EADDD3] shadow-micro pointer-events-auto">
+          <Sparkles className="w-3 h-3 text-[#C29B38]" />
           <span>Free Name Stamping</span>
         </span>
       </div>
@@ -89,7 +89,7 @@ export function MobileGallery({ images = [], productName, tag }: MobileGalleryPr
               setZoomCoords({ x, y });
               setIsZoomed(!isZoomed);
             }}
-            className="w-full shrink-0 snap-center relative aspect-[4/3] sm:aspect-square bg-[#221B18] overflow-hidden cursor-zoom-in"
+            className="w-full shrink-0 snap-center relative aspect-[4/3] sm:aspect-square bg-[#FBF9F5] overflow-hidden cursor-zoom-in"
           >
             <Image
               src={src || "/icon.svg"}
@@ -112,9 +112,9 @@ export function MobileGallery({ images = [], productName, tag }: MobileGalleryPr
 
       {/* Zoom Inspector Banner (When Zoom Active) */}
       {isZoomed && (
-        <div className="absolute inset-x-3 bottom-14 z-20 bg-[#1A1412]/90 backdrop-blur-md p-2 rounded-xl text-center border border-[#C89D66]/40 animate-fadeIn">
-          <p className="text-[11px] text-[#FDFBF7] font-medium flex items-center justify-center gap-1.5">
-            <ZoomOut className="w-3.5 h-3.5 text-[#C89D66]" />
+        <div className="absolute inset-x-3 bottom-14 z-20 bg-white/95 backdrop-blur-md p-2 rounded-xl text-center border border-[#EADDD3] shadow-elevated animate-fadeIn">
+          <p className="text-[11px] text-[#2C1A11] font-medium flex items-center justify-center gap-1.5">
+            <ZoomOut className="w-3.5 h-3.5 text-[#7A3E1D]" />
             <span>2.5x Inspection Mode • Double tap or click to reset</span>
           </p>
         </div>
@@ -123,12 +123,12 @@ export function MobileGallery({ images = [], productName, tag }: MobileGalleryPr
       {/* Floating Bottom Controls: Dots & Perspective Chip */}
       <div className="absolute bottom-3 inset-x-3 z-20 flex items-center justify-between pointer-events-none">
         {/* Angle Label Chip */}
-        <div className="bg-[#1A1412]/85 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-[#C4B6AF] font-medium border border-[#3D322E] pointer-events-auto">
-          <span className="text-[#C89D66] font-bold">{activeIndex + 1}/{images.length}</span>: {angleLabels[activeIndex] || "Gallery View"}
+        <div className="bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-[#6B5B52] font-medium border border-[#EADDD3] shadow-micro pointer-events-auto">
+          <span className="text-[#7A3E1D] font-bold">{activeIndex + 1}/{images.length}</span>: {angleLabels[activeIndex] || "Gallery View"}
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex items-center gap-1.5 bg-[#1A1412]/75 backdrop-blur-md px-2.5 py-1.5 rounded-full pointer-events-auto border border-[#3D322E]">
+        <div className="flex items-center gap-1.5 bg-white/90 backdrop-blur-md px-2.5 py-1.5 rounded-full pointer-events-auto border border-[#EADDD3] shadow-micro">
           {images.map((_, i) => (
             <button
               key={i}
@@ -136,8 +136,8 @@ export function MobileGallery({ images = [], productName, tag }: MobileGalleryPr
               onClick={() => scrollToIndex(i)}
               className={`transition-all duration-300 rounded-full ${
                 activeIndex === i
-                  ? "w-5 h-1.5 bg-[#C89D66]"
-                  : "w-1.5 h-1.5 bg-[#9C8980]/60 hover:bg-white"
+                  ? "w-5 h-1.5 bg-[#7A3E1D]"
+                  : "w-1.5 h-1.5 bg-[#EADDD3] hover:bg-[#8C7E76]"
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />
@@ -148,7 +148,7 @@ export function MobileGallery({ images = [], productName, tag }: MobileGalleryPr
         <button
           type="button"
           onClick={() => setIsZoomed(!isZoomed)}
-          className="min-w-[36px] min-h-[36px] flex items-center justify-center rounded-full bg-[#1A1412]/85 backdrop-blur-md text-[#C89D66] hover:text-white border border-[#3D322E] pointer-events-auto active:scale-90 transition-transform shadow-micro"
+          className="min-w-[36px] min-h-[36px] flex items-center justify-center rounded-full bg-white/90 backdrop-blur-md text-[#7A3E1D] hover:bg-[#F3ECE5] border border-[#EADDD3] pointer-events-auto active:scale-90 transition-transform shadow-micro"
           title="Zoom into leather pores"
           aria-label="Toggle close-up zoom"
         >

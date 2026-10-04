@@ -60,26 +60,26 @@ export function CartDrawer() {
       {/* Backdrop */}
       <div
         onClick={closeCart}
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
+        className="absolute inset-0 bg-[#2C1A11]/40 backdrop-blur-sm transition-opacity"
         aria-hidden="true"
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-[#FDFBF7] text-[#1A1412] shadow-2xl flex flex-col border-l border-[#E4DCD7]">
+        <div className="w-screen max-w-md bg-[#FBF9F5] text-[#2C1A11] shadow-2xl flex flex-col border-l border-[#EADDD3]">
           {/* Header */}
-          <div className="p-5 bg-[#1A1412] text-[#FDFBF7] flex items-center justify-between border-b border-[#3D322E]">
+          <div className="p-5 bg-white text-[#2C1A11] flex items-center justify-between border-b border-[#EADDD3]">
             <div className="flex items-center gap-2.5">
-              <ShoppingBag className="w-5 h-5 text-[#C89D66]" />
-              <h2 className="font-serif text-xl font-semibold tracking-wide">
+              <ShoppingBag className="w-5 h-5 text-[#7A3E1D]" />
+              <h2 className="font-serif text-xl font-bold tracking-wide text-[#2C1A11]">
                 Your Leather Bag
               </h2>
-              <span className="text-xs bg-[#2D2421] text-[#C89D66] px-2 py-0.5 rounded-full font-sans border border-[#3D322E]">
+              <span className="text-xs bg-[#F3ECE5] text-[#7A3E1D] px-2.5 py-0.5 rounded-full font-sans font-semibold border border-[#EADDD3]">
                 {totalCount} {totalCount === 1 ? "item" : "items"}
               </span>
             </div>
             <button
               onClick={closeCart}
-              className="p-1.5 rounded-full text-[#C4B6AF] hover:text-[#FDFBF7] hover:bg-[#2D2421] transition-colors focus:outline-none"
+              className="p-1.5 rounded-full text-[#6B5B52] hover:text-[#2C1A11] hover:bg-[#F3ECE5] transition-colors focus:outline-none"
               aria-label="Close cart"
             >
               <X className="w-5 h-5" />
@@ -87,13 +87,13 @@ export function CartDrawer() {
           </div>
 
           {/* Free Shipping / Provenance Banner */}
-          <div className="bg-[#FAF7F5] px-5 py-3 border-b border-[#E4DCD7] flex items-center gap-3 text-xs text-[#5A4B45]">
-            <Truck className="w-4 h-4 text-[#C89D66] shrink-0" />
+          <div className="bg-[#F3ECE5] px-5 py-3 border-b border-[#EADDD3] flex items-center gap-3 text-xs text-[#6B5B52]">
+            <Truck className="w-4 h-4 text-[#7A3E1D] shrink-0" />
             <div className="flex-1">
-              <span className="font-semibold text-[#1A1412]">
+              <span className="font-semibold text-[#2C1A11]">
                 Free Express Delivery
               </span>{" "}
-              across Tamil Nadu & Pan-India. Dispatched from Ambur.
+              across Tamil Nadu &amp; Pan-India. Dispatched from Ambur.
             </div>
           </div>
 
@@ -101,18 +101,18 @@ export function CartDrawer() {
           <div className="flex-1 overflow-y-auto p-5 space-y-4">
             {items.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12 px-4">
-                <div className="w-16 h-16 rounded-full bg-[#F4EFEA] flex items-center justify-center mb-4 text-[#C89D66]">
+                <div className="w-16 h-16 rounded-full bg-[#F3ECE5] flex items-center justify-center mb-4 text-[#7A3E1D] border border-[#EADDD3]">
                   <ShoppingBag className="w-8 h-8" />
                 </div>
-                <h3 className="font-serif text-2xl font-semibold text-[#1A1412] mb-1">
+                <h3 className="font-serif text-2xl font-bold text-[#2C1A11] mb-1">
                   Your bag is empty
                 </h3>
-                <p className="text-xs text-[#7A6860] max-w-xs mb-6">
+                <p className="text-xs text-[#6B5B52] max-w-xs mb-6">
                   Handcrafted bovine leather wallets, belts, and gift sets await your touch.
                 </p>
                 <button
                   onClick={closeCart}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1A1412] text-[#FDFBF7] text-xs font-semibold uppercase tracking-wider hover:bg-[#C89D66] hover:text-[#1A1412] transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#7A3E1D] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#633216] transition-colors shadow-warm"
                 >
                   Explore Collection
                 </button>
@@ -121,10 +121,10 @@ export function CartDrawer() {
               items.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-white p-3.5 rounded-xl border border-[#E4DCD7] shadow-micro flex gap-3.5 relative group hover:border-[#C89D66] transition-colors"
+                  className="bg-white p-3.5 rounded-2xl border border-[#EADDD3] shadow-warm flex gap-3.5 relative group hover:border-[#7A3E1D] transition-colors"
                 >
                   {/* Thumbnail */}
-                  <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-[#FAF7F5] shrink-0 border border-[#E4DCD7]">
+                  <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-[#FBF9F5] shrink-0 border border-[#EADDD3]">
                     <Image
                       src={item.product?.imageAngles?.[0] || "/icon.svg"}
                       alt={item.product?.name || "Ambur Leather"}
@@ -137,39 +137,39 @@ export function CartDrawer() {
                   {/* Details */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-1">
-                      <h4 className="font-serif font-semibold text-sm text-[#1A1412] truncate">
+                      <h4 className="font-serif font-bold text-sm text-[#2C1A11] truncate">
                         {item.product.name}
                       </h4>
                       <button
                         onClick={() => removeItem(item.id)}
-                        className="text-[#9C8980] hover:text-rose-600 transition-colors p-1"
+                        className="text-[#9A8C84] hover:text-rose-600 transition-colors p-1"
                         aria-label="Remove item"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     </div>
 
-                    <p className="text-[11px] text-[#7A6860] mt-0.5 flex items-center gap-1.5">
-                      <span className="font-medium text-[#1A1412]">Color:</span>
+                    <p className="text-[11px] text-[#6B5B52] mt-0.5 flex items-center gap-1.5">
+                      <span className="font-medium text-[#2C1A11]">Color:</span>
                       <span>{item.selectedColor}</span>
                     </p>
 
                     {item.embossingText ? (
-                      <div className="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#FAF7F5] border border-[#C89D66]/40 text-[10px] text-[#7C582B]">
-                        <Sparkles className="w-2.5 h-2.5 text-[#C89D66]" />
+                      <div className="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#F3ECE5] border border-[#EADDD3] text-[10px] text-[#7A3E1D] font-semibold">
+                        <Sparkles className="w-2.5 h-2.5 text-[#C29B38]" />
                         <span>Embossed: <strong>{item.embossingText}</strong></span>
                       </div>
                     ) : (
-                      <div className="mt-1 text-[10px] text-[#9C8980]">
+                      <div className="mt-1 text-[10px] text-[#9A8C84]">
                         Standard (No personalization)
                       </div>
                     )}
 
                     <div className="mt-3 flex items-center justify-between">
-                      <div className="flex items-center border border-[#E4DCD7] rounded-full bg-[#FAF7F5]">
+                      <div className="flex items-center border border-[#EADDD3] rounded-full bg-[#FBF9F5] text-[#2C1A11]">
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className="p-1 hover:text-[#C89D66] transition-colors"
+                          className="p-1 hover:text-[#7A3E1D] transition-colors"
                           aria-label="Decrease quantity"
                         >
                           <Minus className="w-3 h-3" />
@@ -179,7 +179,7 @@ export function CartDrawer() {
                         </span>
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="p-1 hover:text-[#C89D66] transition-colors"
+                          className="p-1 hover:text-[#7A3E1D] transition-colors"
                           aria-label="Increase quantity"
                         >
                           <Plus className="w-3 h-3" />
@@ -187,11 +187,11 @@ export function CartDrawer() {
                       </div>
 
                       <div className="text-right">
-                        <span className="font-semibold text-sm text-[#1A1412]">
+                        <span className="font-bold text-sm text-[#2C1A11]">
                           ₹{(item.product.price * item.quantity).toLocaleString("en-IN")}
                         </span>
                         {item.product.originalPrice && (
-                          <span className="ml-1 text-[11px] text-[#9C8980] line-through">
+                          <span className="ml-1 text-[11px] text-[#9A8C84] line-through">
                             ₹{(item.product.originalPrice * item.quantity).toLocaleString("en-IN")}
                           </span>
                         )}
@@ -205,35 +205,35 @@ export function CartDrawer() {
 
           {/* Footer Checkout Summary */}
           {items.length > 0 && (
-            <div className="p-5 bg-white border-t border-[#E4DCD7] space-y-4">
-              <div className="space-y-2 text-xs text-[#5A4B45]">
+            <div className="p-5 bg-white border-t border-[#EADDD3] space-y-4">
+              <div className="space-y-2 text-xs text-[#6B5B52]">
                 <div className="flex justify-between">
                   <span>Bag Subtotal</span>
-                  <span className="font-semibold text-[#1A1412]">
+                  <span className="font-semibold text-[#2C1A11]">
                     ₹{subtotal.toLocaleString("en-IN")}
                   </span>
                 </div>
-                <div className="flex justify-between items-center text-emerald-700">
+                <div className="flex justify-between items-center text-emerald-700 font-medium">
                   <span className="flex items-center gap-1">
                     <Truck className="w-3.5 h-3.5" />
                     Express Shipping (Pan-India)
                   </span>
-                  <span className="font-semibold uppercase tracking-wider text-[11px]">
+                  <span className="font-bold uppercase tracking-wider text-[11px]">
                     FREE
                   </span>
                 </div>
-                <div className="flex justify-between items-center text-[#7C582B]">
+                <div className="flex justify-between items-center text-[#7A3E1D] font-medium">
                   <span className="flex items-center gap-1">
-                    <Sparkles className="w-3.5 h-3.5 text-[#C89D66]" />
+                    <Sparkles className="w-3.5 h-3.5 text-[#C29B38]" />
                     Custom Name Embossing
                   </span>
-                  <span className="font-semibold uppercase tracking-wider text-[11px]">
+                  <span className="font-bold uppercase tracking-wider text-[11px]">
                     INCLUDED (₹0)
                   </span>
                 </div>
-                <div className="pt-2 border-t border-[#E4DCD7] flex justify-between text-base font-bold text-[#1A1412]">
+                <div className="pt-2 border-t border-[#EADDD3] flex justify-between items-center text-base font-bold text-[#2C1A11]">
                   <span>Total Amount</span>
-                  <span className="font-serif text-xl text-[#1A1412]">
+                  <span className="font-serif text-2xl font-bold text-[#7A3E1D]">
                     ₹{subtotal.toLocaleString("en-IN")}
                   </span>
                 </div>
@@ -242,15 +242,15 @@ export function CartDrawer() {
               <button
                 type="button"
                 onClick={() => openCheckout()}
-                className="w-full flex items-center justify-center gap-2 py-3.5 rounded-full bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs tracking-wider uppercase transition-all shadow-subtle group active:scale-95"
+                className="w-full flex items-center justify-center gap-2 py-4 rounded-full bg-[#7A3E1D] hover:bg-[#633216] text-white font-bold text-xs tracking-wider uppercase transition-all shadow-warm group active:scale-95"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
                 <span>Review &amp; Order via WhatsApp</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <div className="flex items-center justify-center gap-2 text-[11px] text-[#7A6860]">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#C89D66]" />
+              <div className="flex items-center justify-center gap-2 text-[11px] text-[#6B5B52]">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
                 <span>Zero-Risk Factory Provenance • 100% Ambur Bovine Leather</span>
               </div>
             </div>

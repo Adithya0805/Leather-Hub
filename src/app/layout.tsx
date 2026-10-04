@@ -102,7 +102,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1A1412",
+  themeColor: "#FFFFFF",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -124,7 +124,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <LocalBusinessSchema />
       </head>
-      <body className="min-h-screen bg-[#FDFBF7] text-[#1A1412] font-sans antialiased flex flex-col selection:bg-[#C89D66] selection:text-[#1A1412] pb-28 md:pb-0">
+      <body className="min-h-screen bg-[#FBF9F5] text-[#2C1A11] font-sans antialiased flex flex-col selection:bg-[#7A3E1D] selection:text-white pb-28 md:pb-0">
         <CartProvider>
           <AnnouncementBar />
           <Navbar />

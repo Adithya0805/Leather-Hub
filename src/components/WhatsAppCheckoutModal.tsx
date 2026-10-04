@@ -211,28 +211,28 @@ Please confirm my order and share UPI payment details!`;
       {/* Backdrop */}
       <div
         onClick={closeCheckout}
-        className="fixed inset-0 bg-black/75 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-[#2C1A11]/40 backdrop-blur-sm transition-opacity"
         aria-hidden="true"
       />
 
       {/* Modal Container */}
-      <div className="relative w-full max-w-2xl bg-[#FDFBF7] text-[#1A1412] rounded-3xl border border-[#C89D66]/40 shadow-2xl overflow-hidden z-10 my-auto animate-fadeIn max-h-[92vh] flex flex-col">
+      <div className="relative w-full max-w-2xl bg-white text-[#2C1A11] rounded-3xl border border-[#EADDD3] shadow-2xl overflow-hidden z-10 my-auto animate-fadeIn max-h-[92vh] flex flex-col">
         {/* Header */}
-        <div className="bg-[#1A1412] text-[#FDFBF7] px-6 py-4.5 border-b border-[#3D322E] flex items-center justify-between shrink-0">
+        <div className="bg-[#FBF9F5] text-[#2C1A11] px-6 py-4.5 border-b border-[#EADDD3] flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full bg-[#2D2421] border border-[#C89D66]/40 flex items-center justify-center text-[#C89D66]">
+            <div className="w-8 h-8 rounded-full bg-[#F3ECE5] border border-[#EADDD3] flex items-center justify-center text-[#7A3E1D]">
               <MessageCircle className="w-4 h-4" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="font-serif text-lg sm:text-xl font-semibold tracking-wide">
+                <h3 className="font-serif text-lg sm:text-xl font-bold tracking-wide text-[#2C1A11]">
                   Review &amp; Place WhatsApp Order
                 </h3>
-                <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-[#C89D66] text-[#1A1412]">
+                <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-[#F3ECE5] text-[#7A3E1D] border border-[#EADDD3]">
                   #{orderId}
                 </span>
               </div>
-              <p className="text-[11px] text-[#C4B6AF]">
+              <p className="text-[11px] text-[#6B5B52]">
                 Zero advance fee • Instant UPI QR via Ambur Tannery Hotline
               </p>
             </div>
@@ -240,7 +240,7 @@ Please confirm my order and share UPI payment details!`;
 
           <button
             onClick={closeCheckout}
-            className="p-1.5 rounded-full text-[#9C8980] hover:text-[#FDFBF7] hover:bg-[#2D2421] transition-colors"
+            className="p-1.5 rounded-full text-[#6B5B52] hover:text-[#2C1A11] hover:bg-[#F3ECE5] transition-colors"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -250,9 +250,9 @@ Please confirm my order and share UPI payment details!`;
         {/* Scrollable Body */}
         <div className="p-5 sm:p-6 overflow-y-auto space-y-6">
           {/* Order Snapshot Card */}
-          <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#E4DCD7] shadow-micro space-y-3">
-            <div className="flex items-center justify-between text-xs text-[#7A6860] border-b border-[#E4DCD7] pb-2.5">
-              <span className="font-semibold uppercase tracking-wider text-[10px] text-[#B38F4D]">
+          <div className="bg-[#FBF9F5] rounded-2xl p-4 sm:p-5 border border-[#EADDD3] shadow-warm space-y-3">
+            <div className="flex items-center justify-between text-xs text-[#6B5B52] border-b border-[#EADDD3] pb-2.5">
+              <span className="font-bold uppercase tracking-wider text-[10px] text-[#7A3E1D]">
                 Order Items ({totalQuantity})
               </span>
               <span className="text-emerald-700 font-bold flex items-center gap-1">
@@ -260,10 +260,10 @@ Please confirm my order and share UPI payment details!`;
               </span>
             </div>
 
-            <div className="space-y-3 divide-y divide-[#E4DCD7]/60">
+            <div className="space-y-3 divide-y divide-[#EADDD3]">
               {activeItems.map((item) => (
                 <div key={item.id} className="pt-2 first:pt-0 flex items-center gap-3">
-                  <div className="relative w-14 h-14 rounded-lg bg-[#FAF7F5] border border-[#E4DCD7] overflow-hidden shrink-0">
+                  <div className="relative w-14 h-14 rounded-lg bg-white border border-[#EADDD3] overflow-hidden shrink-0">
                     <Image
                       src={item.product?.imageAngles?.[0] || "/icon.svg"}
                       alt={item.product?.name || "Ambur Leather Goods"}
@@ -274,32 +274,32 @@ Please confirm my order and share UPI payment details!`;
                   </div>
 
                   <div className="flex-1 min-w-0 text-xs">
-                    <div className="font-serif font-bold text-sm text-[#1A1412] truncate">
+                    <div className="font-serif font-bold text-sm text-[#2C1A11] truncate">
                       {item.product?.name || "Handcrafted Leather Article"}
                     </div>
-                    <div className="text-[11px] text-[#5A4B45] flex items-center gap-2 mt-0.5">
-                      <span>Color: <strong>{item.selectedColor}</strong></span>
+                    <div className="text-[11px] text-[#6B5B52] flex items-center gap-2 mt-0.5">
+                      <span>Color: <strong className="text-[#2C1A11]">{item.selectedColor}</strong></span>
                       <span>•</span>
-                      <span>Qty: <strong>{item.quantity}</strong></span>
+                      <span>Qty: <strong className="text-[#2C1A11]">{item.quantity}</strong></span>
                     </div>
 
                     {item.embossingText ? (
-                      <div className="mt-1 inline-flex items-center gap-1 text-[10px] text-[#7C582B] bg-[#FAF7F5] px-2 py-0.5 rounded border border-[#C89D66]/30">
-                        <Sparkles className="w-2.5 h-2.5 text-[#C89D66]" />
+                      <div className="mt-1 inline-flex items-center gap-1 text-[10px] text-[#7A3E1D] bg-[#F3ECE5] px-2 py-0.5 rounded border border-[#EADDD3]">
+                        <Sparkles className="w-2.5 h-2.5 text-[#C29B38]" />
                         <span>
-                          Custom Embossing: <strong>{item.embossingText}</strong> ({item.embossingStyle === "gold" ? "Gold Foil" : "Blind Deboss"})
+                          Custom Embossing: <strong className="text-[#2C1A11]">{item.embossingText}</strong> ({item.embossingStyle === "gold" ? "Gold Foil" : "Blind Deboss"})
                         </span>
                       </div>
                     ) : (
-                      <div className="text-[10px] text-[#9C8980]">
+                      <div className="text-[10px] text-[#9A8C84]">
                         Standard (No custom initials)
                       </div>
                     )}
                   </div>
 
                   <div className="text-right shrink-0">
-                    <div className="font-serif font-bold text-sm text-[#1A1412]">
-                      ₹{(item.product.price * item.quantity).toLocaleString("en-IN")}
+                    <div className="font-serif font-bold text-sm text-[#2C1A11]">
+                      ₹{((item.product?.price || 0) * item.quantity).toLocaleString("en-IN")}
                     </div>
                     <div className="text-[10px] text-emerald-700 font-semibold uppercase">
                       Free Shipping
@@ -311,8 +311,8 @@ Please confirm my order and share UPI payment details!`;
 
             {/* Belt Size Selection (if applicable) */}
             {hasBeltItem && (
-              <div className="pt-3 border-t border-[#E4DCD7] bg-[#FAF7F5] -mx-4 -mb-4 p-4 rounded-b-2xl">
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#7A6860] mb-1.5">
+              <div className="pt-3 border-t border-[#EADDD3] bg-white -mx-4 -mb-4 p-4 rounded-b-2xl">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#6B5B52] mb-1.5">
                   Select Belt Waist Size (For Belts &amp; Gift Sets)
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
@@ -323,8 +323,8 @@ Please confirm my order and share UPI payment details!`;
                       onClick={() => setSelectedBeltSize(opt)}
                       className={`px-2 py-1.5 rounded-lg text-[11px] font-semibold transition-all border text-center truncate ${
                         selectedBeltSize === opt
-                          ? "bg-[#1A1412] text-[#C89D66] border-[#1A1412] shadow-micro"
-                          : "bg-white text-[#5A4B45] border-[#E4DCD7] hover:border-[#C89D66]"
+                          ? "bg-[#7A3E1D] text-white border-[#7A3E1D] shadow-micro"
+                          : "bg-[#FBF9F5] text-[#6B5B52] border-[#EADDD3] hover:border-[#7A3E1D]"
                       }`}
                     >
                       {opt}
@@ -336,19 +336,19 @@ Please confirm my order and share UPI payment details!`;
           </div>
 
           {/* Customer Details Form */}
-          <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#E4DCD7] shadow-micro space-y-4">
-            <div className="flex items-center justify-between border-b border-[#E4DCD7] pb-2">
-              <h4 className="font-serif font-bold text-sm text-[#1A1412] flex items-center gap-1.5">
-                <User className="w-4 h-4 text-[#C89D66]" />
+          <div className="bg-[#FBF9F5] rounded-2xl p-4 sm:p-5 border border-[#EADDD3] shadow-warm space-y-4">
+            <div className="flex items-center justify-between border-b border-[#EADDD3] pb-2">
+              <h4 className="font-serif font-bold text-sm text-[#2C1A11] flex items-center gap-1.5">
+                <User className="w-4 h-4 text-[#7A3E1D]" />
                 <span>Customer &amp; Pan-India Dispatch Details</span>
               </h4>
-              <span className="text-[11px] text-[#9C8980]">Direct Courier Delivery</span>
+              <span className="text-[11px] text-[#6B5B52]">Direct Courier Delivery</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               {/* Name */}
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-[#7A6860] mb-1">
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-[#6B5B52] mb-1">
                   Full Name *
                 </label>
                 <input
@@ -356,10 +356,10 @@ Please confirm my order and share UPI payment details!`;
                   placeholder="e.g. Senthil Nathan"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  className={`w-full px-3 py-2 rounded-xl border text-xs bg-[#FAF7F5] focus:outline-none focus:ring-1 ${
+                  className={`w-full px-3 py-2 rounded-xl border text-xs bg-white text-[#2C1A11] focus:outline-none focus:ring-1 ${
                     showErrors && !isNameValid
                       ? "border-rose-400 focus:ring-rose-400"
-                      : "border-[#E4DCD7] focus:border-[#C89D66] focus:ring-[#C89D66]"
+                      : "border-[#EADDD3] focus:border-[#7A3E1D] focus:ring-[#7A3E1D]"
                   }`}
                 />
                 {showErrors && !isNameValid && (
@@ -371,11 +371,11 @@ Please confirm my order and share UPI payment details!`;
 
               {/* Mobile */}
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-[#7A6860] mb-1">
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-[#6B5B52] mb-1">
                   WhatsApp Mobile (+91) *
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-2 text-xs font-semibold text-[#7A6860]">
+                  <span className="absolute left-3 top-2 text-xs font-semibold text-[#6B5B52]">
                     +91
                   </span>
                   <input
@@ -386,10 +386,10 @@ Please confirm my order and share UPI payment details!`;
                     onChange={(e) =>
                       setMobileNumber(e.target.value.replace(/\D/g, ""))
                     }
-                    className={`w-full pl-11 pr-3 py-2 rounded-xl border text-xs bg-[#FAF7F5] focus:outline-none focus:ring-1 font-mono ${
+                    className={`w-full pl-11 pr-3 py-2 rounded-xl border text-xs bg-white text-[#2C1A11] focus:outline-none focus:ring-1 font-mono ${
                       showErrors && !isMobileValid
                         ? "border-rose-400 focus:ring-rose-400"
-                        : "border-[#E4DCD7] focus:border-[#C89D66] focus:ring-[#C89D66]"
+                        : "border-[#EADDD3] focus:border-[#7A3E1D] focus:ring-[#7A3E1D]"
                     }`}
                   />
                 </div>
@@ -402,7 +402,7 @@ Please confirm my order and share UPI payment details!`;
 
               {/* Full Address */}
               <div className="sm:col-span-2">
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-[#7A6860] mb-1">
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-[#6B5B52] mb-1">
                   Full Delivery Address (Flat / House No., Street, Landmark) *
                 </label>
                 <input
@@ -410,10 +410,10 @@ Please confirm my order and share UPI payment details!`;
                   placeholder="e.g. No. 42, Palar Avenue, Near Gandhi Statue"
                   value={addressLine}
                   onChange={(e) => setAddressLine(e.target.value)}
-                  className={`w-full px-3 py-2 rounded-xl border text-xs bg-[#FAF7F5] focus:outline-none focus:ring-1 ${
+                  className={`w-full px-3 py-2 rounded-xl border text-xs bg-white text-[#2C1A11] focus:outline-none focus:ring-1 ${
                     showErrors && !isAddressValid
                       ? "border-rose-400 focus:ring-rose-400"
-                      : "border-[#E4DCD7] focus:border-[#C89D66] focus:ring-[#C89D66]"
+                      : "border-[#EADDD3] focus:border-[#7A3E1D] focus:ring-[#7A3E1D]"
                   }`}
                 />
                 {showErrors && !isAddressValid && (
@@ -425,7 +425,7 @@ Please confirm my order and share UPI payment details!`;
 
               {/* City */}
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-[#7A6860] mb-1">
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-[#6B5B52] mb-1">
                   City / District
                 </label>
                 <input
@@ -433,13 +433,13 @@ Please confirm my order and share UPI payment details!`;
                   placeholder="e.g. Chennai, Bangalore, Ambur"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl border border-[#E4DCD7] text-xs bg-[#FAF7F5] focus:outline-none focus:border-[#C89D66] focus:ring-1 focus:ring-[#C89D66]"
+                  className="w-full px-3 py-2 rounded-xl border border-[#EADDD3] text-xs bg-white text-[#2C1A11] focus:outline-none focus:border-[#7A3E1D] focus:ring-1 focus:ring-[#7A3E1D]"
                 />
               </div>
 
               {/* PIN Code */}
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-[#7A6860] mb-1">
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-[#6B5B52] mb-1">
                   PIN Code (6 Digits) *
                 </label>
                 <input
@@ -448,10 +448,10 @@ Please confirm my order and share UPI payment details!`;
                   placeholder="e.g. 600032"
                   value={pinCode}
                   onChange={(e) => setPinCode(e.target.value.replace(/\D/g, ""))}
-                  className={`w-full px-3 py-2 rounded-xl border text-xs bg-[#FAF7F5] focus:outline-none focus:ring-1 font-mono ${
+                  className={`w-full px-3 py-2 rounded-xl border text-xs bg-white text-[#2C1A11] focus:outline-none focus:ring-1 font-mono ${
                     showErrors && !isPinValid
                       ? "border-rose-400 focus:ring-rose-400"
-                      : "border-[#E4DCD7] focus:border-[#C89D66] focus:ring-[#C89D66]"
+                      : "border-[#EADDD3] focus:border-[#7A3E1D] focus:ring-[#7A3E1D]"
                   }`}
                 />
                 {showErrors && !isPinValid && (
@@ -464,21 +464,21 @@ Please confirm my order and share UPI payment details!`;
           </div>
 
           {/* Live Formatted WhatsApp Message Preview */}
-          <div className="bg-[#1A1412] text-[#FDFBF7] p-4 rounded-2xl border border-[#3D322E] space-y-2">
-            <div className="flex items-center justify-between text-xs text-[#C4B6AF]">
-              <span className="font-semibold text-[#C89D66] flex items-center gap-1.5">
+          <div className="bg-[#F3ECE5] text-[#2C1A11] p-4 rounded-2xl border border-[#EADDD3] space-y-2">
+            <div className="flex items-center justify-between text-xs text-[#6B5B52]">
+              <span className="font-semibold text-[#7A3E1D] flex items-center gap-1.5">
                 <MessageCircle className="w-3.5 h-3.5" />
                 Live Generated WhatsApp Message
               </span>
               <button
                 type="button"
                 onClick={handleCopyClipboard}
-                className="text-[11px] text-[#C4B6AF] hover:text-[#C89D66] flex items-center gap-1 transition-colors"
+                className="text-[11px] text-[#7A3E1D] hover:text-[#633216] flex items-center gap-1 font-semibold transition-colors"
               >
                 {copied ? (
                   <>
-                    <Check className="w-3 h-3 text-emerald-400" />
-                    <span className="text-emerald-400 font-bold">Copied!</span>
+                    <Check className="w-3 h-3 text-emerald-700" />
+                    <span className="text-emerald-700 font-bold">Copied!</span>
                   </>
                 ) : (
                   <>
@@ -489,18 +489,18 @@ Please confirm my order and share UPI payment details!`;
               </button>
             </div>
 
-            <pre className="font-mono text-[11px] text-[#E4DCD7] bg-[#120D0B] p-3 rounded-xl border border-[#2D2421] whitespace-pre-wrap leading-relaxed overflow-x-auto select-all">
+            <pre className="font-mono text-[11px] text-[#2C1A11] bg-white p-3 rounded-xl border border-[#EADDD3] whitespace-pre-wrap leading-relaxed overflow-x-auto select-all">
               {whatsAppMessage}
             </pre>
           </div>
         </div>
 
         {/* Modal Action Footer */}
-        <div className="p-4 sm:p-5 bg-white border-t border-[#E4DCD7] flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+        <div className="p-4 sm:p-5 bg-white border-t border-[#EADDD3] flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
           <div className="text-left w-full sm:w-auto">
-            <div className="text-xs text-[#7A6860]">Total Payable on Confirmation</div>
+            <div className="text-xs text-[#6B5B52]">Total Payable on Confirmation</div>
             <div className="flex items-baseline gap-1.5">
-              <span className="font-serif text-2xl font-bold text-[#1A1412]">
+              <span className="font-serif text-2xl font-bold text-[#2C1A11]">
                 ₹{totalAmount.toLocaleString("en-IN")}
               </span>
               <span className="text-xs text-emerald-700 font-semibold">
@@ -514,17 +514,17 @@ Please confirm my order and share UPI payment details!`;
             <button
               type="button"
               onClick={handleCopyClipboard}
-              className="py-3 px-4 rounded-full border border-[#E4DCD7] bg-[#FAF7F5] hover:bg-[#E4DCD7] text-[#1A1412] text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
+              className="py-3 px-4 rounded-full border border-[#EADDD3] bg-[#FBF9F5] hover:bg-[#F3ECE5] text-[#2C1A11] text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
               title="Copy message to clipboard"
             >
               {copied ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-emerald-600" />
+                  <Check className="w-3.5 h-3.5 text-emerald-700" />
                   <span className="text-emerald-700 font-bold">Copied</span>
                 </>
               ) : (
                 <>
-                  <Copy className="w-3.5 h-3.5 text-[#5A4B45]" />
+                  <Copy className="w-3.5 h-3.5 text-[#6B5B52]" />
                   <span>Copy</span>
                 </>
               )}
@@ -534,9 +534,11 @@ Please confirm my order and share UPI payment details!`;
             <button
               type="button"
               onClick={handleTriggerWhatsApp}
-              className="flex-1 sm:flex-initial py-3.5 px-6 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-subtle hover:shadow-lg active:scale-95 transition-all group"
+              className="flex-1 sm:flex-initial py-3.5 px-6 rounded-full bg-[#7A3E1D] hover:bg-[#633216] text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-warm active:scale-95 transition-all group"
             >
-              <MessageCircle className="w-4 h-4 fill-white shrink-0 group-hover:scale-110 transition-transform" />
+              <span className="w-4 h-4 rounded-full bg-[#25D366] flex items-center justify-center shrink-0">
+                <MessageCircle className="w-2.5 h-2.5 fill-white text-white" />
+              </span>
               <span>Send Order on WhatsApp</span>
               <ExternalLink className="w-3.5 h-3.5 opacity-80" />
             </button>
