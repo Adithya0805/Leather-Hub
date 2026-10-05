@@ -148,8 +148,8 @@ export function CartDrawer() {
                   {/* Thumbnail */}
                   <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-[#FBF9F5] shrink-0 border border-[#EADDD3]">
                     <Image
-                      src={item.product?.imageAngles?.[0] || "/icon.svg"}
-                      alt={item.product?.name || "Ambur Leather"}
+                      src={item.product?.imageAngles?.[0] || "/images/logo.png"}
+                      alt={item.product?.name || "Dino Leathers Item"}
                       fill
                       className="object-cover"
                       sizes="80px"

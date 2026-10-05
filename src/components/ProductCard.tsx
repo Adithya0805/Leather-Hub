@@ -49,6 +49,7 @@ export function ProductCard({ product }: ProductCardProps) {
     <div className="group relative bg-white rounded-2xl border border-[#EADDD3] overflow-hidden shadow-warm hover:shadow-elevated transition-all duration-500 flex flex-col justify-between">
       {/* Touch-Optimized Swipeable Mobile Gallery with Zoom */}
       <MobileGallery
+        productId={product.id}
         images={product.imageAngles}
         productName={product.name}
         tag={product.tag}

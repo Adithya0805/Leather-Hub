@@ -63,7 +63,9 @@ export function LocalBusinessSchema() {
               "@type": "Product",
               "name": product.name,
               "description": product.description,
-              "image": product.imageAngles[0],
+              "image": product.imageAngles[0]?.startsWith("http")
+                ? product.imageAngles[0]
+                : `https://amburleather.in${product.imageAngles[0]}`,
             },
           },
         ],
@@ -82,7 +84,9 @@ export function LocalBusinessSchema() {
         "@id": `https://amburleather.in/#product-${product.id}`,
         "name": product.name,
         "description": product.description,
-        "image": product.imageAngles,
+        "image": product.imageAngles.map((img) =>
+          img.startsWith("http") ? img : `https://amburleather.in${img}`
+        ),
         "sku": product.id,
         "mpn": `DINO-${product.id.toUpperCase()}`,
         "brand": {

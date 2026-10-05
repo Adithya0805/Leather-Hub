@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { MessageCircle, ShoppingBag, Sparkles } from "lucide-react";
+import { MessageCircle, ShoppingBag } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 export function StickyBuyBar() {

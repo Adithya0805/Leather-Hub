@@ -16,6 +16,7 @@ import {
   RotateCw,
 } from "lucide-react";
 import { PRODUCTS } from "@/data/products";
+import { PRODUCT_IMAGE_REGISTRY } from "@/data/product-images";
 import { ProductCard } from "@/components/ProductCard";
 import { EmbossingStudioTeaser } from "@/components/EmbossingStudioTeaser";
 import { AmburStorySection } from "@/components/AmburStorySection";
@@ -132,12 +133,14 @@ export default function Home() {
             <div className="lg:col-span-5 relative">
               <div className="relative mx-auto max-w-md lg:max-w-none">
                 {/* Main Hero Card */}
-                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-2 border-[#EADDD3] shadow-warm bg-white">
+                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-2 border-[#EADDD3] shadow-warm bg-[#FBF9F5]">
                   <Image
-                    src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=1000&q=85"
-                    alt="Handcrafted Ambur Bovine Leather Wallet with Brass Detailing"
+                    src="/images/products/classic-bifold-coin-wallet/classic-bifold-coin-wallet-hero-4x5-960.webp"
+                    alt="Handcrafted Dino Leathers Full-Grain Bovine Wallet with Heirloom Patina Finish"
                     fill
                     priority
+                    placeholder={PRODUCT_IMAGE_REGISTRY["classic-bifold-coin-wallet"]?.[0]?.blurDataUrl ? "blur" : "empty"}
+                    blurDataURL={PRODUCT_IMAGE_REGISTRY["classic-bifold-coin-wallet"]?.[0]?.blurDataUrl}
                     className="object-cover object-center transform hover:scale-105 transition-transform duration-1000"
                     sizes="(max-width: 768px) 100vw, 500px"
                   />

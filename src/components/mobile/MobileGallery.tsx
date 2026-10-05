@@ -1,16 +1,18 @@
 'use client';
 
-import React, { useState, useRef, useEffect, TouchEvent } from "react";
+import React, { useState, useRef, useMemo } from "react";
 import Image from "next/image";
-import { Sparkles, ZoomIn, ZoomOut, Check, Layers, Compass } from "lucide-react";
+import { Sparkles, ZoomIn, ZoomOut } from "lucide-react";
+import { getProductGalleryAssets } from "@/data/product-images";
 
 interface MobileGalleryProps {
-  images: string[];
+  images?: string[];
   productName: string;
   tag?: string;
+  productId?: string;
 }
 
-export function MobileGallery({ images = [], productName, tag }: MobileGalleryProps) {
+export function MobileGallery({ images = [], productName, tag, productId }: MobileGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomCoords, setZoomCoords] = useState({ x: 50, y: 50 });
@@ -18,7 +20,32 @@ export function MobileGallery({ images = [], productName, tag }: MobileGalleryPr
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const angleLabels = ["Front View", "3D Angled", "Interior Pockets", "Macro Grain & Stitch"];
+  // Retrieve curated registry assets if productId provided, strictly ordering macro shots last
+  const displayItems = useMemo(() => {
+    const registryAssets = productId ? getProductGalleryAssets(productId) : [];
+    if (registryAssets.length > 0) {
+      return registryAssets.map((asset) => ({
+        src: asset.squareImages.find((img) => img.width === 960)?.webp || asset.squareImages[0]?.webp,
+        alt: asset.altText,
+        blurDataUrl: asset.blurDataUrl,
+        isMacro: asset.isMacro,
+      }));
+    }
+
+    // Fallback if raw URLs provided: partition macro shots to appear last
+    const regular = images.filter((url) => !url.toLowerCase().includes("macro"));
+    const macro = images.filter((url) => url.toLowerCase().includes("macro"));
+    const sorted = [...regular, ...macro];
+
+    return sorted.map((src, idx) => ({
+      src,
+      alt: `${productName} - Angle ${idx + 1}`,
+      blurDataUrl: undefined,
+      isMacro: idx === sorted.length - 1,
+    }));
+  }, [productId, images, productName]);
+
+  const angleLabels = ["Front View", "3D Perspective", "Craft Detail", "Macro Grain & Stitch"];
 
   const handleScroll = () => {
     if (!containerRef.current) return;
@@ -67,7 +94,7 @@ export function MobileGallery({ images = [], productName, tag }: MobileGalleryPr
 
         <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#F3ECE5]/95 backdrop-blur-md text-[#7A3E1D] text-[10px] font-bold uppercase tracking-wider border border-[#EADDD3] shadow-micro pointer-events-auto">
           <Sparkles className="w-3 h-3 text-[#C29B38]" />
-          <span>Free Name Stamping</span>
+          <span>{tag || "Free Name Stamping"}</span>
         </span>
       </div>
 
@@ -78,7 +105,7 @@ export function MobileGallery({ images = [], productName, tag }: MobileGalleryPr
         className="flex w-full overflow-x-auto snap-x snap-mandatory scrollbar-none touch-momentum gpu-layer"
         style={{ scrollSnapType: "x mandatory" }}
       >
-        {images.map((src, idx) => (
+        {displayItems.map((item, idx) => (
           <div
             key={idx}
             onTouchEnd={handleTouchEnd}
@@ -92,10 +119,12 @@ export function MobileGallery({ images = [], productName, tag }: MobileGalleryPr
             className="w-full shrink-0 snap-center relative aspect-[4/3] sm:aspect-square bg-[#FBF9F5] overflow-hidden cursor-zoom-in"
           >
             <Image
-              src={src || "/icon.svg"}
-              alt={`${productName} - ${angleLabels[idx] || `Angle ${idx + 1}`}`}
+              src={item.src || "/images/logo.png"}
+              alt={item.alt}
               fill
               priority={idx === 0}
+              placeholder={item.blurDataUrl ? "blur" : "empty"}
+              blurDataURL={item.blurDataUrl}
               className={`object-cover object-center transition-transform duration-300 ${
                 isZoomed && activeIndex === idx ? "scale-[2.4]" : "scale-100"
               }`}
@@ -124,12 +153,12 @@ export function MobileGallery({ images = [], productName, tag }: MobileGalleryPr
       <div className="absolute bottom-3 inset-x-3 z-20 flex items-center justify-between pointer-events-none">
         {/* Angle Label Chip */}
         <div className="bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-[#6B5B52] font-medium border border-[#EADDD3] shadow-micro pointer-events-auto">
-          <span className="text-[#7A3E1D] font-bold">{activeIndex + 1}/{images.length}</span>: {angleLabels[activeIndex] || "Gallery View"}
+          <span className="text-[#7A3E1D] font-bold">{activeIndex + 1}/{displayItems.length}</span>: {angleLabels[activeIndex] || (displayItems[activeIndex]?.isMacro ? "Macro Grain & Stitch" : "Gallery View")}
         </div>
 
         {/* Pagination Dots */}
         <div className="flex items-center gap-1.5 bg-white/90 backdrop-blur-md px-2.5 py-1.5 rounded-full pointer-events-auto border border-[#EADDD3] shadow-micro">
-          {images.map((_, i) => (
+          {displayItems.map((_, i) => (
             <button
               key={i}
               type="button"

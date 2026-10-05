@@ -268,8 +268,8 @@ Please confirm my order and share UPI payment details!`;
                 <div key={item.id} className="pt-2 first:pt-0 flex items-center gap-3">
                   <div className="relative w-14 h-14 rounded-lg bg-white border border-[#EADDD3] overflow-hidden shrink-0">
                     <Image
-                      src={item.product?.imageAngles?.[0] || "/icon.svg"}
-                      alt={item.product?.name || "Ambur Leather Goods"}
+                      src={item.product?.imageAngles?.[0] || "/images/logo.png"}
+                      alt={item.product?.name || "Dino Leathers Handcrafted Article"}
                       fill
                       className="object-cover"
                       sizes="56px"

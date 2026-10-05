@@ -21,7 +21,8 @@ export interface Product {
   description: string;
   shortDescription: string;
   features: string[];
-  imageAngles: string[]; // Front, angled, interior, and macro texture
+  imageAngles: string[]; // Front, angled, interior, and macro texture (1:1)
+  cardImage?: string; // Uniform 4:5 aspect ratio
   leatherType: string;
   tanningProcess: string;
   dimensions: string;
@@ -60,15 +61,16 @@ export const PRODUCTS: Product[] = [
       "Reinforced bonded nylon saddle-stitching",
       "Complimentary laser/hot-stamped custom initials embossing",
     ],
+    cardImage: "/images/products/classic-bifold-coin-wallet/classic-bifold-coin-wallet-hero-4x5-960.webp",
     imageAngles: [
-      // Front View
-      "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=900&q=80",
-      // Angled Perspective
-      "https://images.unsplash.com/photo-1554412933-514a83d2f3c8?auto=format&fit=crop&w=900&q=80",
-      // Interior Details
-      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=900&q=80",
-      // Macro Leather Texture
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=900&q=80",
+      // Front View - Color Trio
+      "/images/products/classic-bifold-coin-wallet/classic-bifold-coin-wallet-hero-1x1-960.webp",
+      // Angled Perspective - Ambur Tan Display
+      "/images/products/classic-bifold-coin-wallet/classic-bifold-coin-wallet-tan-display-1x1-960.webp",
+      // Interior Details - Passcase & Card Flap
+      "/images/products/classic-bifold-coin-wallet/classic-bifold-coin-wallet-interior-passcase-1x1-960.webp",
+      // Macro Leather Texture (Always Last)
+      "/images/products/classic-bifold-coin-wallet/classic-bifold-coin-wallet-macro-grain-1x1-960.webp",
     ],
     leatherType: "Full-Grain Bovine Oil Pull-Up Leather",
     tanningProcess: "Semi-Vegetable Tanned in Ambur Tannery Cluster",
@@ -106,15 +108,16 @@ export const PRODUCTS: Product[] = [
       "Ultra-compact featherweight profile (only 28 grams)",
       "Free custom monogram embossing on lower bezel",
     ],
+    cardImage: "/images/products/minimalist-slim-rfid-cardholder/minimalist-slim-rfid-cardholder-hero-4x5-960.webp",
     imageAngles: [
-      // Front View
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=80",
-      // Angled Perspective
-      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=900&q=80",
-      // Cards Loaded View
-      "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=900&q=80",
-      // Macro Leather Texture
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=900&q=80",
+      // Front View - Cardholder Trio
+      "/images/products/minimalist-slim-rfid-cardholder/minimalist-slim-rfid-cardholder-hero-1x1-960.webp",
+      // Angled Perspective - Tan Sleeve
+      "/images/products/minimalist-slim-rfid-cardholder/minimalist-slim-rfid-cardholder-tan-sleeve-1x1-960.webp",
+      // Cards Loaded View - Black Interior Slots
+      "/images/products/minimalist-slim-rfid-cardholder/minimalist-slim-rfid-cardholder-black-interior-1x1-960.webp",
+      // Macro Leather Texture (Always Last)
+      "/images/products/minimalist-slim-rfid-cardholder/minimalist-slim-rfid-cardholder-macro-grain-1x1-960.webp",
     ],
     leatherType: "Crazy Horse Full-Grain Waxed Cowhide",
     tanningProcess: "Heavy Wax Impregnation & Mineral Tanning",
@@ -126,44 +129,50 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "reversible-formal-casual-belt",
-    name: "Reversible Formal / Casual Belt",
+    name: "Executive Automatic Ratchet Leather Belt",
     category: "belts",
     categoryLabel: "Artisan Belts",
-    tag: "Dual-Tone Versatility",
-    price: 999,
-    originalPrice: 1799,
-    discountPercentage: 44,
+    tag: "Micro-Adjust Precision",
+    price: 1199,
+    originalPrice: 1999,
+    discountPercentage: 40,
     rating: 4.9,
-    reviewsCount: 86,
+    reviewsCount: 112,
     colors: [
-      { name: "Black & Tan Reversible", hex: "#1A1412", inStock: true },
-      { name: "Espresso & Cognac Reversible", hex: "#3A2318", inStock: true },
+      { name: "Executive Jet Black", hex: "#111111", inStock: true },
+      { name: "Ambur Cognac Tan", hex: "#7B3F00", inStock: true },
     ],
     description:
-      "One solid strap, two timeless moods. Cut from thick 3.8mm top-tier Ambur bovine leather, this reversible belt seamlessly transitions from boardroom Black to weekend Ambur Tan with an ergonomic twist of its solid brass swivel buckle. Unsplit and unbonded for enduring tensile strength.",
-    shortDescription: "Solid full-grain strap with 360° rotating solid brass buckle.",
+      "Crafted from premium 3.8mm solid full-grain Ambur bovine leather, this executive belt pairs timeless leathercraft with modern ratchet engineering. Featuring an automatic micro-adjustment track with 32 millimeter-precise positions and a brushed stainless steel buckle with quick-release knurled lever, offering a perfect tailored fit with zero holes and zero creasing.",
+    shortDescription: "Solid full-grain strap with 32-position automatic ratchet buckle.",
     features: [
-      "Solid single-ply 3.8mm thick Ambur bovine leather (No cheap cardboard fillers)",
-      "High-tensile 360° rotating precision buckle in antique brushed brass",
-      "One side formal Executive Jet Black; reverse side warm Ambur Tan",
-      "Smooth feather-edged hand-dyed borders",
-      "5 custom oval adjustment holes with reinforced strain relief",
-      "Easily trimmable DIY sizing system for tailored bespoke fit",
-      "Complimentary custom heat-stamped name foil on inner tip",
+      "Solid single-ply 3.8mm thick Ambur bovine leather (Zero bonded cardboard fillers)",
+      "Brushed stainless alloy automatic buckle with geometric signature emblem",
+      "Hidden 32-step micro-adjustment track with 1/4\" precision fitting (No ugly holes)",
+      "Instant quick-release ergonomic side lever for effortless adjustment",
+      "Perimeter saddle-stitching with feather-beveled hand-burnished edges",
+      "Trimmable DIY sizing system to customize fit perfectly from 28\" to 46\" waist",
+      "Includes luxury keepsake walnut presentation gift box & guarantee certificate",
+      "Complimentary custom hot-stamped monogram on inner strap tip",
     ],
+    cardImage: "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-hero-4x5-960.webp",
     imageAngles: [
-      // Front Buckle View
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=80",
-      // Coiled Perspective
-      "https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=900&q=80",
-      // Hardware Macro
-      "https://images.unsplash.com/photo-1585859707440-f6ac7900b396?auto=format&fit=crop&w=900&q=80",
-      // Leather Grain & Edges
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=900&q=80",
+      // 1. Hero Coiled on Travertine - Executive Jet Black
+      "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-hero-1x1-960.webp",
+      // 2. Color Variation - Rich Ambur Cognac Tan
+      "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-angle-lifestyle-1x1-960.webp",
+      // 3. Hidden Ratchet Track & Quick-Release Mechanism
+      "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-hardware-mechanism-1x1-960.webp",
+      // 4. Handcrafted Keepsake Gift Box Presentation
+      "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-giftbox-display-1x1-960.webp",
+      // 5. Editorial On-Model / Worn Formal Suit Styling
+      "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-worn-lifestyle-1x1-960.webp",
+      // 6. Macro Grain & Brushed Buckle Texture (Always Last)
+      "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-macro-grain-1x1-960.webp",
     ],
     leatherType: "Solid 3.8mm Full-Grain Ambur Bovine Strap",
     tanningProcess: "Drum-Dyed Chrome-Veg Retanned",
-    dimensions: "Width: 35mm | Fits waist sizes 30\" to 44\"",
+    dimensions: "Width: 35mm | Fits waist sizes 28\" to 46\"",
     warranty: "7-Year Anti-Cracking & Buckle Guarantee",
     embossingAvailable: true,
     provenance: "Ambur, Tamil Nadu • Factory Direct",
@@ -195,15 +204,16 @@ export const PRODUCTS: Product[] = [
       "Factory-direct pricing offering over 55% savings versus retail luxury boutiques",
       "Tamper-proof transit packaging with wax-sealed ribbon ready for direct gifting",
     ],
+    cardImage: "/images/products/ambur-heritage-2in1-gift-box/ambur-heritage-2in1-gift-box-hero-4x5-960.webp",
     imageAngles: [
       // Gift Box Open View
-      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=80",
-      // Set Display
-      "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=900&q=80",
-      // Belt Detail
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=80",
-      // Packaging Detail
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=900&q=80",
+      "/images/products/ambur-heritage-2in1-gift-box/ambur-heritage-2in1-gift-box-hero-1x1-960.webp",
+      // Set Display - Tan Keepsake Unboxing
+      "/images/products/ambur-heritage-2in1-gift-box/ambur-heritage-2in1-gift-box-unboxing-tan-1x1-960.webp",
+      // Packaging Detail - Black Presentation
+      "/images/products/ambur-heritage-2in1-gift-box/ambur-heritage-2in1-gift-box-unboxing-black-1x1-960.webp",
+      // Macro Box Construction & Leather Corner (Always Last)
+      "/images/products/ambur-heritage-2in1-gift-box/ambur-heritage-2in1-gift-box-macro-packaging-1x1-960.webp",
     ],
     leatherType: "100% Genuine Ambur Full-Grain Bovine Leather",
     tanningProcess: "Signature Palar-Basin Artisan Tanning",
