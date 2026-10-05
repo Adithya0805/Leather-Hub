@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
-import { Home, Wallet, ShieldCheck, Gift, ShoppingBag } from "lucide-react";
+import { Home, Wallet, ShieldCheck, ShoppingBag } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 export function BottomNav() {
@@ -13,11 +13,8 @@ export function BottomNav() {
       const scrollPos = window.scrollY + 200;
       const walletsEl = document.getElementById("wallets");
       const beltsEl = document.getElementById("belts");
-      const giftsEl = document.getElementById("gift-sets");
 
-      if (giftsEl && scrollPos >= giftsEl.offsetTop) {
-        setActiveTab("gifts");
-      } else if (beltsEl && scrollPos >= beltsEl.offsetTop) {
+      if (beltsEl && scrollPos >= beltsEl.offsetTop) {
         setActiveTab("belts");
       } else if (walletsEl && scrollPos >= walletsEl.offsetTop) {
         setActiveTab("wallets");
@@ -42,7 +39,7 @@ export function BottomNav() {
     }
     const el = document.getElementById(id);
     if (el) {
-      const offset = 80;
+      const offset = 70;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = el.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -74,18 +71,12 @@ export function BottomNav() {
       icon: ShieldCheck,
       action: () => scrollToSection("belts", "belts"),
     },
-    {
-      id: "gifts",
-      label: "Gift Sets",
-      icon: Gift,
-      action: () => scrollToSection("gift-sets", "gifts"),
-    },
   ];
 
   return (
     <nav
       aria-label="Mobile Bottom Navigation"
-      className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white/90 backdrop-blur-md border-t border-[#EADDD3] pb-safe gpu-layer transition-transform duration-300 shadow-warm"
+      className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#EADDD3] pb-safe gpu-layer transition-transform duration-300 shadow-warm"
     >
       <div className="flex items-center justify-around px-2 py-1 max-w-md mx-auto">
         {navItems.map((item) => {
@@ -130,7 +121,7 @@ export function BottomNav() {
           <div className="relative">
             <ShoppingBag className="w-5 h-5 stroke-[1.8]" />
             {totalCount > 0 && (
-              <span className="absolute -top-1.5 -right-2 min-w-[17px] h-[17px] px-1 rounded-full bg-[#7A3E1D] text-white text-[10px] font-extrabold flex items-center justify-center shadow-micro animate-pulse">
+              <span className="absolute -top-1.5 -right-2 min-w-[17px] h-[17px] px-1 rounded-full bg-[#7A3E1D] text-white text-[10px] font-extrabold flex items-center justify-center shadow-micro">
                 {totalCount}
               </span>
             )}

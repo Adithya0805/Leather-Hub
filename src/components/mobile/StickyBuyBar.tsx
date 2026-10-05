@@ -91,7 +91,7 @@ export function StickyBuyBar() {
         >
           <div className="relative w-11 h-11 rounded-lg bg-[#FBF9F5] border border-[#EADDD3] overflow-hidden shrink-0">
             <Image
-              src={activeItem.product.imageAngles?.[0] || "/images/logo.png"}
+              src={activeItem.product.images?.[0] || activeItem.product.cardImage || "/images/logo.png"}
               alt={activeItem.product.name}
               fill
               className="object-cover"

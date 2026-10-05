@@ -2,17 +2,16 @@
 
 import React, { useState } from "react";
 import {
-  Star,
   Sparkles,
   ShoppingBag,
   Check,
-  ShieldCheck,
   MessageCircle,
 } from "lucide-react";
 import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { MobileGallery } from "@/components/mobile/MobileGallery";
 import { EmbossingBottomSheet } from "@/components/mobile/EmbossingBottomSheet";
+import { LeatherGrainPlaceholder } from "@/components/LeatherGrainPlaceholder";
 
 interface ProductCardProps {
   product: Product;
@@ -45,29 +44,44 @@ export function ProductCard({ product }: ProductCardProps) {
     });
   };
 
+  const hasImages = product.images && product.images.length > 0 && !product.isPlaceholderImage;
+
   return (
-    <div className="group relative bg-white rounded-2xl border border-[#EADDD3] overflow-hidden shadow-warm hover:shadow-elevated transition-all duration-500 flex flex-col justify-between">
-      {/* Touch-Optimized Swipeable Mobile Gallery with Zoom */}
-      <MobileGallery
-        productId={product.id}
-        images={product.imageAngles}
-        productName={product.name}
-        tag={product.tag}
-      />
+    <div className="group relative bg-white rounded-2xl border border-[#EADDD3] overflow-hidden shadow-warm hover:shadow-elevated transition-all duration-300 flex flex-col justify-between w-full">
+      {/* Product Visual Area */}
+      {hasImages ? (
+        <MobileGallery
+          productId={product.id}
+          images={product.images}
+          productName={product.name}
+          tag={product.tag}
+        />
+      ) : (
+        <div className="relative">
+          {product.tag && (
+            <div className="absolute top-3 left-3 z-10">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#14100D]/80 text-[#EFE6D8] backdrop-blur-sm text-[10px] font-bold uppercase tracking-wider border border-[#8A6A2F]/40 shadow-sm">
+                <Sparkles className="w-3 h-3 text-[#C29B38]" />
+                {product.tag}
+              </span>
+            </div>
+          )}
+          <LeatherGrainPlaceholder
+            title={product.name}
+            subtitle="Genuine Full-Grain Ambur Bovine"
+            aspectRatio="4:5"
+          />
+        </div>
+      )}
 
       {/* Content Body */}
-      <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-4">
         <div>
-          {/* Category & Rating */}
-          <div className="flex items-center justify-between text-xs text-[#6B5B52] mb-1.5">
-            <span className="uppercase tracking-wider font-bold text-[10px] text-[#7A3E1D]">
+          {/* Category Tag */}
+          <div className="text-xs text-[#6B5B52] mb-1.5">
+            <span className="uppercase tracking-widest font-bold text-[10px] text-[#7A3E1D]">
               {product.categoryLabel}
             </span>
-            <div className="flex items-center gap-1 text-[11px] font-semibold text-[#2C1A11]">
-              <Star className="w-3.5 h-3.5 fill-[#C29B38] text-[#C29B38]" />
-              <span>{product.rating}</span>
-              <span className="text-[#9A8C84]">({product.reviewsCount})</span>
-            </div>
           </div>
 
           {/* Product Title */}
@@ -75,97 +89,98 @@ export function ProductCard({ product }: ProductCardProps) {
             {product.name}
           </h3>
 
-          <p className="text-xs text-[#6B5B52] mt-1.5 line-clamp-2 leading-relaxed">
+          <p className="text-xs text-[#6B5B52] mt-2 line-clamp-2 leading-relaxed">
             {product.shortDescription}
           </p>
         </div>
 
-        {/* Color Swatches */}
-        <div className="pt-2 border-t border-[#EADDD3] flex items-center justify-between text-xs">
-          <div className="flex items-center gap-1.5">
-            <span className="text-[11px] text-[#6B5B52]">Color:</span>
-            <span className="text-[11px] font-semibold text-[#2C1A11]">
-              {selectedColor}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            {product.colors.map((color) => (
-              <button
-                key={color.name}
-                type="button"
-                onClick={() => setSelectedColor(color.name)}
-                title={color.name}
-                className={`min-w-[28px] min-h-[28px] rounded-full border-2 transition-all active:scale-90 ${
-                  selectedColor === color.name
-                    ? "border-[#7A3E1D] scale-110 shadow-sm"
-                    : "border-transparent opacity-80 hover:opacity-100"
-                }`}
-                style={{ backgroundColor: color.hex }}
-                aria-label={`Select color ${color.name}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom Sheet Personalization Trigger */}
-        <div className="bg-[#F3ECE5] rounded-xl p-3 border border-[#EADDD3] flex items-center justify-between text-xs">
-          <div className="flex items-center gap-2 text-[#7A3E1D] min-w-0">
-            <Sparkles className="w-4 h-4 text-[#C29B38] shrink-0" />
-            <span className="text-[11px] truncate font-medium">
-              {embossingText ? (
-                <span>
-                  Initials: <strong className="text-[#2C1A11]">{embossingText}</strong> ({embossingStyle === "gold" ? "Gold Foil" : "Blind Deboss"})
-                </span>
-              ) : (
-                <span>Free Name Embossing (₹0)</span>
-              )}
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={() => setEmbossingSheetOpen(true)}
-            className="min-h-[36px] px-2.5 rounded-lg text-[11px] font-bold uppercase tracking-wider text-[#7A3E1D] hover:text-[#633216] shrink-0 active:scale-95 transition-all"
-          >
-            {embossingText ? "Edit" : "+ Add Name"}
-          </button>
-        </div>
-
-        {/* Price & Add to Cart Action */}
-        <div className="pt-3 border-t border-[#EADDD3] flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5">
-          <div>
-            <div className="flex items-baseline gap-2">
-              <span className="font-serif text-2xl font-bold text-[#2C1A11]">
-                ₹{product.price.toLocaleString("en-IN")}
+        {/* Color Selection & Monogram Tag */}
+        <div className="space-y-3 pt-3 border-t border-[#EADDD3]">
+          <div className="flex items-center justify-between text-xs gap-2">
+            <div className="flex items-center gap-1.5 truncate">
+              <span className="text-[11px] text-[#6B5B52]">Color:</span>
+              <span className="text-[11px] font-semibold text-[#2C1A11] truncate">
+                {selectedColor}
               </span>
-              {product.originalPrice && (
-                <span className="text-xs text-[#9A8C84] line-through font-normal">
-                  ₹{product.originalPrice.toLocaleString("en-IN")}
-                </span>
-              )}
             </div>
-            <span className="text-[10px] text-[#6B5B52] uppercase tracking-wider block">
-              Factory Direct • Ambur
+
+            <div className="flex items-center gap-1.5 shrink-0">
+              {product.colors.map((color) => (
+                <button
+                  key={color.name}
+                  type="button"
+                  onClick={() => setSelectedColor(color.name)}
+                  title={color.name}
+                  aria-label={`Select color ${color.name}`}
+                  className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 transition-all active:scale-90 ${
+                    selectedColor === color.name
+                      ? "border-[#7A3E1D] scale-110 shadow-sm"
+                      : "border-transparent opacity-80 hover:opacity-100"
+                  }`}
+                  style={{ backgroundColor: color.hex }}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Monogram Foil Studio Trigger */}
+          {product.embossingAvailable && (
+            <div className="flex items-center justify-between bg-[#F8F5F1] p-2 sm:p-2.5 rounded-xl border border-[#EADDD3] text-xs">
+              <div className="flex items-center gap-1.5 truncate">
+                <Sparkles className="w-3.5 h-3.5 text-[#C29B38] shrink-0" />
+                <span className="text-[11px] text-[#6B5B52] truncate">
+                  {embossingText ? (
+                    <span>
+                      Monogram:{" "}
+                      <strong className="text-[#7A3E1D] tracking-widest font-mono">
+                        {embossingText}
+                      </strong>
+                    </span>
+                  ) : (
+                    "Complimentary Monogram"
+                  )}
+                </span>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setEmbossingSheetOpen(true)}
+                className="shrink-0 text-[11px] font-bold text-[#7A3E1D] hover:underline px-1 py-0.5"
+              >
+                {embossingText ? "Edit" : "+ Add"}
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Price & Action Area - Mobile-Optimized for 360px+ Screens */}
+        <div className="pt-3 border-t border-[#EADDD3] flex flex-col gap-2.5">
+          <div className="flex items-baseline justify-between">
+            <span className="font-serif text-2xl font-bold text-[#2C1A11]">
+              ₹{product.price.toLocaleString("en-IN")}
+            </span>
+            <span className="text-[10px] text-[#6B5B52] uppercase tracking-wider">
+              Ambur Workshop Direct
             </span>
           </div>
 
-          <div className="flex items-center gap-1.5 shrink-0">
+          <div className="grid grid-cols-[auto_1fr] gap-2 items-center w-full">
             {/* Direct WhatsApp Order Button */}
             <button
               type="button"
               onClick={handleDirectWhatsAppOrder}
-              className="min-w-[48px] min-h-[48px] rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center transition-all shadow-micro active:scale-90"
-              title="Order directly on WhatsApp"
+              className="min-w-[48px] h-12 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center transition-all shadow-micro active:scale-95 px-3.5"
+              title="Order on WhatsApp"
               aria-label="Order directly on WhatsApp"
             >
               <MessageCircle className="w-5 h-5 fill-white" />
             </button>
 
-            {/* Add to Bag Button */}
+            {/* Add to Bag Button - Sized for 360px without clipping */}
             <button
               type="button"
               onClick={handleAddToCart}
-              className={`min-h-[48px] inline-flex items-center justify-center gap-1.5 px-4 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-warm active:scale-95 ${
+              className={`h-12 w-full inline-flex items-center justify-center gap-2 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-warm active:scale-95 ${
                 added
                   ? "bg-emerald-700 text-white"
                   : "bg-[#7A3E1D] text-white hover:bg-[#633216]"
@@ -173,12 +188,12 @@ export function ProductCard({ product }: ProductCardProps) {
             >
               {added ? (
                 <>
-                  <Check className="w-4 h-4" />
+                  <Check className="w-4 h-4 shrink-0" />
                   <span>Added</span>
                 </>
               ) : (
                 <>
-                  <ShoppingBag className="w-4 h-4" />
+                  <ShoppingBag className="w-4 h-4 shrink-0" />
                   <span>Add to Bag</span>
                 </>
               )}

@@ -51,7 +51,7 @@ export function EmbossingStudioTeaser() {
             </h2>
 
             <p className="text-sm sm:text-base text-[#6B5B52] leading-relaxed">
-              Every wallet, belt, and gift box leaves our Ambur workshop bearing
+              Every wallet and belt leaves our Ambur workshop bearing
               the indelible mark of its owner. We never charge for personalization.
               Type your initials or family moniker below to preview live.
             </p>
@@ -103,7 +103,7 @@ export function EmbossingStudioTeaser() {
                 <label className="block text-xs uppercase tracking-wider text-[#6B5B52] font-semibold mb-2">
                   Choose Article for Embossing
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <div className="grid grid-cols-2 gap-2">
                   {PRODUCTS.map((prod) => (
                     <button
                       key={prod.id}
@@ -186,7 +186,7 @@ export function EmbossingStudioTeaser() {
                 </div>
               </div>
 
-              {/* Bottom Guarantee */}
+              {/* Selected Product Details */}
               <div className="pt-4 border-t border-[#EADDD3]/30 flex items-center justify-between text-[11px] text-[#F3DFAC]/90">
                 <span>Selected: {selectedProduct.name}</span>
                 <span className="text-[#F3DFAC] font-bold">₹{selectedProduct.price}</span>

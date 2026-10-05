@@ -130,7 +130,7 @@ export function CartDrawer() {
                   Your bag is empty
                 </h3>
                 <p className="text-xs text-[#6B5B52] max-w-xs mb-6">
-                  Handcrafted bovine leather wallets, belts, and gift sets await your touch.
+                  Handcrafted bovine leather wallets and belts await your touch.
                 </p>
                 <button
                   onClick={closeCart}
@@ -148,7 +148,7 @@ export function CartDrawer() {
                   {/* Thumbnail */}
                   <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-[#FBF9F5] shrink-0 border border-[#EADDD3]">
                     <Image
-                      src={item.product?.imageAngles?.[0] || "/images/logo.png"}
+                      src={item.product?.images?.[0] || item.product?.cardImage || "/images/logo.png"}
                       alt={item.product?.name || "Dino Leathers Item"}
                       fill
                       className="object-cover"
@@ -212,11 +212,6 @@ export function CartDrawer() {
                         <span className="font-bold text-sm text-[#2C1A11]">
                           ₹{(item.product.price * item.quantity).toLocaleString("en-IN")}
                         </span>
-                        {item.product.originalPrice && (
-                          <span className="ml-1 text-[11px] text-[#9A8C84] line-through">
-                            ₹{(item.product.originalPrice * item.quantity).toLocaleString("en-IN")}
-                          </span>
-                        )}
                       </div>
                     </div>
                   </div>

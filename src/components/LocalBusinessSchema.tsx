@@ -12,7 +12,7 @@ export function LocalBusinessSchema() {
     "logo": "https://dinoleathers.in/images/logo.png",
     "image": "https://dinoleathers.in/images/logo.png",
     "description":
-      "Artisanal full-grain leather wallets and belts handcrafted in Ambur, Tamil Nadu. Factory-direct pricing with complimentary custom initial embossing.",
+      "Artisanal full-grain leather wallets and belts handcrafted in Ambur, Tamil Nadu. Direct workshop pricing with complimentary custom initial embossing.",
     "telephone": "+91-94432-63580",
     "email": "craft@dinoleathers.in",
     "priceRange": "₹₹",
@@ -35,136 +35,71 @@ export function LocalBusinessSchema() {
       "@type": "Country",
       "name": "India",
     },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ],
-        "opens": "09:00",
-        "closes": "20:00",
-      },
-    ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Dino Leathers Genuine Leather Products",
-      "itemListElement": PRODUCTS.map((product) => ({
-        "@type": "OfferCatalog",
-        "name": product.name,
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Product",
-              "name": product.name,
-              "description": product.description,
-              "image": product.imageAngles[0]?.startsWith("http")
-                ? product.imageAngles[0]
-                : `https://amburleather.in${product.imageAngles[0]}`,
+      "name": "Dino Leathers Handcrafted Products",
+      "itemListElement": PRODUCTS.map((product) => {
+        const primaryImg = product.images?.[0] || product.cardImage || "/images/logo.png";
+        const fullImg = primaryImg.startsWith("http") ? primaryImg : `https://dinoleathers.in${primaryImg}`;
+        return {
+          "@type": "OfferCatalog",
+          "name": product.name,
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": product.name,
+                "description": product.description,
+                "image": fullImg,
+              },
             },
-          },
-        ],
-      })),
+          ],
+        };
+      }),
     },
   };
 
   const productSchemas = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "itemListElement": PRODUCTS.map((product, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "item": {
-        "@type": "Product",
-        "@id": `https://amburleather.in/#product-${product.id}`,
-        "name": product.name,
-        "description": product.description,
-        "image": product.imageAngles.map((img) =>
-          img.startsWith("http") ? img : `https://amburleather.in${img}`
-        ),
-        "sku": product.id,
-        "mpn": `DINO-${product.id.toUpperCase()}`,
-        "brand": {
-          "@type": "Brand",
-          "name": "Dino Leathers",
-        },
-        "manufacturer": {
-          "@type": "Organization",
-          "name": "Dino Leathers",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Ambur",
-            "addressRegion": "Tamil Nadu",
-            "addressCountry": "IN",
+    "itemListElement": PRODUCTS.map((product, index) => {
+      const images = (product.images.length > 0 ? product.images : [product.cardImage || "/images/logo.png"]).map(
+        (img) => (img.startsWith("http") ? img : `https://dinoleathers.in${img}`)
+      );
+      return {
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "Product",
+          "@id": `https://dinoleathers.in/#product-${product.id}`,
+          "name": product.name,
+          "description": product.description,
+          "image": images,
+          "sku": product.id,
+          "mpn": `DINO-${product.id.toUpperCase()}`,
+          "brand": {
+            "@type": "Brand",
+            "name": "Dino Leathers",
           },
-        },
-        "material": product.leatherType,
-        "countryOfOrigin": {
-          "@type": "Country",
-          "name": "India",
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": product.price,
-          "priceCurrency": "INR",
-          "priceValidUntil": "2027-12-31",
-          "availability": "https://schema.org/InStock",
-          "itemCondition": "https://schema.org/NewCondition",
-          "url": `https://amburleather.in/#${product.category}`,
-          "seller": {
-            "@type": "Organization",
-            "name": "Ambur Leather Works",
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "IN",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 15,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn",
-          },
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "0",
-              "currency": "INR",
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "IN",
-            },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 1,
-                "unitCode": "DAY",
-              },
-              "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 2,
-                "maxValue": 4,
-                "unitCode": "DAY",
-              },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://dinoleathers.in/#collection",
+            "priceCurrency": "INR",
+            "price": product.price.toString(),
+            "priceValidUntil": "2027-12-31",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": product.inStock
+              ? "https://schema.org/InStock"
+              : "https://schema.org/OutOfStock",
+            "seller": {
+              "@type": "Organization",
+              "name": "Dino Leathers",
             },
           },
         },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": product.rating.toString(),
-          "reviewCount": product.reviewsCount.toString(),
-          "bestRating": "5",
-          "worstRating": "1",
-        },
-      },
-    })),
+      };
+    }),
   };
 
   return (

@@ -37,7 +37,6 @@ export const metadata: Metadata = {
     "genuine leather wallet India",
     "full grain leather belt India",
     "personalized custom leather embossing",
-    "2-in-1 executive leather gift set",
     "Ambur factory direct leather",
     "oil pull up wallet",
   ],

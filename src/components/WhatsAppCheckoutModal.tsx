@@ -88,11 +88,10 @@ export function WhatsAppCheckoutModal() {
     ? checkoutDirectItem.quantity
     : getTotalCount();
 
-  // Check if any product is a belt or includes a belt (gift set)
+  // Check if any product is a belt
   const hasBeltItem = activeItems.some(
     (item) =>
-      item.product.category === "belts" ||
-      item.product.category === "gift-sets" ||
+      item.product.category === "belt" ||
       item.product.name.toLowerCase().includes("belt")
   );
 
@@ -268,7 +267,7 @@ Please confirm my order and share UPI payment details!`;
                 <div key={item.id} className="pt-2 first:pt-0 flex items-center gap-3">
                   <div className="relative w-14 h-14 rounded-lg bg-white border border-[#EADDD3] overflow-hidden shrink-0">
                     <Image
-                      src={item.product?.imageAngles?.[0] || "/images/logo.png"}
+                      src={item.product?.images?.[0] || item.product?.cardImage || "/images/logo.png"}
                       alt={item.product?.name || "Dino Leathers Handcrafted Article"}
                       fill
                       className="object-cover"
@@ -316,7 +315,7 @@ Please confirm my order and share UPI payment details!`;
             {hasBeltItem && (
               <div className="pt-3 border-t border-[#EADDD3] bg-white -mx-4 -mb-4 p-4 rounded-b-2xl">
                 <label className="block text-xs font-bold uppercase tracking-wider text-[#6B5B52] mb-1.5">
-                  Select Belt Waist Size (For Belts &amp; Gift Sets)
+                  Select Belt Waist Size (For Belts)
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
                   {beltSizeOptions.map((opt) => (

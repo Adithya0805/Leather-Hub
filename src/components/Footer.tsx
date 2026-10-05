@@ -54,7 +54,7 @@ export function Footer() {
           {/* Quick Collection Links */}
           <div>
             <h4 className="font-serif text-base font-bold text-[#2C1A11] mb-4">
-              Curated Offerings
+              Curated Collections
             </h4>
             <ul className="space-y-2.5 text-xs text-[#6B5B52]">
               <li>
@@ -63,18 +63,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#cardholders" className="hover:text-[#7A3E1D] transition-colors">
-                  Slim RFID Cardholders
-                </Link>
-              </li>
-              <li>
                 <Link href="#belts" className="hover:text-[#7A3E1D] transition-colors">
-                  Reversible Solid Brass Belts
-                </Link>
-              </li>
-              <li>
-                <Link href="#gift-sets" className="hover:text-[#7A3E1D] transition-colors">
-                  2-in-1 Executive Gift Sets
+                  Executive Ratchet Belts
                 </Link>
               </li>
               <li>
@@ -85,23 +75,23 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Provenance & Guarantees */}
+          {/* Provenance & Craft */}
           <div>
             <h4 className="font-serif text-base font-bold text-[#2C1A11] mb-4">
-              Ambur Assurance
+              Ambur Craftsmanship
             </h4>
             <ul className="space-y-2.5 text-xs text-[#6B5B52]">
               <li className="flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
-                <span>100% Ambur Bovine Hides</span>
+                <span>100% Ambur Bovine Leather</span>
               </li>
               <li className="flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
-                <span>5-Year Patina Warranty</span>
+                <span>Zero Cardboard Fillers</span>
               </li>
               <li className="flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
-                <span>Zero-Risk Factory Pricing</span>
+                <span>Workshop Direct Pricing</span>
               </li>
               <li className="flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
@@ -110,13 +100,13 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter / Direct Factory Dispatch */}
+          {/* Direct Factory Updates */}
           <div>
             <h4 className="font-serif text-base font-bold text-[#2C1A11] mb-4">
-              Direct Factory Updates
+              Direct Workshop Updates
             </h4>
             <p className="text-xs text-[#6B5B52] mb-3 leading-relaxed">
-              Receive notifications for fresh small-batch hides, rare Crazy Horse finishes, and festive gift boxes.
+              Receive notifications for new leather finishes, tannery updates, and workshop announcements.
             </p>
             <div className="flex flex-col gap-2">
               <input

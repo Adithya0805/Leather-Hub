@@ -3,7 +3,30 @@
 import React from "react";
 import Image from "next/image";
 import { Check, ShieldCheck, Award, MapPin, Feather } from "lucide-react";
-import { BRAND_STORY } from "@/data/products";
+
+interface StoryPillar {
+  title: string;
+  desc: string;
+}
+
+const AMBUR_PILLARS: StoryPillar[] = [
+  {
+    title: "Tannery Heritage",
+    desc: "Ambur along the Palar river basin has anchored South Indian leather tanning and craftsmanship for over a century.",
+  },
+  {
+    title: "100% Genuine Bovine Hide",
+    desc: "We exclusively utilize genuine full-grain bovine leather that develops an organic patina rather than bonded or PU substitutes.",
+  },
+  {
+    title: "Direct Workshop Value",
+    desc: "Shipped straight from the workshop floor in Ambur directly to your hands with transparent, honest pricing.",
+  },
+  {
+    title: "Complimentary Monogramming",
+    desc: "Individual brass typeface heated and hand-pressed for personalized initials on every order.",
+  },
+];
 
 export function AmburStorySection() {
   return (
@@ -21,13 +44,13 @@ export function AmburStorySection() {
           </h2>
 
           <p className="text-sm sm:text-base text-[#6B5B52] leading-relaxed">
-            Nestled in the historic hills of Northern Tamil Nadu, Ambur has been the heartbeat of global master tanneries for generations, supplying premier fashion houses across Europe. We bring that export pedigree directly to your pocket.
+            Nestled in Northern Tamil Nadu along the Palar River, Ambur has been the heartbeat of South Indian leather tanning for generations. We bring that export-grade craftsmanship directly to your hands.
           </p>
         </div>
 
         {/* 4 Brand Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {BRAND_STORY.highlights.map((pillar, idx) => (
+          {AMBUR_PILLARS.map((pillar: StoryPillar, idx: number) => (
             <div
               key={idx}
               className="bg-white p-7 rounded-2xl border border-[#EADDD3] shadow-warm hover:border-[#7A3E1D] transition-all group"
@@ -69,8 +92,8 @@ export function AmburStorySection() {
                     <Check className="w-3.5 h-3.5" />
                   </div>
                   <div>
-                    <strong className="block text-[#2C1A11]">5-Year Patina Guarantee</strong>
-                    <span className="text-[#6B5B52]">If the leather cracks or splits, we replace it free.</span>
+                    <strong className="block text-[#2C1A11]">Full-Grain Integrity</strong>
+                    <span className="text-[#6B5B52]">Single-ply solid bovine leather that will not crack or peel.</span>
                   </div>
                 </div>
 
@@ -80,7 +103,7 @@ export function AmburStorySection() {
                   </div>
                   <div>
                     <strong className="block text-[#2C1A11]">Direct Dispatch From Pin 635802</strong>
-                    <span className="text-[#6B5B52]">Zero warehousing delays; freshly handcrafted batches.</span>
+                    <span className="text-[#6B5B52]">Direct from Ambur workshops to your doorstep.</span>
                   </div>
                 </div>
               </div>

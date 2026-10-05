@@ -1,277 +1,150 @@
-export type ProductCategory = "wallets" | "cardholders" | "belts" | "gift-sets";
+// ==============================================================================
+// DINO LEATHERS — PRODUCT DATA & TYPES
+// Master Catalog: WALLETS and BELTS only.
+// Zero fake reviews, zero fake ratings, zero fake MRP markups.
+// ==============================================================================
 
-export interface ProductColor {
+export type ProductCategory = "wallet" | "belt";
+
+export interface ProductVariant {
   name: string;
   hex: string;
   inStock: boolean;
 }
 
+export interface ProductSpecs {
+  leatherType: string;
+  tanningProcess: string;
+  dimensions: string;
+  hardware?: string;
+  stitching?: string;
+  lining?: string;
+  origin: string;
+}
+
 export interface Product {
   id: string;
+  slug: string;
   name: string;
   category: ProductCategory;
   categoryLabel: string;
   tag?: string;
-  price: number;
-  originalPrice: number;
-  discountPercentage: number;
-  rating: number;
-  reviewsCount: number;
-  colors: ProductColor[];
+  price: number; // Honest single price in INR
+  stock: number;
+  colors: ProductVariant[];
+  images: string[];
+  cardImage?: string;
   description: string;
   shortDescription: string;
   features: string[];
-  imageAngles: string[]; // Front, angled, interior, and macro texture (1:1)
-  cardImage?: string; // Uniform 4:5 aspect ratio
-  leatherType: string;
-  tanningProcess: string;
-  dimensions: string;
-  warranty: string;
+  specs: ProductSpecs;
   embossingAvailable: boolean;
-  provenance: string;
   inStock: boolean;
+  isPlaceholderImage?: boolean;
 }
 
 export const PRODUCTS: Product[] = [
+  // ----------------------------------------------------------------------------
+  // 1. CLASSIC BI-FOLD COIN WALLET (Category: wallet)
+  // ----------------------------------------------------------------------------
   {
     id: "classic-bifold-coin-wallet",
+    slug: "classic-bifold-coin-wallet",
     name: "Classic Bi-Fold Coin Wallet",
-    category: "wallets",
-    categoryLabel: "Full-Grain Wallets",
-    tag: "Ambur Bestseller",
+    category: "wallet",
+    categoryLabel: "Wallets",
+    tag: "Artisan Bestseller",
     price: 899,
-    originalPrice: 1499,
-    discountPercentage: 40,
-    rating: 4.9,
-    reviewsCount: 128,
+    stock: 45,
     colors: [
       { name: "Ambur Tan", hex: "#C89D66", inStock: true },
       { name: "Espresso Black", hex: "#1A1412", inStock: true },
       { name: "Vintage Cognac", hex: "#8B4513", inStock: true },
     ],
+    // Clean neutral placeholder until non-branded studio photoshoot arrives
+    images: [],
+    isPlaceholderImage: true,
     description:
-      "Handcrafted by veteran artisans in Ambur, this signature bi-fold is forged from oil pull-up full-grain bovine leather. Engineered with an expandable gusset coin pocket, dual currency partitions, and 6 quick-draw card slots, it develops a deep, rich marble patina that uniquely mirrors your daily journey.",
-    shortDescription: "Oil pull-up full-grain Ambur leather with coin pocket & heirloom patina finish.",
+      "Handcrafted by veteran leather artisans in Ambur. Structured from top-grade full-grain bovine hide with an expandable gusset coin pocket, dual currency partitions, and 6 quick-access card slots. Finished with burnished edges that develop a deep, lustrous patina with honest everyday use.",
+    shortDescription: "Full-grain Ambur bovine leather with coin pocket and dual cash partitions.",
     features: [
       "100% Genuine Ambur Bovine Full-Grain Leather",
-      "Signature Oil Pull-up finish with quick scratch self-healing patina",
       "Expandable brass-snap coin compartment",
-      "6 precision-cut card slots & 2 concealed slip pockets",
-      "Full-length dual currency partition tailored for Indian Rupee banknotes",
-      "Reinforced bonded nylon saddle-stitching",
-      "Complimentary laser/hot-stamped custom initials embossing",
+      "6 precision-cut card slots and 2 concealed slip pockets",
+      "Full-length dual currency partition for Indian Rupee banknotes",
+      "Reinforced bonded nylon perimeter saddle-stitching",
+      "Complimentary initials hot-foil or blind debossing",
     ],
-    cardImage: "/images/products/classic-bifold-coin-wallet/classic-bifold-coin-wallet-hero-4x5-960.webp",
-    imageAngles: [
-      // Front View - Color Trio
-      "/images/products/classic-bifold-coin-wallet/classic-bifold-coin-wallet-hero-1x1-960.webp",
-      // Angled Perspective - Ambur Tan Display
-      "/images/products/classic-bifold-coin-wallet/classic-bifold-coin-wallet-tan-display-1x1-960.webp",
-      // Interior Details - Passcase & Card Flap
-      "/images/products/classic-bifold-coin-wallet/classic-bifold-coin-wallet-interior-passcase-1x1-960.webp",
-      // Macro Leather Texture (Always Last)
-      "/images/products/classic-bifold-coin-wallet/classic-bifold-coin-wallet-macro-grain-1x1-960.webp",
-    ],
-    leatherType: "Full-Grain Bovine Oil Pull-Up Leather",
-    tanningProcess: "Semi-Vegetable Tanned in Ambur Tannery Cluster",
-    dimensions: "11.5 cm x 9.2 cm x 1.8 cm (Closed)",
-    warranty: "5-Year Patina & Stitching Guarantee",
+    specs: {
+      leatherType: "Full-Grain Bovine Leather",
+      tanningProcess: "Semi-Vegetable Tanned in Ambur Tannery Cluster",
+      dimensions: "11.5 cm x 9.2 cm x 1.8 cm",
+      hardware: "Brass-finish snap button",
+      stitching: "Bonded nylon saddle thread",
+      lining: "TODO: Artisan confirmation needed",
+      origin: "Ambur, Tamil Nadu • Workshop Direct",
+    },
     embossingAvailable: true,
-    provenance: "Ambur, Tamil Nadu • Factory Direct",
     inStock: true,
   },
-  {
-    id: "minimalist-slim-rfid-cardholder",
-    name: "Minimalist Slim RFID Cardholder",
-    category: "cardholders",
-    categoryLabel: "Slim Cardholders",
-    tag: "Front-Pocket Essential",
-    price: 499,
-    originalPrice: 899,
-    discountPercentage: 44,
-    rating: 4.8,
-    reviewsCount: 94,
-    colors: [
-      { name: "Crazy Horse Tan", hex: "#B37D4E", inStock: true },
-      { name: "Deep Saddle Brown", hex: "#2A1D17", inStock: true },
-      { name: "Olive Hunter", hex: "#4B5320", inStock: true },
-    ],
-    description:
-      "Crafted for modern everyday carry, this ultra-slim sleeve utilizes wax-infused Crazy Horse bovine leather. It shields your contactless credit/debit cards with an integrated Faraday RFID-blocking membrane while maintaining a razor-thin 4mm silhouette ideal for front-pocket comfort.",
-    shortDescription: "Ultra-slim Crazy Horse finish with military-grade RFID protection.",
-    features: [
-      "Waxed Crazy Horse Bovine Leather that ages gracefully with handling",
-      "Integrated 13.56 MHz RFID / NFC signal blocking liner",
-      "Central stash sleeve for folded currency bills & receipts",
-      "4 precision-cut quick access card slots",
-      "Beveled & hand-burnished edges sealed with natural beeswax",
-      "Ultra-compact featherweight profile (only 28 grams)",
-      "Free custom monogram embossing on lower bezel",
-    ],
-    cardImage: "/images/products/minimalist-slim-rfid-cardholder/minimalist-slim-rfid-cardholder-hero-4x5-960.webp",
-    imageAngles: [
-      // Front View - Cardholder Trio
-      "/images/products/minimalist-slim-rfid-cardholder/minimalist-slim-rfid-cardholder-hero-1x1-960.webp",
-      // Angled Perspective - Tan Sleeve
-      "/images/products/minimalist-slim-rfid-cardholder/minimalist-slim-rfid-cardholder-tan-sleeve-1x1-960.webp",
-      // Cards Loaded View - Black Interior Slots
-      "/images/products/minimalist-slim-rfid-cardholder/minimalist-slim-rfid-cardholder-black-interior-1x1-960.webp",
-      // Macro Leather Texture (Always Last)
-      "/images/products/minimalist-slim-rfid-cardholder/minimalist-slim-rfid-cardholder-macro-grain-1x1-960.webp",
-    ],
-    leatherType: "Crazy Horse Full-Grain Waxed Cowhide",
-    tanningProcess: "Heavy Wax Impregnation & Mineral Tanning",
-    dimensions: "10.2 cm x 7.4 cm x 0.4 cm",
-    warranty: "3-Year Structure & Edge Guarantee",
-    embossingAvailable: true,
-    provenance: "Ambur, Tamil Nadu • Factory Direct",
-    inStock: true,
-  },
+
+  // ----------------------------------------------------------------------------
+  // 2. EXECUTIVE AUTOMATIC RATCHET LEATHER BELT (Category: belt)
+  // ----------------------------------------------------------------------------
   {
     id: "reversible-formal-casual-belt",
+    slug: "executive-automatic-ratchet-belt",
     name: "Executive Automatic Ratchet Leather Belt",
-    category: "belts",
-    categoryLabel: "Artisan Belts",
+    category: "belt",
+    categoryLabel: "Belts",
     tag: "Micro-Adjust Precision",
     price: 1199,
-    originalPrice: 1999,
-    discountPercentage: 40,
-    rating: 4.9,
-    reviewsCount: 112,
+    stock: 35,
     colors: [
       { name: "Executive Jet Black", hex: "#111111", inStock: true },
       { name: "Ambur Cognac Tan", hex: "#7B3F00", inStock: true },
     ],
-    description:
-      "Crafted from premium 3.8mm solid full-grain Ambur bovine leather, this executive belt pairs timeless leathercraft with modern ratchet engineering. Featuring an automatic micro-adjustment track with 32 millimeter-precise positions and a brushed stainless steel buckle with quick-release knurled lever, offering a perfect tailored fit with zero holes and zero creasing.",
-    shortDescription: "Solid full-grain strap with 32-position automatic ratchet buckle.",
-    features: [
-      "Solid single-ply 3.8mm thick Ambur bovine leather (Zero bonded cardboard fillers)",
-      "Brushed stainless alloy automatic buckle with geometric signature emblem",
-      "Hidden 32-step micro-adjustment track with 1/4\" precision fitting (No ugly holes)",
-      "Instant quick-release ergonomic side lever for effortless adjustment",
-      "Perimeter saddle-stitching with feather-beveled hand-burnished edges",
-      "Trimmable DIY sizing system to customize fit perfectly from 28\" to 46\" waist",
-      "Includes luxury keepsake walnut presentation gift box & guarantee certificate",
-      "Complimentary custom hot-stamped monogram on inner strap tip",
-    ],
-    cardImage: "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-hero-4x5-960.webp",
-    imageAngles: [
-      // 1. Hero Coiled on Travertine - Executive Jet Black
+    cardImage:
+      "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-hero-4x5-960.webp",
+    images: [
       "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-hero-1x1-960.webp",
-      // 2. Color Variation - Rich Ambur Cognac Tan
       "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-angle-lifestyle-1x1-960.webp",
-      // 3. Hidden Ratchet Track & Quick-Release Mechanism
       "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-hardware-mechanism-1x1-960.webp",
-      // 4. Handcrafted Keepsake Gift Box Presentation
       "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-giftbox-display-1x1-960.webp",
-      // 5. Editorial On-Model / Worn Formal Suit Styling
       "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-worn-lifestyle-1x1-960.webp",
-      // 6. Macro Grain & Brushed Buckle Texture (Always Last)
       "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-macro-grain-1x1-960.webp",
     ],
-    leatherType: "Solid 3.8mm Full-Grain Ambur Bovine Strap",
-    tanningProcess: "Drum-Dyed Chrome-Veg Retanned",
-    dimensions: "Width: 35mm | Fits waist sizes 28\" to 46\"",
-    warranty: "7-Year Anti-Cracking & Buckle Guarantee",
-    embossingAvailable: true,
-    provenance: "Ambur, Tamil Nadu • Factory Direct",
-    inStock: true,
-  },
-  {
-    id: "ambur-heritage-2in1-gift-box",
-    name: "Ambur Heritage 2-in-1 Executive Gift Box",
-    category: "gift-sets",
-    categoryLabel: "Curated Gift Sets",
-    tag: "Luxury Keepsake",
-    price: 1699,
-    originalPrice: 2999,
-    discountPercentage: 43,
-    rating: 5.0,
-    reviewsCount: 215,
-    colors: [
-      { name: "Heritage Tan Ensemble", hex: "#C89D66", inStock: true },
-      { name: "Midnight Onyx Ensemble", hex: "#1A1412", inStock: true },
-    ],
     description:
-      "The pinnacle of Ambur leather craftsmanship presented in an imperial gold-foil embossed keepsake rigid box. Pairs our bestselling Full-Grain Bi-Fold Wallet with our Reversible Artisan Belt, customized with matching personalized name or initials embossing for an unforgettable gifting experience.",
-    shortDescription: "Personalized wallet + reversible belt set in rigid gold-foiled keepsake box.",
+      "Crafted from solid 3.8mm thick Ambur bovine leather with no synthetic cardboard core. Equipped with an aerospace-grade brushed stainless alloy automatic ratchet buckle and a 32-step micro-adjustment track, providing custom 1/4\" precision fitting without punched holes or leather creasing.",
+    shortDescription: "Solid full-grain strap with 32-position automatic ratchet buckle.",
     features: [
-      "Complete set: Handcrafted Bi-Fold Wallet + Reversible Full-Grain Belt",
-      "Free matching gold-foil or blind debossed custom name personalization on both items",
-      "Enclosed in a rigid magnetic-closure heritage gift box with velvet bed",
-      "Includes Certificate of Ambur Authenticity & leather care cream sample",
-      "Factory-direct pricing offering over 55% savings versus retail luxury boutiques",
-      "Tamper-proof transit packaging with wax-sealed ribbon ready for direct gifting",
+      "Solid single-ply 3.8mm Ambur bovine leather (Zero cardboard fillers)",
+      "Brushed alloy automatic ratchet buckle with geometric emblem",
+      "Hidden 32-notch micro-adjustment track for exact 1/4\" custom comfort fit",
+      "Quick-release ergonomic knurled lever for smooth unlatching",
+      "Perimeter saddle-stitching with burnished feather edges",
+      "Trimmable strap fits waist sizes 28\" to 44\"",
+      "Complimentary custom hot-foil or blind debossed initials on inner tip",
     ],
-    cardImage: "/images/products/ambur-heritage-2in1-gift-box/ambur-heritage-2in1-gift-box-hero-4x5-960.webp",
-    imageAngles: [
-      // Gift Box Open View
-      "/images/products/ambur-heritage-2in1-gift-box/ambur-heritage-2in1-gift-box-hero-1x1-960.webp",
-      // Set Display - Tan Keepsake Unboxing
-      "/images/products/ambur-heritage-2in1-gift-box/ambur-heritage-2in1-gift-box-unboxing-tan-1x1-960.webp",
-      // Packaging Detail - Black Presentation
-      "/images/products/ambur-heritage-2in1-gift-box/ambur-heritage-2in1-gift-box-unboxing-black-1x1-960.webp",
-      // Macro Box Construction & Leather Corner (Always Last)
-      "/images/products/ambur-heritage-2in1-gift-box/ambur-heritage-2in1-gift-box-macro-packaging-1x1-960.webp",
-    ],
-    leatherType: "100% Genuine Ambur Full-Grain Bovine Leather",
-    tanningProcess: "Signature Palar-Basin Artisan Tanning",
-    dimensions: "Gift Box: 26 cm x 20 cm x 6.5 cm",
-    warranty: "5-Year Replacement Warranty on Both Articles",
+    specs: {
+      leatherType: "Solid 3.8mm Full-Grain Ambur Bovine Strap",
+      tanningProcess: "Drum-Dyed Chrome-Veg Retanned",
+      dimensions: "Width: 35mm | Fits waist sizes 28\" to 44\"",
+      hardware: "Brushed stainless alloy ratchet mechanism",
+      stitching: "High-tensile bonded nylon",
+      lining: "Solid single-ply (No synthetic backing)",
+      origin: "Ambur, Tamil Nadu • Workshop Direct",
+    },
     embossingAvailable: true,
-    provenance: "Ambur, Tamil Nadu • Factory Direct",
     inStock: true,
   },
 ];
-
-export interface BrandStoryHighlight {
-  title: string;
-  desc: string;
-}
-
-export interface BrandStory {
-  city: string;
-  state: string;
-  country: string;
-  pincode: string;
-  tagline: string;
-  heritageYears: number;
-  highlights: BrandStoryHighlight[];
-}
-
-export const BRAND_STORY: BrandStory = {
-  city: "Ambur",
-  state: "Tamil Nadu",
-  country: "India",
-  pincode: "635802",
-  tagline: "India's Leather Hub • Direct From Tanners To You",
-  heritageYears: 50,
-  highlights: [
-    {
-      title: "100% Ambur Bovine Leather",
-      desc: "Ambur processes over 40% of India's leather exports. We bring that international export quality directly to you without retail markups.",
-    },
-    {
-      title: "Heirloom Patina Longevity",
-      desc: "We use only uncorrected full-grain hides. Every scuff and handling develops an organic, lustrous caramel patina that improves with age.",
-    },
-    {
-      title: "Free Custom Embossing",
-      desc: "Personalize your wallet or belt with your name or initials blind-debossed or stamped in heritage gold foil at no extra charge.",
-    },
-    {
-      title: "Zero-Risk Factory Provenance",
-      desc: "Dispatched straight from our workshop floor in Ambur, Tamil Nadu with a 5-year craftsmanship warranty.",
-    },
-  ],
-};
 
 export const DEFAULT_PRODUCT: Product = PRODUCTS[0];
 
 export function getProductById(id?: string): Product | undefined {
   if (!id) return undefined;
-  return PRODUCTS.find((p) => p.id === id);
+  return PRODUCTS.find((p) => p.id === id || p.slug === id);
 }
 
 export function getProductsByCategory(category?: string): Product[] {

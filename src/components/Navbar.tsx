@@ -1,30 +1,26 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import {
   ShoppingBag,
   Menu,
   X,
   Sparkles,
-  ChevronDown,
-  ShieldCheck,
-  Search,
 } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 export function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { openCart, items, isMounted } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -33,10 +29,9 @@ export function Navbar() {
     : 0;
 
   const navLinks = [
-    { label: "Wallets", href: "#wallets", badge: "Bestseller" },
+    { label: "Wallets", href: "#wallets" },
     { label: "Belts", href: "#belts" },
-    { label: "Gift Sets", href: "#gift-sets", badge: "Personalized" },
-    { label: "Our Ambur Story", href: "#our-ambur-story" },
+    { label: "Our Story", href: "#our-ambur-story" },
   ];
 
   return (
@@ -73,11 +68,6 @@ export function Navbar() {
                     className="group relative text-sm font-medium tracking-wide text-[#6B5B52] hover:text-[#7A3E1D] transition-colors py-1.5"
                   >
                     <span>{link.label}</span>
-                    {link.badge && (
-                      <span className="ml-1.5 inline-block text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded-full bg-[#F3ECE5] text-[#7A3E1D] border border-[#EADDD3]">
-                        {link.badge}
-                      </span>
-                    )}
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#7A3E1D] transition-all duration-300 group-hover:w-full" />
                   </Link>
                 ))}
@@ -89,36 +79,29 @@ export function Navbar() {
               <Link href="/" className="inline-flex items-center gap-2.5 sm:gap-3 group focus:outline-none py-1">
                 <Image
                   src="/images/logo.png"
-                  alt="Dino Leathers Ambur"
-                  width={44}
-                  height={44}
-                  className="rounded-full shadow-sm w-9 h-9 sm:w-11 sm:h-11 object-cover shrink-0"
+                  alt="Dino Leathers"
+                  width={40}
+                  height={40}
+                  className="rounded-full shadow-sm w-9 h-9 sm:w-10 sm:h-10 object-cover shrink-0"
                   priority
                 />
                 <div className="flex flex-col items-start sm:items-center text-left sm:text-center">
-                  <span className="font-serif text-lg sm:text-2xl font-bold tracking-tight text-[#2C1A11] group-hover:text-[#7A3E1D] transition-colors leading-none sm:leading-tight">
+                  <span className="font-serif text-lg sm:text-xl font-bold tracking-tight text-[#2C1A11] group-hover:text-[#7A3E1D] transition-colors leading-none sm:leading-tight">
                     DINO LEATHERS
                   </span>
                   <span className="text-[8px] sm:text-[9px] font-sans tracking-[0.25em] uppercase text-[#6B5B52] font-semibold mt-0.5">
-                    EST. AMBUR • TN
+                    AMBUR, TAMIL NADU
                   </span>
                 </div>
               </Link>
             </div>
 
-            {/* Right: Currency Selector & Cart Action */}
-            <div className="flex items-center gap-3 sm:gap-5">
-              {/* Currency Selector (Fixed INR as pan-India focus) */}
-              <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F3ECE5] border border-[#EADDD3] text-xs font-semibold text-[#7A3E1D]">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
-                <span>INR (₹)</span>
-                <ChevronDown className="w-3 h-3 text-[#7A3E1D]" />
-              </div>
-
+            {/* Right: Cart Action */}
+            <div className="flex items-center gap-3 sm:gap-4">
               {/* Free Embossing Pill (Desktop) */}
               <div className="hidden lg:flex items-center gap-1.5 text-xs text-[#7A3E1D] bg-[#F3ECE5] px-3 py-1.5 rounded-full border border-[#EADDD3]">
                 <Sparkles className="w-3.5 h-3.5 text-[#C29B38]" />
-                <span className="font-semibold">Free Embossing</span>
+                <span className="font-semibold">Complimentary Embossing</span>
               </div>
 
               {/* Cart Button */}
@@ -152,22 +135,13 @@ export function Navbar() {
                   className="flex items-center justify-between px-3.5 py-3 rounded-xl text-base font-semibold text-[#2C1A11] hover:bg-[#FBF9F5] hover:text-[#7A3E1D] transition-colors"
                 >
                   <span>{link.label}</span>
-                  {link.badge && (
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#F3ECE5] text-[#7A3E1D] border border-[#EADDD3]">
-                      {link.badge}
-                    </span>
-                  )}
                 </Link>
               ))}
 
               <div className="pt-4 border-t border-[#EADDD3] flex flex-col gap-3">
-                <div className="flex items-center justify-between text-xs text-[#6B5B52] px-3.5 py-1">
-                  <span>Currency</span>
-                  <span className="font-semibold text-[#2C1A11]">INR (₹) • India</span>
-                </div>
                 <div className="flex items-center gap-2 text-xs text-[#7A3E1D] bg-[#F3ECE5] p-3 rounded-xl border border-[#EADDD3]">
                   <Sparkles className="w-4 h-4 shrink-0 text-[#C29B38]" />
-                  <span className="font-medium">Free Initial / Name Embossing included on all handcrafted orders!</span>
+                  <span className="font-medium">Complimentary Initial / Monogram Embossing on all orders.</span>
                 </div>
               </div>
             </div>

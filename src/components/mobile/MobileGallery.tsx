@@ -3,7 +3,7 @@
 import React, { useState, useRef, useMemo } from "react";
 import Image from "next/image";
 import { Sparkles, ZoomIn, ZoomOut } from "lucide-react";
-import { getProductGalleryAssets } from "@/data/product-images";
+import { getProductGalleryAssets, ProductImageAsset } from "@/data/product-images";
 
 interface MobileGalleryProps {
   images?: string[];
@@ -22,9 +22,9 @@ export function MobileGallery({ images = [], productName, tag, productId }: Mobi
 
   // Retrieve curated registry assets if productId provided, strictly ordering macro shots last
   const displayItems = useMemo(() => {
-    const registryAssets = productId ? getProductGalleryAssets(productId) : [];
+    const registryAssets: ProductImageAsset[] = productId ? getProductGalleryAssets(productId) : [];
     if (registryAssets.length > 0) {
-      return registryAssets.map((asset) => ({
+      return registryAssets.map((asset: ProductImageAsset) => ({
         src: asset.squareImages.find((img) => img.width === 960)?.webp || asset.squareImages[0]?.webp,
         alt: asset.altText,
         blurDataUrl: asset.blurDataUrl,
@@ -33,11 +33,11 @@ export function MobileGallery({ images = [], productName, tag, productId }: Mobi
     }
 
     // Fallback if raw URLs provided: partition macro shots to appear last
-    const regular = images.filter((url) => !url.toLowerCase().includes("macro"));
-    const macro = images.filter((url) => url.toLowerCase().includes("macro"));
+    const regular = images.filter((url: string) => !url.toLowerCase().includes("macro"));
+    const macro = images.filter((url: string) => url.toLowerCase().includes("macro"));
     const sorted = [...regular, ...macro];
 
-    return sorted.map((src, idx) => ({
+    return sorted.map((src: string, idx: number) => ({
       src,
       alt: `${productName} - Angle ${idx + 1}`,
       blurDataUrl: undefined,
@@ -105,7 +105,7 @@ export function MobileGallery({ images = [], productName, tag, productId }: Mobi
         className="flex w-full overflow-x-auto snap-x snap-mandatory scrollbar-none touch-momentum gpu-layer"
         style={{ scrollSnapType: "x mandatory" }}
       >
-        {displayItems.map((item, idx) => (
+        {displayItems.map((item: { src?: string; alt: string; blurDataUrl?: string; isMacro: boolean }, idx: number) => (
           <div
             key={idx}
             onTouchEnd={handleTouchEnd}
@@ -158,7 +158,7 @@ export function MobileGallery({ images = [], productName, tag, productId }: Mobi
 
         {/* Pagination Dots */}
         <div className="flex items-center gap-1.5 bg-white/90 backdrop-blur-md px-2.5 py-1.5 rounded-full pointer-events-auto border border-[#EADDD3] shadow-micro">
-          {displayItems.map((_, i) => (
+          {displayItems.map((_: unknown, i: number) => (
             <button
               key={i}
               type="button"

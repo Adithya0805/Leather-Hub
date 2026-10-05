@@ -15,7 +15,7 @@ export function AnnouncementBar() {
     },
     {
       icon: ShieldCheck,
-      text: "Zero-Risk Factory Provenance • 5-Year Heirloom Patina Guarantee",
+      text: "100% Genuine Full-Grain Ambur Bovine Leather • Zero Cardboard Fillers",
     },
   ];
 
@@ -49,11 +49,9 @@ export function AnnouncementBar() {
           </div>
         </div>
 
-        {/* Right Guarantee Pill */}
-        <div className="hidden lg:flex items-center gap-3 text-[11px] text-[#6B5B52]">
-          <span className="text-[#7A3E1D] font-bold">₹ INR</span>
-          <span className="text-[#EADDD3]">|</span>
-          <span className="hover:text-[#2C1A11] cursor-pointer transition-colors flex items-center gap-1 font-medium">
+        {/* Right Dispatch Notice */}
+        <div className="hidden lg:flex items-center gap-2 text-[11px] text-[#6B5B52]">
+          <span className="font-medium text-[#7A3E1D] flex items-center gap-1">
             Pan-India Dispatch <ChevronRight className="w-3 h-3 text-[#7A3E1D]" />
           </span>
         </div>
