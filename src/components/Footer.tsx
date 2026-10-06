@@ -58,19 +58,19 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs text-[#6B5B52]">
               <li>
-                <Link href="#wallets" className="hover:text-[#7A3E1D] transition-colors">
+                <Link href="#collection" className="hover:text-[#7A3E1D] transition-colors">
                   Full-Grain Bi-Fold Wallets
                 </Link>
               </li>
               <li>
-                <Link href="#belts" className="hover:text-[#7A3E1D] transition-colors">
+                <Link href="#collection" className="hover:text-[#7A3E1D] transition-colors">
                   Executive Ratchet Belts
                 </Link>
               </li>
               <li>
-                <span className="text-[#7A3E1D] font-semibold flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-[#C29B38]" /> Free Initials Embossing
-                </span>
+                <Link href="#customization" className="text-[#7A3E1D] font-semibold flex items-center gap-1 hover:underline">
+                  <Sparkles className="w-3 h-3 text-[#C29B38]" /> Free Brass Monogramming
+                </Link>
               </li>
             </ul>
           </div>
@@ -81,21 +81,29 @@ export function Footer() {
               Ambur Craftsmanship
             </h4>
             <ul className="space-y-2.5 text-xs text-[#6B5B52]">
-              <li className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
-                <span>100% Ambur Bovine Leather</span>
+              <li>
+                <Link href="#our-ambur-story" className="hover:text-[#7A3E1D] transition-colors flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
+                  <span>The Ambur Heritage</span>
+                </Link>
               </li>
-              <li className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
-                <span>Zero Cardboard Fillers</span>
+              <li>
+                <Link href="#authenticity" className="hover:text-[#7A3E1D] transition-colors flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
+                  <span>Authenticity Comparison</span>
+                </Link>
               </li>
-              <li className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
-                <span>Workshop Direct Pricing</span>
+              <li>
+                <Link href="#patina" className="hover:text-[#7A3E1D] transition-colors flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
+                  <span>The Living Patina Journey</span>
+                </Link>
               </li>
-              <li className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
-                <span>Pan-India Safe Transit</span>
+              <li>
+                <Link href="#journal" className="hover:text-[#7A3E1D] transition-colors flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
+                  <span>Behind the Leather (Journal)</span>
+                </Link>
               </li>
             </ul>
           </div>

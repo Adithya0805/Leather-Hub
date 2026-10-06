@@ -29,9 +29,12 @@ export function Navbar() {
     : 0;
 
   const navLinks = [
-    { label: "Wallets", href: "#wallets" },
-    { label: "Belts", href: "#belts" },
-    { label: "Our Story", href: "#our-ambur-story" },
+    { label: "Collection", href: "#collection" },
+    { label: "Ambur Legacy", href: "#our-ambur-story" },
+    { label: "Authenticity", href: "#authenticity" },
+    { label: "Living Patina", href: "#patina" },
+    { label: "Customization", href: "#customization" },
+    { label: "Journal", href: "#journal" },
   ];
 
   return (
