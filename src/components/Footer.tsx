@@ -82,7 +82,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs text-[#6B5B52]">
               <li>
-                <Link href="#our-ambur-story" className="hover:text-[#7A3E1D] transition-colors flex items-center gap-1.5">
+                <Link href="/ambur-heritage" className="hover:text-[#7A3E1D] transition-colors flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
                   <span>The Ambur Heritage</span>
                 </Link>
