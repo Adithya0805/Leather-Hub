@@ -1,7 +1,9 @@
 "use client";
 
 import React from "react";
-import { Check, ShieldCheck, Award, MapPin, Feather, Compass, Layers, Flame } from "lucide-react";
+import { Check, Award, Compass, ShieldCheck, Flame, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { AnimatedMetrics } from "@/components/motion/AnimatedMetrics";
 
 interface StoryMilestone {
   era: string;
@@ -28,7 +30,7 @@ const HISTORICAL_TIMELINE: StoryMilestone[] = [
   {
     era: "Today: Dino Leathers",
     title: "The Direct Workshop Link",
-    desc: "Born on MC Road (PIN 635802) to bypass luxury licensing markups. We bring Ambur's authentic full-grain bovine leather directly to your hands at workshop-floor pricing.",
+    desc: "A bold new direct-to-consumer era. We cut out luxury licensing markups, bringing Ambur's market-tested full-grain bovine leather directly to your hands at workshop-floor pricing.",
   },
 ];
 
@@ -39,26 +41,54 @@ export function AmburStorySection() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3ECE5] text-[#7A3E1D] text-xs font-semibold uppercase tracking-widest border border-[#EADDD3]">
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3ECE5] text-[#7A3E1D] text-xs font-semibold uppercase tracking-widest border border-[#EADDD3]"
+          >
             <Compass className="w-3.5 h-3.5 text-[#7A3E1D]" />
             <span>Palar River Basin • MC Road, Ambur (PIN 635802)</span>
-          </div>
+          </motion.div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#2C1A11]">
-            The Legacy of Ambur: 200 Years of Master Craftsmanship
-          </h2>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#2C1A11]"
+          >
+            New Brand. Centuries of Uncompromised Mastery.
+          </motion.h2>
 
-          <p className="text-sm sm:text-base text-[#6B5B52] leading-relaxed">
-            Before European luxury fashion houses stamped their logos in Milan and Paris, their hides began 
-            their journey in the soil, mineral-rich river waters, and master tanning vats of Ambur.
-          </p>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-sm sm:text-base text-[#6B5B52] leading-relaxed"
+          >
+            While Dino Leathers is fresh to the retail market, our collections come directly from Ambur—South India&rsquo;s 
+            leather capital with over two centuries of tanning expertise along the Palar River basin. Every piece 
+            is cut from the exact same export-grade bovine hides crafted for international luxury markets.
+          </motion.p>
+        </div>
+
+        {/* Scroll-Triggered Animated Metric Counters */}
+        <div className="mb-20">
+          <AnimatedMetrics />
         </div>
 
         {/* 4 Historical Timeline Milestones */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {HISTORICAL_TIMELINE.map((item, idx) => (
-            <div
+            <motion.div
               key={idx}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="bg-white p-7 rounded-2xl border border-[#EADDD3] shadow-warm hover:border-[#7A3E1D] hover:shadow-elevated transition-all group flex flex-col justify-between"
             >
               <div>
@@ -83,7 +113,7 @@ export function AmburStorySection() {
               <div className="pt-4 border-t border-[#EADDD3]/60 mt-4 text-[10px] font-mono text-[#9A8C84] uppercase">
                 MC Road Craft Archive
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -149,43 +179,42 @@ export function AmburStorySection() {
               </div>
             </div>
 
-            {/* Right Workshop Metrics Box */}
+            {/* Right Workshop Heritage Callout */}
             <div className="lg:col-span-5 bg-[#FBF9F5] p-8 rounded-2xl border border-[#EADDD3] space-y-6">
               <div className="border-b border-[#EADDD3] pb-4">
                 <span className="text-[11px] font-mono uppercase tracking-widest text-[#7A3E1D] font-bold block mb-1">
                   Ambur Industrial Cluster
                 </span>
                 <div className="font-serif text-2xl font-bold text-[#2C1A11]">
-                  South India&rsquo;s Leather Capital
+                  Direct From Master Artisans
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-4 text-center">
-                <div className="p-3 bg-white rounded-xl border border-[#EADDD3]">
-                  <div className="font-serif text-2xl font-bold text-[#7A3E1D]">700+</div>
-                  <div className="text-[10px] uppercase font-mono text-[#6B5B52] mt-0.5">Units</div>
-                </div>
-                <div className="p-3 bg-white rounded-xl border border-[#EADDD3]">
-                  <div className="font-serif text-2xl font-bold text-[#7A3E1D]">100K+</div>
-                  <div className="text-[10px] uppercase font-mono text-[#6B5B52] mt-0.5">Artisans</div>
-                </div>
-                <div className="p-3 bg-white rounded-xl border border-[#EADDD3]">
-                  <div className="font-serif text-2xl font-bold text-[#7A3E1D]">200+</div>
-                  <div className="text-[10px] uppercase font-mono text-[#6B5B52] mt-0.5">Years</div>
-                </div>
+              <div className="p-4 bg-white rounded-xl border border-[#EADDD3] text-xs text-[#6B5B52] leading-relaxed space-y-2">
+                <strong className="text-[#2C1A11] block">The Dino Leathers Proven Advantage:</strong>
+                <p>
+                  While our DTC brand is fresh, the artisans who craft our goods have spent decades curating hides for the world&rsquo;s most discerning luxury markets.
+                </p>
+                <p className="text-[#7A3E1D] font-medium">
+                  We bring you export-grade luxury minus middleman margins.
+                </p>
               </div>
 
-              <div className="p-4 bg-white rounded-xl border border-[#EADDD3] text-xs text-[#6B5B52] leading-relaxed">
-                <strong className="text-[#2C1A11] block mb-1">The Dino Leathers Commitment:</strong>
-                We never compromise on our leather&rsquo;s provenance. By supporting Dino Leathers, you directly support generational artisan families in Ambur.
+              <div className="pt-2 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="#collection"
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-[#7A3E1D] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#633216] transition-colors text-center"
+                >
+                  <span>Explore Collections</span>
+                </a>
+                <a
+                  href="/heritage"
+                  className="inline-flex items-center justify-center gap-1.5 py-3.5 px-5 rounded-full bg-white border border-[#EADDD3] text-[#2C1A11] hover:border-[#7A3E1D] hover:text-[#7A3E1D] text-xs font-semibold uppercase tracking-wider transition-colors"
+                >
+                  <span>Full Heritage</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
               </div>
-
-              <a
-                href="#collection"
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-[#7A3E1D] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#633216] transition-colors"
-              >
-                <span>Shop Ambur Craft</span>
-              </a>
             </div>
 
           </div>

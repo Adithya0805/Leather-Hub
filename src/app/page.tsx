@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Sparkles,
   ArrowRight,
@@ -33,61 +34,132 @@ export default function Home() {
       ? PRODUCTS
       : PRODUCTS.filter((p) => p.category === selectedCategory);
 
+  // Parallax scroll hook for hero visuals
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const parallaxBgY = useTransform(scrollYProgress, [0, 1], ["0%", "24%"]);
+  const parallaxVisualY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+
+  // Staggered motion variants for initial load reveal
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.05,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.65,
+        ease: "easeOut" as const,
+      },
+    },
+  };
+
   return (
     <div className="flex flex-col min-h-screen pb-32 md:pb-12 bg-[#FBF9F5] text-[#2C1A11]">
       
       {/* ── SECTION 1: HOMEPAGE HERO & VALUE PROPOSITION ── */}
-      <section className="relative bg-[#FBF9F5] text-[#2C1A11] pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden border-b border-[#EADDD3]">
-        {/* Subtle Warm Ambur Atelier Ambient Glow */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#7A3E1D]/5 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#C29B38]/5 rounded-full blur-[100px] pointer-events-none" />
+      <section
+        ref={heroRef}
+        className="relative bg-[#FBF9F5] text-[#2C1A11] pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden border-b border-[#EADDD3]"
+      >
+        {/* Parallax Background Texture & Workshop Ambient Glow */}
+        <motion.div
+          style={{ y: parallaxBgY }}
+          className="absolute inset-0 pointer-events-none z-0"
+        >
+          {/* Subtle leather grain SVG matrix */}
+          <div
+            className="absolute inset-0 opacity-[0.035]"
+            style={{
+              backgroundImage: `radial-gradient(#2C1A11 1.2px, transparent 1.2px)`,
+              backgroundSize: "20px 20px",
+            }}
+          />
+          <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-[#7A3E1D]/8 rounded-full blur-[130px]" />
+          <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-[#C29B38]/8 rounded-full blur-[110px]" />
+        </motion.div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
-            {/* Left Narrative */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+            {/* Left Narrative Column with Staggered Motion Reveal */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="lg:col-span-7 space-y-6 text-center lg:text-left"
+            >
               {/* Origin Pill */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3ECE5] border border-[#EADDD3] text-xs font-semibold uppercase tracking-widest text-[#7A3E1D]">
+              <motion.div
+                variants={itemVariants}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3ECE5] border border-[#EADDD3] text-xs font-semibold uppercase tracking-widest text-[#7A3E1D]"
+              >
                 <Compass className="w-3.5 h-3.5 text-[#7A3E1D]" />
                 <span>MC Road, Ambur, Tamil Nadu • PIN 635802</span>
-              </div>
+              </motion.div>
 
               {/* Main Headline */}
-              <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight text-[#2C1A11]">
-                Mastery Forged in{" "}
+              <motion.h1
+                variants={itemVariants}
+                className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.06] tracking-tight text-[#2C1A11]"
+              >
+                Proven Craftsmanship. <br />
                 <span className="text-[#7A3E1D] italic font-normal">
-                  Grain &amp; Time.
+                  A Bold New Direct Era.
                 </span>
-              </h1>
+              </motion.h1>
 
               {/* Sub-headline */}
-              <p className="text-base sm:text-lg text-[#6B5B52] max-w-2xl mx-auto lg:mx-0 font-sans font-light leading-relaxed">
-                Handcrafted 100% full-grain bovine leather wallets and belts from India’s historic 
-                tanning capital. Delivered straight from our Ambur workshop floor to your hands.
-              </p>
+              <motion.p
+                variants={itemVariants}
+                className="text-base sm:text-lg text-[#6B5B52] max-w-2xl mx-auto lg:mx-0 font-sans font-light leading-relaxed"
+              >
+                Dino Leathers brings market-tested, export-grade full-grain bovine wallets and belts 
+                directly from Ambur&rsquo;s master workshops to your hands&mdash;without middleman markups.
+              </motion.p>
 
               {/* CTAs */}
-              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <motion.div
+                variants={itemVariants}
+                className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+              >
                 <a
                   href="#collection"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#7A3E1D] text-white font-bold text-xs uppercase tracking-widest hover:bg-[#633216] active:scale-95 transition-all shadow-warm group"
                 >
-                  <span>Shop Full-Grain Wallets</span>
+                  <span>Explore Proven Collections</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
 
                 <a
-                  href="#collection"
+                  href="#customization"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-white border border-[#EADDD3] text-[#2C1A11] hover:border-[#7A3E1D] hover:text-[#7A3E1D] text-xs font-semibold uppercase tracking-widest transition-all shadow-sm"
                 >
-                  <span>Explore Executive Belts</span>
+                  <Sparkles className="w-3.5 h-3.5 text-[#C29B38]" />
+                  <span>Custom Monogram Preview</span>
                 </a>
-              </div>
+              </motion.div>
 
               {/* 4 Key Trust Badges / Highlights */}
-              <div className="pt-8 border-t border-[#EADDD3] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
-                <div className="bg-white p-4 rounded-xl border border-[#EADDD3] shadow-xs space-y-1">
+              <motion.div
+                variants={itemVariants}
+                className="pt-8 border-t border-[#EADDD3] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left"
+              >
+                <div className="bg-white p-4 rounded-xl border border-[#EADDD3] shadow-xs space-y-1 hover:border-[#7A3E1D] transition-colors">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-[#7A3E1D] uppercase font-mono">
                     <ShieldCheck className="w-4 h-4 text-[#7A3E1D]" />
                     <span>100% Ambur Hide</span>
@@ -97,7 +169,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="bg-white p-4 rounded-xl border border-[#EADDD3] shadow-xs space-y-1">
+                <div className="bg-white p-4 rounded-xl border border-[#EADDD3] shadow-xs space-y-1 hover:border-[#7A3E1D] transition-colors">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-[#7A3E1D] uppercase font-mono">
                     <Layers className="w-4 h-4 text-[#7A3E1D]" />
                     <span>Zero Cardboard</span>
@@ -107,7 +179,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="bg-white p-4 rounded-xl border border-[#EADDD3] shadow-xs space-y-1">
+                <div className="bg-white p-4 rounded-xl border border-[#EADDD3] shadow-xs space-y-1 hover:border-[#7A3E1D] transition-colors">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-[#7A3E1D] uppercase font-mono">
                     <Flame className="w-4 h-4 text-[#C29B38]" />
                     <span>Free Monogram</span>
@@ -117,7 +189,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="bg-white p-4 rounded-xl border border-[#EADDD3] shadow-xs space-y-1">
+                <div className="bg-white p-4 rounded-xl border border-[#EADDD3] shadow-xs space-y-1 hover:border-[#7A3E1D] transition-colors">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-[#7A3E1D] uppercase font-mono">
                     <Award className="w-4 h-4 text-[#7A3E1D]" />
                     <span>PIN 635802 Direct</span>
@@ -126,11 +198,17 @@ export default function Home() {
                     Factory-direct pricing without mall lease or middleman markups.
                   </p>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            {/* Right Hero Visual Showcase */}
-            <div className="lg:col-span-5 relative">
+            {/* Right Hero Visual Showcase with Parallax Translation */}
+            <motion.div
+              style={{ y: parallaxVisualY }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="lg:col-span-5 relative"
+            >
               <div className="relative mx-auto max-w-md lg:max-w-none">
                 {/* Main Hero Card with Real Belt Photography */}
                 <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-2 border-[#EADDD3] shadow-warm bg-[#FBF9F5]">
@@ -146,8 +224,8 @@ export default function Home() {
 
                   {/* Bottom Highlight Overlay */}
                   <div className="absolute bottom-6 inset-x-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-[#EADDD3] shadow-warm space-y-1 text-[#2C1A11]">
-                    <span className="text-[#7A3E1D] font-bold uppercase tracking-wider text-[10px] block">
-                      Ambur Master Craftsmanship
+                    <span className="text-[#7A3E1D] font-bold uppercase tracking-wider text-[10px] block font-mono">
+                      Ambur Master Craftsmanship • PIN 635802
                     </span>
                     <div className="flex items-center justify-between">
                       <span className="font-serif text-lg font-bold text-[#2C1A11]">
@@ -179,7 +257,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>
@@ -194,7 +272,7 @@ export default function Home() {
               The Ambur Curations.
             </h2>
             <p className="text-sm sm:text-base text-[#6B5B52] leading-relaxed">
-              Genuine Ambur bovine leather articles engineered for daily longevity
+              Market-tested Ambur bovine leather articles engineered for daily longevity
               and personalized with your name at zero extra cost.
             </p>
           </div>
@@ -227,7 +305,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SECTION 2: THE AMBUR HERITAGE (200 Years of Master Craftsmanship) ── */}
+      {/* ── SECTION 2: THE AMBUR HERITAGE (New Brand. Centuries of Mastery & Animated Metrics) ── */}
       <AmburStorySection />
 
       {/* ── SECTION 3: THE AUTHENTICITY COMPARISON (Full-Grain vs Mall Brands) ── */}

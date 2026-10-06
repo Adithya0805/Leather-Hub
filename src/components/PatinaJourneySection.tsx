@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { Sparkles, Clock, ShieldCheck, Flame, Compass } from "lucide-react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sparkles, Clock, ShieldCheck, Flame, ChevronRight, Sliders } from "lucide-react";
 
 interface PatinaStage {
   id: number;
@@ -9,57 +11,69 @@ interface PatinaStage {
   name: string;
   timeframe: string;
   badge: string;
+  colorName: string;
+  colorHex: string;
   sensoryFeel: string;
   description: string;
   craftsmanTip: string;
   agingPercentage: number;
+  image: string;
 }
 
 const PATINA_STAGES: PatinaStage[] = [
   {
     id: 1,
     stageNumber: "01",
-    name: "Workshop Finish",
-    timeframe: "Day 1 to Day 30",
+    name: "Fresh Workshop Finish",
+    timeframe: "Day 1",
     badge: "Firm Temper & Natural Grain",
-    sensoryFeel: "Crisp hand-feel, firm structural temper, visible natural dermal pores, and a rich vegetable drum-tanning aroma.",
+    colorName: "Raw Honey Biscuit",
+    colorHex: "#C89D66",
+    sensoryFeel: "Crisp hand-feel, structured firmness, visible natural dermal pores, and a rich vegetable drum-tanning aroma.",
     description:
-      "Direct from our MC Road cutting bench. The unbuffed dermal layer retains its tightest collagen structure. As you introduce your cards and cash, the leather begins its bespoke molding process without losing its crisp silhouette.",
+      "Fresh off our MC Road cutting bench in Ambur. The unbuffed dermal layer retains its tightest collagen structure. As you introduce your cards and cash, the leather begins its bespoke molding process without losing its crisp silhouette.",
     craftsmanTip:
       "Allow cards to seat naturally without forcing. The high-density bovine fibers will stretch micro-millimeters over the first two weeks to memorize your specific everyday carry.",
-    agingPercentage: 25,
+    agingPercentage: 15,
+    image: "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-hero-4x5-960.webp",
   },
   {
     id: 2,
     stageNumber: "02",
-    name: "Supple & Lustrous",
-    timeframe: "Month 1 to Year 1",
+    name: "Supple Hand-Wear Sheen",
+    timeframe: "6 Months",
     badge: "The Organic Mold",
-    sensoryFeel: "Softens to everyday handling, absorbing natural skin oils and denim friction to form an organic caramel sheen.",
+    colorName: "Deep Caramel Amber",
+    colorHex: "#944E27",
+    sensoryFeel: "Noticeably softer to the touch, absorbing natural skin oils and denim friction to form an organic caramel sheen.",
     description:
       "Daily pocket warmth activates the natural waxes and drum-dyed oils deep within the hide. Light surface scuffs from keys or coins effortlessly self-heal with slight thumb friction, melding into the leather's emerging amber luster.",
     craftsmanTip:
       "Once every 6 months, buff the surface lightly with a dry clean cotton cloth or a touch of organic beeswax conditioner to accelerate the warm caramel glow.",
     agingPercentage: 65,
+    image: "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-angle-lifestyle-4x5-960.webp",
   },
   {
     id: 3,
     stageNumber: "03",
-    name: "Heirloom Character",
-    timeframe: "Year 2 & Beyond",
+    name: "Rich Heirloom Patina",
+    timeframe: "2+ Years",
     badge: "The Indelible Signature",
-    sensoryFeel: "Glove-soft yet tear-resistant; develops a rich marbled depth and glossy patina that never cracks or peels.",
+    colorName: "Vintage Marbled Mahogany",
+    colorHex: "#3E1E0E",
+    sensoryFeel: "Glove-soft yet tear-resistant; develops a rich marbled depth and glassy patina that never cracks or peels.",
     description:
       "A living, glossy surface unique to your individual story. While bonded mall leathers flake and disintegrate into toxic landfills, full-grain bovine hide becomes stronger, more supple, and infinitely more beautiful with every decade.",
     craftsmanTip:
-      "This piece is now a permanent heirloom. The perimeter high-tensile bonded nylon stitching remains anchored. Pass it down to the next generation with pride.",
+      "This piece is now a permanent heirloom. The perimeter high-tensile bonded nylon stitching remains firmly anchored. Pass it down to the next generation with pride.",
     agingPercentage: 100,
+    image: "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-worn-lifestyle-4x5-960.webp",
   },
 ];
 
 export function PatinaJourneySection() {
-  const [activeStage, setActiveStage] = useState<number>(2);
-  const current = PATINA_STAGES.find((s) => s.id === activeStage) || PATINA_STAGES[1];
+  const [activeStageId, setActiveStageId] = useState<number>(2);
+  const current = PATINA_STAGES.find((s) => s.id === activeStageId) || PATINA_STAGES[1];
 
   return (
     <section id="patina" className="py-24 bg-white text-[#2C1A11] border-b border-[#EADDD3] relative overflow-hidden">
@@ -67,150 +81,202 @@ export function PatinaJourneySection() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3ECE5] border border-[#EADDD3] text-xs font-semibold uppercase tracking-widest text-[#7A3E1D]">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3ECE5] border border-[#EADDD3] text-xs font-semibold uppercase tracking-widest text-[#7A3E1D]"
+          >
             <Clock className="w-4 h-4 text-[#7A3E1D]" />
             <span>Living Organic Heirloom</span>
-          </div>
+          </motion.div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#2C1A11]">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#2C1A11]"
+          >
             The 3-Stage Evolution of Real Ambur Leather
-          </h2>
+          </motion.h2>
 
-          <p className="text-sm sm:text-base text-[#6B5B52] leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-sm sm:text-base text-[#6B5B52] leading-relaxed"
+          >
             Commercial synthetic leather begins deteriorating the minute you buy it. Authentic full-grain 
             bovine leather does the opposite: it comes alive with daily use, developing a rich caramel patina over decades.
-          </p>
+          </motion.p>
         </div>
 
-        {/* Stage Selector Pills */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto mb-12">
-          {PATINA_STAGES.map((stage) => {
-            const isSelected = stage.id === activeStage;
-            return (
-              <button
-                key={stage.id}
-                type="button"
-                onClick={() => setActiveStage(stage.id)}
-                className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
-                  isSelected
-                    ? "bg-[#7A3E1D] text-white border-[#7A3E1D] shadow-warm scale-[1.02]"
-                    : "bg-[#FBF9F5] text-[#6B5B52] border-[#EADDD3] hover:border-[#7A3E1D] hover:bg-white"
-                }`}
-              >
-                <div className="flex items-center justify-between mb-1.5">
-                  <span
-                    className={`font-mono text-xs font-bold uppercase tracking-wider ${
-                      isSelected ? "text-[#EADDD3]" : "text-[#7A3E1D]"
+        {/* ── TIMELINE SLIDER CONTROLLER ── */}
+        <div className="max-w-2xl mx-auto mb-12 space-y-4">
+          <div className="flex items-center justify-between text-xs font-mono font-bold text-[#6B5B52] px-2">
+            <span>Day 1 (Fresh)</span>
+            <span>6 Months (Supple)</span>
+            <span>2+ Years (Heirloom)</span>
+          </div>
+
+          <div className="relative flex items-center">
+            {/* Background Track with Color Gradient */}
+            <div className="w-full h-3 rounded-full bg-gradient-to-r from-[#C89D66] via-[#944E27] to-[#3E1E0E] opacity-75 shadow-inner" />
+            
+            {/* Step Marker Buttons */}
+            <div className="absolute inset-x-0 flex items-center justify-between px-1">
+              {PATINA_STAGES.map((stage) => {
+                const isActive = stage.id === activeStageId;
+                return (
+                  <button
+                    key={stage.id}
+                    type="button"
+                    onClick={() => setActiveStageId(stage.id)}
+                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 transition-all transform flex items-center justify-center font-mono text-[11px] font-bold shadow-md cursor-pointer ${
+                      isActive
+                        ? "bg-[#2C1A11] text-white border-white scale-125 ring-4 ring-[#7A3E1D]/20"
+                        : "bg-white text-[#2C1A11] border-[#7A3E1D] hover:scale-110"
                     }`}
+                    title={stage.name}
                   >
-                    Stage {stage.stageNumber}
-                  </span>
-                  <span
-                    className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${
-                      isSelected
-                        ? "bg-white/20 text-white"
-                        : "bg-[#EADDD3]/60 text-[#2C1A11]"
-                    }`}
-                  >
-                    {stage.timeframe}
-                  </span>
-                </div>
-                <div
-                  className={`font-serif text-lg font-bold leading-snug ${
-                    isSelected ? "text-white" : "text-[#2C1A11]"
-                  }`}
-                >
-                  {stage.name}
-                </div>
-              </button>
-            );
-          })}
+                    {stage.id}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
-        {/* Detailed Stage Showcase Card */}
+        {/* ── DETAILED STAGE SHOWCASE CARD WITH CROSS-FADE MOTION ── */}
         <div className="bg-[#FBF9F5] rounded-3xl border border-[#EADDD3] p-8 sm:p-12 lg:p-14 shadow-warm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            {/* Left Narrative */}
+            {/* Left Narrative with AnimatePresence */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="flex items-center gap-3">
-                <span className="w-9 h-9 rounded-xl bg-[#7A3E1D] text-white flex items-center justify-center font-serif text-lg font-bold shadow-sm">
-                  {current.stageNumber}
-                </span>
-                <div>
-                  <span className="text-xs uppercase font-bold tracking-widest text-[#7A3E1D] block">
-                    {current.badge}
-                  </span>
-                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#2C1A11]">
-                    {current.name} • <span className="font-sans text-lg font-normal text-[#6B5B52]">{current.timeframe}</span>
-                  </h3>
-                </div>
-              </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.35 }}
+                  className="space-y-6"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="w-10 h-10 rounded-xl bg-[#7A3E1D] text-white flex items-center justify-center font-serif text-lg font-bold shadow-sm">
+                      {current.stageNumber}
+                    </span>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs uppercase font-bold tracking-widest text-[#7A3E1D]">
+                          {current.badge}
+                        </span>
+                        <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#EADDD3] text-[#2C1A11]">
+                          {current.timeframe}
+                        </span>
+                      </div>
+                      <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#2C1A11]">
+                        {current.name}
+                      </h3>
+                    </div>
+                  </div>
 
-              <div className="bg-white p-5 rounded-2xl border border-[#EADDD3] space-y-1.5">
-                <span className="text-[11px] uppercase tracking-wider font-bold text-[#7A3E1D] block">
-                  Tactile Sensory Profile
-                </span>
-                <p className="text-xs sm:text-sm text-[#2C1A11] font-medium leading-relaxed">
-                  {current.sensoryFeel}
-                </p>
-              </div>
+                  {/* Color Swatch & Tactile Sensory */}
+                  <div className="bg-white p-5 rounded-2xl border border-[#EADDD3] flex items-center gap-4">
+                    <div
+                      className="w-10 h-10 rounded-xl border border-black/10 shrink-0 shadow-sm"
+                      style={{ backgroundColor: current.colorHex }}
+                    />
+                    <div>
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-[#9A8C84] block">
+                        Patina Hue: <strong className="text-[#2C1A11]">{current.colorName}</strong>
+                      </span>
+                      <p className="text-xs sm:text-sm text-[#2C1A11] font-medium leading-snug mt-0.5">
+                        {current.sensoryFeel}
+                      </p>
+                    </div>
+                  </div>
 
-              <p className="text-xs sm:text-sm text-[#6B5B52] leading-relaxed">
-                {current.description}
-              </p>
+                  <p className="text-xs sm:text-sm text-[#6B5B52] leading-relaxed">
+                    {current.description}
+                  </p>
 
-              {/* Pro Tip */}
-              <div className="p-4 rounded-xl bg-[#F3ECE5] border-l-4 border-[#7A3E1D] text-xs text-[#6B5B52] leading-relaxed">
-                <strong className="text-[#2C1A11] font-semibold block mb-0.5">
-                  Artisan Workshop Guidance:
-                </strong>
-                {current.craftsmanTip}
-              </div>
+                  {/* Pro Tip */}
+                  <div className="p-4 rounded-xl bg-[#F3ECE5] border-l-4 border-[#7A3E1D] text-xs text-[#6B5B52] leading-relaxed">
+                    <strong className="text-[#2C1A11] font-semibold block mb-0.5">
+                      Artisan Workshop Guidance:
+                    </strong>
+                    {current.craftsmanTip}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
-            {/* Right Visual Patina Gauge */}
-            <div className="lg:col-span-5 bg-white p-8 rounded-2xl border border-[#EADDD3] shadow-sm text-center space-y-6">
-              <div className="relative w-36 h-36 mx-auto flex items-center justify-center">
-                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="40"
-                    stroke="#EADDD3"
-                    strokeWidth="8"
-                    fill="transparent"
-                  />
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="40"
-                    stroke="#7A3E1D"
-                    strokeWidth="8"
-                    strokeDasharray={251.2}
-                    strokeDashoffset={251.2 - (251.2 * current.agingPercentage) / 100}
-                    strokeLinecap="round"
-                    fill="transparent"
-                    className="transition-all duration-700 ease-out"
-                  />
-                </svg>
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="font-serif text-3xl font-bold text-[#2C1A11]">
-                    {current.agingPercentage}%
-                  </span>
-                  <span className="text-[10px] uppercase font-mono tracking-wider text-[#6B5B52]">
-                    Patina Matured
-                  </span>
-                </div>
+            {/* Right Cross-Fading Product Visual & Gauge */}
+            <div className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-2xl border border-[#EADDD3] shadow-sm text-center space-y-6">
+              
+              {/* Product Visual Area with Smooth Crossfade */}
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-[#EADDD3] bg-[#2E1E14]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={current.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.05 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={current.image}
+                      alt={current.name}
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 450px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    <div className="absolute bottom-3 inset-x-3 text-white text-xs font-mono font-bold flex items-center justify-between">
+                      <span>{current.name}</span>
+                      <span className="px-2 py-0.5 rounded-full bg-[#7A3E1D]/90 text-[10px]">
+                        {current.timeframe}
+                      </span>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
               </div>
 
-              <div className="space-y-2">
-                <div className="font-serif text-lg font-bold text-[#2C1A11]">
-                  Zero Peeling Guarantee
+              {/* Maturation Circular Gauge */}
+              <div className="flex items-center justify-center gap-6 pt-2">
+                <div className="relative w-20 h-20 shrink-0 flex items-center justify-center">
+                  <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" stroke="#EADDD3" strokeWidth="8" fill="transparent" />
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="40"
+                      stroke="#7A3E1D"
+                      strokeWidth="8"
+                      strokeDasharray={251.2}
+                      strokeDashoffset={251.2 - (251.2 * current.agingPercentage) / 100}
+                      strokeLinecap="round"
+                      fill="transparent"
+                      className="transition-all duration-700 ease-out"
+                    />
+                  </svg>
+                  <span className="absolute font-serif text-base font-bold text-[#2C1A11]">
+                    {current.agingPercentage}%
+                  </span>
                 </div>
-                <p className="text-xs text-[#6B5B52] leading-relaxed max-w-xs mx-auto">
-                  Every grain layer is naturally bonded by nature&rsquo;s collagen fibers. Dino Leathers will never bubble, crack, or delaminate.
-                </p>
+
+                <div className="text-left space-y-1">
+                  <div className="font-serif text-sm font-bold text-[#2C1A11]">
+                    Zero Peeling Guarantee
+                  </div>
+                  <p className="text-[11px] text-[#6B5B52] leading-tight max-w-[200px]">
+                    Naturally bonded collagen fibers. Will never delaminate or bubble under friction.
+                  </p>
+                </div>
               </div>
 
               <div className="pt-2 flex items-center justify-center gap-4 text-xs font-mono text-[#7A3E1D]">
@@ -226,6 +292,7 @@ export function PatinaJourneySection() {
 
           </div>
         </div>
+
       </div>
     </section>
   );
