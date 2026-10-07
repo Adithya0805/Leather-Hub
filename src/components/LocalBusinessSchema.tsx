@@ -12,7 +12,7 @@ export function LocalBusinessSchema() {
     "logo": "https://dinoleathers.in/images/logo.png",
     "image": "https://dinoleathers.in/images/logo.png",
     "description":
-      "Artisanal full-grain leather wallets and belts handcrafted in Ambur, Tamil Nadu. Direct workshop pricing with complimentary custom initial embossing.",
+      "Bovine leather wallets and belts sourced from trusted Ambur workshops. Quality-checked before dispatch.",
     "telephone": "+91-94432-63580",
     "email": "craft@dinoleathers.in",
     "priceRange": "₹₹",
@@ -20,7 +20,7 @@ export function LocalBusinessSchema() {
     "paymentAccepted": "Cash, UPI, Credit Card, Debit Card, Net Banking",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "MC Road, Ambur Tannery Cluster",
+      "streetAddress": "Ambur",
       "addressLocality": "Ambur",
       "addressRegion": "Tamil Nadu",
       "postalCode": "635802",
@@ -37,7 +37,7 @@ export function LocalBusinessSchema() {
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Dino Leathers Handcrafted Products",
+      "name": "Dino Leathers Products",
       "itemListElement": PRODUCTS.map((product) => {
         const primaryImg = product.images?.[0] || product.cardImage || "/images/logo.png";
         const fullImg = primaryImg.startsWith("http") ? primaryImg : `https://dinoleathers.in${primaryImg}`;
@@ -107,7 +107,7 @@ export function LocalBusinessSchema() {
     "@type": "WebSite",
     "@id": "https://dinoleathers.in/#website",
     "name": "Dino Leathers",
-    "alternateName": "Ambur Leather Works",
+    "alternateName": "Dino Leather Co.",
     "url": "https://dinoleathers.in",
   };
 

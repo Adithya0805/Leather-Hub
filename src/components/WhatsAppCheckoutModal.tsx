@@ -1,21 +1,16 @@
 'use client';
 
-import React, { useState, useEffect, useId } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   X,
   Sparkles,
-  ShieldCheck,
   Truck,
   Copy,
   Check,
   MessageCircle,
   ExternalLink,
-  MapPin,
-  Phone,
   User,
-  AlertCircle,
-  ChevronRight,
 } from "lucide-react";
 import { useCart, CartItem } from "@/context/CartContext";
 
@@ -33,26 +28,27 @@ export function WhatsAppCheckoutModal() {
     isMounted,
   } = useCart();
 
-  const [orderId, setOrderId] = useState("");
+  const [orderId, setOrderId] = useState(() => `DINO-${Math.floor(1000 + Math.random() * 9000)}`);
   const [customerName, setCustomerName] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [addressLine, setAddressLine] = useState("");
   const [city, setCity] = useState("");
-  const [stateRegion, setStateRegion] = useState("Tamil Nadu");
+  const stateRegion = "Tamil Nadu";
   const [pinCode, setPinCode] = useState("");
   const [selectedBeltSize, setSelectedBeltSize] = useState('34" (Medium)');
   const [copied, setCopied] = useState(false);
   const [showErrors, setShowErrors] = useState(false);
 
-
-  // Generate unique Order ID once per modal session
+  // Generate unique Order ID when modal opens
   useEffect(() => {
     if (isCheckoutOpen) {
-      // 4-digit numeric suffix e.g. DINO-4892
-      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-      setOrderId(`DINO-${randomSuffix}`);
-      setShowErrors(false);
-      setCopied(false);
+      const timer = setTimeout(() => {
+        const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+        setOrderId(`DINO-${randomSuffix}`);
+        setShowErrors(false);
+        setCopied(false);
+      }, 0);
+      return () => clearTimeout(timer);
     }
   }, [isCheckoutOpen]);
 
@@ -145,19 +141,7 @@ export function WhatsAppCheckoutModal() {
 
   const fullAddress = `${addressLine.trim()}, ${city.trim() ? `${city.trim()}, ` : ""}${stateRegion} - PIN: ${pinCode.trim()}`;
 
-  // EXACT FORMAT SPECIFIED IN PROMPT:
-  // "🌟 NEW ORDER: #AMB-XXXX 🌟
-  // Product: [Product Name]
-  // Color/Variant: [Selected Color]
-  // Belt Size: [Waist Size, if applicable]
-  // Custom Embossing: [Initials/Name, Gold Foil / Blind Deboss]
-  // Quantity: [Count]
-  // Order Total: ₹[Total Amount] (Free Shipping)
-  // Customer Details:
-  // Name: [Customer Name]
-  // Address: [Full Address, City, PIN Code]
-  // Phone: [Customer Mobile]
-  // Please confirm my order and share UPI payment details!"
+  // Structured WhatsApp order message
   const whatsAppMessage = `🦕 DINO LEATHERS — AMBUR 🦕
 NEW ORDER: #${orderId}
 -------------------------------
@@ -166,7 +150,8 @@ Color/Variant: ${colorVariant}
 Belt Size: ${beltSizeText}
 Custom Embossing: ${embossingText}
 Quantity: ${totalQuantity}
-Order Total: ₹${totalAmount.toLocaleString("en-IN")} (Free Shipping)
+Order Total: ₹${totalAmount.toLocaleString("en-IN")}
+Delivery time and shipping charge confirmed on WhatsApp.
 
 Customer Details:
 Name: ${customerName.trim() || "[Customer Name]"}
@@ -257,8 +242,8 @@ Please confirm my order and share UPI payment details!`;
               <span className="font-bold uppercase tracking-wider text-[10px] text-[#7A3E1D]">
                 Order Items ({totalQuantity})
               </span>
-              <span className="text-emerald-700 font-bold flex items-center gap-1">
-                <Truck className="w-3.5 h-3.5" /> Free Express Delivery
+              <span className="text-[#6B5B52] font-semibold flex items-center gap-1">
+                <Truck className="w-3.5 h-3.5 text-[#7A3E1D]" /> Direct Dispatch
               </span>
             </div>
 
@@ -268,7 +253,7 @@ Please confirm my order and share UPI payment details!`;
                   <div className="relative w-14 h-14 rounded-lg bg-white border border-[#EADDD3] overflow-hidden shrink-0">
                     <Image
                       src={item.product?.images?.[0] || item.product?.cardImage || "/images/logo.png"}
-                      alt={item.product?.name || "Dino Leathers Handcrafted Article"}
+                      alt={item.product?.name || "Dino Leathers Article"}
                       fill
                       className="object-cover"
                       sizes="56px"
@@ -277,7 +262,7 @@ Please confirm my order and share UPI payment details!`;
 
                   <div className="flex-1 min-w-0 text-xs">
                     <div className="font-serif font-bold text-sm text-[#2C1A11] truncate">
-                      {item.product?.name || "Handcrafted Leather Article"}
+                      {item.product?.name || "Leather Article"}
                     </div>
                     <div className="text-[11px] text-[#6B5B52] flex items-center gap-2 mt-0.5">
                       <span>Color: <strong className="text-[#2C1A11]">{item.selectedColor}</strong></span>
@@ -303,8 +288,8 @@ Please confirm my order and share UPI payment details!`;
                     <div className="font-serif font-bold text-sm text-[#2C1A11]">
                       ₹{((item.product?.price || 0) * item.quantity).toLocaleString("en-IN")}
                     </div>
-                    <div className="text-[10px] text-emerald-700 font-semibold uppercase">
-                      Free Shipping
+                    <div className="text-[10px] text-[#7A3E1D] font-medium">
+                      Shipping confirmed on WhatsApp
                     </div>
                   </div>
                 </div>
@@ -342,9 +327,9 @@ Please confirm my order and share UPI payment details!`;
             <div className="flex items-center justify-between border-b border-[#EADDD3] pb-2">
               <h4 className="font-serif font-bold text-sm text-[#2C1A11] flex items-center gap-1.5">
                 <User className="w-4 h-4 text-[#7A3E1D]" />
-                <span>Customer &amp; Pan-India Dispatch Details</span>
+                <span>Customer &amp; Delivery Details</span>
               </h4>
-              <span className="text-[11px] text-[#6B5B52]">Direct Courier Delivery</span>
+              <span className="text-[11px] text-[#6B5B52]">Direct Delivery</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -501,12 +486,12 @@ Please confirm my order and share UPI payment details!`;
         <div className="p-4 sm:p-5 bg-white border-t border-[#EADDD3] flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
           <div className="text-left w-full sm:w-auto">
             <div className="text-xs text-[#6B5B52]">Total Payable on Confirmation</div>
-            <div className="flex items-baseline gap-1.5">
+            <div className="flex flex-col">
               <span className="font-serif text-2xl font-bold text-[#2C1A11]">
                 ₹{totalAmount.toLocaleString("en-IN")}
               </span>
-              <span className="text-xs text-emerald-700 font-semibold">
-                (Free Pan-India Shipping)
+              <span className="text-[11px] text-[#7A3E1D] font-medium">
+                Delivery time and shipping charge confirmed on WhatsApp.
               </span>
             </div>
           </div>

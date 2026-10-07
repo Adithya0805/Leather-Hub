@@ -7,10 +7,6 @@ import {
   MapPin,
   ShieldCheck,
   Sparkles,
-  Phone,
-  Mail,
-  Heart,
-  ArrowUpRight,
 } from "lucide-react";
 
 export function Footer() {
@@ -30,24 +26,24 @@ export function Footer() {
               />
               <div className="flex flex-col items-start">
                 <span className="text-[10px] font-sans tracking-[0.35em] uppercase text-[#7A3E1D] font-bold mb-1">
-                  EST. AMBUR • TN
+                  AMBUR • TAMIL NADU
                 </span>
                 <span className="font-serif text-2xl font-bold tracking-tight text-[#2C1A11]">
                   DINO LEATHERS
                 </span>
                 <span className="text-[10px] font-sans tracking-[0.25em] uppercase text-[#6B5B52] font-semibold">
-                  AUTHENTIC BOVINE LEATHER
+                  BOVINE LEATHER GOODS
                 </span>
               </div>
             </div>
 
             <p className="text-xs text-[#6B5B52] max-w-sm leading-relaxed font-medium">
-              Dino Leathers — Handcrafted in Ambur, Tamil Nadu. Built for a Lifetime of Character.
+              Dino Leathers — Sourced from trusted Ambur workshops. Quality-checked before dispatch.
             </p>
 
             <div className="pt-2 flex items-center gap-2 text-xs text-[#7A3E1D] font-medium">
               <MapPin className="w-4 h-4 shrink-0 text-[#7A3E1D]" />
-              <span>Workshop: MC Road, Ambur, Tirupattur Dist, TN 635802</span>
+              <span>Ambur, Tamil Nadu 635802</span>
             </div>
           </div>
 
@@ -59,7 +55,7 @@ export function Footer() {
             <ul className="space-y-2.5 text-xs text-[#6B5B52]">
               <li>
                 <Link href="#collection" className="hover:text-[#7A3E1D] transition-colors">
-                  Full-Grain Bi-Fold Wallets
+                  Bi-Fold Wallets
                 </Link>
               </li>
               <li>
@@ -68,8 +64,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/wholesale" className="hover:text-[#7A3E1D] transition-colors font-medium">
+                  Wholesale &amp; Bulk Orders
+                </Link>
+              </li>
+              <li>
                 <Link href="#customization" className="text-[#7A3E1D] font-semibold flex items-center gap-1 hover:underline">
-                  <Sparkles className="w-3 h-3 text-[#C29B38]" /> Free Brass Monogramming
+                  <Sparkles className="w-3 h-3 text-[#C29B38]" /> Free Monogramming
                 </Link>
               </li>
             </ul>
@@ -78,7 +79,7 @@ export function Footer() {
           {/* Provenance & Craft */}
           <div>
             <h4 className="font-serif text-base font-bold text-[#2C1A11] mb-4">
-              Ambur Craftsmanship
+              Ambur Heritage
             </h4>
             <ul className="space-y-2.5 text-xs text-[#6B5B52]">
               <li>
@@ -88,33 +89,21 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#authenticity" className="hover:text-[#7A3E1D] transition-colors flex items-center gap-1.5">
+                <Link href="/wholesale" className="hover:text-[#7A3E1D] transition-colors flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
-                  <span>Authenticity Comparison</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="#patina" className="hover:text-[#7A3E1D] transition-colors flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
-                  <span>The Living Patina Journey</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="#journal" className="hover:text-[#7A3E1D] transition-colors flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
-                  <span>Behind the Leather (Journal)</span>
+                  <span>Wholesale Partnership</span>
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Direct Factory Updates */}
+          {/* Sourcing Updates */}
           <div>
             <h4 className="font-serif text-base font-bold text-[#2C1A11] mb-4">
-              Direct Workshop Updates
+              Dino Leathers Updates
             </h4>
             <p className="text-xs text-[#6B5B52] mb-3 leading-relaxed">
-              Receive notifications for new leather finishes, tannery updates, and workshop announcements.
+              Receive notifications for new leather finishes, bulk availability, and catalog updates.
             </p>
             <div className="flex flex-col gap-2">
               <input
@@ -126,7 +115,7 @@ export function Footer() {
                 type="button"
                 className="w-full py-2.5 px-3 rounded-lg bg-[#7A3E1D] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#633216] transition-colors shadow-warm"
               >
-                Join Private Guild
+                Subscribe
               </button>
             </div>
           </div>
@@ -139,9 +128,9 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-4 text-[11px] text-[#8C7E76]">
-            <span>100% Genuine Bovine</span>
+            <span>Bovine Leather</span>
             <span>•</span>
-            <span>Handcrafted in Ambur</span>
+            <span>Sourced from Ambur Workshops</span>
             <span>•</span>
             <span>Tamil Nadu, India</span>
           </div>

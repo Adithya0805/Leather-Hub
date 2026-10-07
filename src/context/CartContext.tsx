@@ -3,13 +3,16 @@
 import React, {
   createContext,
   useContext,
-  useState,
   useEffect,
   useCallback,
+  useMemo,
+  useSyncExternalStore,
   ReactNode,
 } from "react";
 import { Product } from "@/data/products";
 import { useCartStore, CartItem } from "@/store/useCartStore";
+
+const emptySubscribe = () => () => {};
 
 export interface CartContextType {
   items: CartItem[];
@@ -45,7 +48,7 @@ interface CartProviderProps {
 }
 
 export function CartProvider({ children }: CartProviderProps) {
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
   // Subscribe directly to Zustand state slices so this provider and its consumers re-render immediately on changes
   const items = useCartStore((state) => state.items);
@@ -55,7 +58,6 @@ export function CartProvider({ children }: CartProviderProps) {
   const store = useCartStore();
 
   useEffect(() => {
-    setIsMounted(true);
 
     // Safe guarded localStorage rehydration to prevent React Error #418 / #423
     try {
@@ -124,8 +126,8 @@ export function CartProvider({ children }: CartProviderProps) {
     store.clearCart();
   }, [store]);
 
-  // Guarantee server-rendered HTML matches initial client hydration exactly
-  const safeItems = isMounted ? items : [];
+  // Ensure server-rendered HTML matches initial client hydration exactly
+  const safeItems = useMemo(() => (isMounted ? items : []), [isMounted, items]);
 
   const getTotalCount = useCallback(() => {
     return safeItems.reduce((total, item) => total + item.quantity, 0);

@@ -1,4 +1,7 @@
 {
+  "model": {
+    "name": "gemini-3.5-flash-lite"
+  },
   "mcpServers": {
     "supabase": {
       "httpUrl": "https://mcp.supabase.com/mcp?project_ref=qphphkktuwymcszqdjiz&features=docs%2Caccount%2Cdatabase%2Cdebugging%2Cdevelopment%2Cfunctions%2Cbranching"

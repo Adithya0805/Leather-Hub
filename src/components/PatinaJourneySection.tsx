@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Clock, ShieldCheck, Flame, ChevronRight, Sliders } from "lucide-react";
+import { Sparkles, Clock, ShieldCheck } from "lucide-react";
 
 interface PatinaStage {
   id: number;
@@ -24,16 +24,16 @@ const PATINA_STAGES: PatinaStage[] = [
   {
     id: 1,
     stageNumber: "01",
-    name: "Fresh Workshop Finish",
+    name: "Initial Natural Finish",
     timeframe: "Day 1",
     badge: "Firm Temper & Natural Grain",
     colorName: "Raw Honey Biscuit",
     colorHex: "#C89D66",
     sensoryFeel: "Crisp hand-feel, structured firmness, visible natural dermal pores, and a rich vegetable drum-tanning aroma.",
     description:
-      "Fresh off our MC Road cutting bench in Ambur. The unbuffed dermal layer retains its tightest collagen structure. As you introduce your cards and cash, the leather begins its bespoke molding process without losing its crisp silhouette.",
+      "Crafted in Ambur. The unbuffed dermal layer retains its tight collagen structure. As you use your item, the leather begins molding to your everyday carry.",
     craftsmanTip:
-      "Allow cards to seat naturally without forcing. The high-density bovine fibers will stretch micro-millimeters over the first two weeks to memorize your specific everyday carry.",
+      "Allow items to seat naturally. The bovine fibers will adjust gradually over the first few weeks.",
     agingPercentage: 15,
     image: "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-hero-4x5-960.webp",
   },
@@ -42,30 +42,30 @@ const PATINA_STAGES: PatinaStage[] = [
     stageNumber: "02",
     name: "Supple Hand-Wear Sheen",
     timeframe: "6 Months",
-    badge: "The Organic Mold",
+    badge: "The Natural Form",
     colorName: "Deep Caramel Amber",
     colorHex: "#944E27",
-    sensoryFeel: "Noticeably softer to the touch, absorbing natural skin oils and denim friction to form an organic caramel sheen.",
+    sensoryFeel: "Noticeably softer to the touch, absorbing natural oils and everyday friction to form a warm sheen.",
     description:
-      "Daily pocket warmth activates the natural waxes and drum-dyed oils deep within the hide. Light surface scuffs from keys or coins effortlessly self-heal with slight thumb friction, melding into the leather's emerging amber luster.",
+      "Daily handling activates the natural oils within the hide. Light surface marks blend into the leather's developing luster over time.",
     craftsmanTip:
-      "Once every 6 months, buff the surface lightly with a dry clean cotton cloth or a touch of organic beeswax conditioner to accelerate the warm caramel glow.",
+      "Buff the surface occasionally with a dry clean cotton cloth or a neutral leather balm to maintain the leather.",
     agingPercentage: 65,
     image: "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-angle-lifestyle-4x5-960.webp",
   },
   {
     id: 3,
     stageNumber: "03",
-    name: "Rich Heirloom Patina",
+    name: "Rich Matured Patina",
     timeframe: "2+ Years",
-    badge: "The Indelible Signature",
+    badge: "The Matured Surface",
     colorName: "Vintage Marbled Mahogany",
     colorHex: "#3E1E0E",
-    sensoryFeel: "Glove-soft yet tear-resistant; develops a rich marbled depth and glassy patina that never cracks or peels.",
+    sensoryFeel: "Supple and durable, showing the unique marks and character of long-term use.",
     description:
-      "A living, glossy surface unique to your individual story. While bonded mall leathers flake and disintegrate into toxic landfills, full-grain bovine hide becomes stronger, more supple, and infinitely more beautiful with every decade.",
+      "A rich surface reflecting daily use. Natural bovine leather develops individual character and depth through consistent handling.",
     craftsmanTip:
-      "This piece is now a permanent heirloom. The perimeter high-tensile bonded nylon stitching remains firmly anchored. Pass it down to the next generation with pride.",
+      "Maintain periodically with conditioning to keep the leather flexible and moisturized.",
     agingPercentage: 100,
     image: "/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-worn-lifestyle-4x5-960.webp",
   },
@@ -98,7 +98,7 @@ export function PatinaJourneySection() {
             transition={{ delay: 0.1 }}
             className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#2C1A11]"
           >
-            The 3-Stage Evolution of Real Ambur Leather
+            The Evolution of Ambur Bovine Leather
           </motion.h2>
 
           <motion.p
@@ -108,8 +108,7 @@ export function PatinaJourneySection() {
             transition={{ delay: 0.2 }}
             className="text-sm sm:text-base text-[#6B5B52] leading-relaxed"
           >
-            Commercial synthetic leather begins deteriorating the minute you buy it. Authentic full-grain 
-            bovine leather does the opposite: it comes alive with daily use, developing a rich caramel patina over decades.
+            Bovine leather develops character, flexibility, and a richer tone with daily handling and exposure over time.
           </motion.p>
         </div>
 
@@ -206,7 +205,7 @@ export function PatinaJourneySection() {
                   {/* Pro Tip */}
                   <div className="p-4 rounded-xl bg-[#F3ECE5] border-l-4 border-[#7A3E1D] text-xs text-[#6B5B52] leading-relaxed">
                     <strong className="text-[#2C1A11] font-semibold block mb-0.5">
-                      Artisan Workshop Guidance:
+                      Leather Care Guidance:
                     </strong>
                     {current.craftsmanTip}
                   </div>
@@ -271,21 +270,21 @@ export function PatinaJourneySection() {
 
                 <div className="text-left space-y-1">
                   <div className="font-serif text-sm font-bold text-[#2C1A11]">
-                    Zero Peeling Guarantee
+                    Natural Fiber Structure
                   </div>
                   <p className="text-[11px] text-[#6B5B52] leading-tight max-w-[200px]">
-                    Naturally bonded collagen fibers. Will never delaminate or bubble under friction.
+                    Naturally structured collagen fibers that maintain integrity under friction.
                   </p>
                 </div>
               </div>
 
               <div className="pt-2 flex items-center justify-center gap-4 text-xs font-mono text-[#7A3E1D]">
                 <span className="flex items-center gap-1">
-                  <ShieldCheck className="w-4 h-4" /> 5-Year Guarantee
+                  <ShieldCheck className="w-4 h-4" /> Natural Aging
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
-                  <Sparkles className="w-4 h-4 text-[#C29B38]" /> 100% Bovine
+                  <Sparkles className="w-4 h-4 text-[#C29B38]" /> Bovine Leather
                 </span>
               </div>
             </div>

@@ -46,3 +46,7 @@ next-env.d.ts
 # python cache
 __pycache__/
 *.pyc
+
+# raw assets
+/assets-original/
+

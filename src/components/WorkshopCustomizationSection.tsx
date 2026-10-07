@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Flame, Sparkles, Check, ArrowRight, ShieldCheck, MapPin, RefreshCw } from "lucide-react";
+import { Flame, Check, ArrowRight, MapPin, RefreshCw } from "lucide-react";
 
 export function WorkshopCustomizationSection() {
   const [initials, setInitials] = useState<string>("DNO");
@@ -48,7 +48,7 @@ export function WorkshopCustomizationSection() {
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2E2017] border border-[#4D382A] text-xs font-mono uppercase tracking-widest text-[#D4A359]"
             >
               <Flame className="w-3.5 h-3.5 text-[#D4A359]" />
-              <span>Direct From MC Road, Ambur (PIN 635802)</span>
+              <span>Ambur • Tamil Nadu (PIN 635802)</span>
             </motion.div>
 
             <motion.h2
@@ -58,7 +58,7 @@ export function WorkshopCustomizationSection() {
               transition={{ delay: 0.1 }}
               className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF3EA] leading-tight"
             >
-              Direct From MC Road, Ambur — Hand-Branded For You.
+              Personalized Initial Debossing — Stamped For You.
             </motion.h2>
 
             <motion.p
@@ -68,29 +68,27 @@ export function WorkshopCustomizationSection() {
               transition={{ delay: 0.2 }}
               className="text-sm sm:text-base text-[#D4C3B3] leading-relaxed"
             >
-              When you strip away multi-tiered distributor markups, shopping mall leases, and excessive brand licensing, 
-              what remains is the true cost of mastery: export-grade bovine hide and dedicated bench craftsmanship.
+              Sourced from trusted Ambur workshops. Quality-checked before dispatch.
             </motion.p>
 
             <div className="space-y-4 pt-2 text-xs sm:text-sm text-[#B8A695]">
               <p>
-                Every Dino Leathers piece includes our <strong className="text-[#FAF3EA]">complimentary heated brass die monogramming service</strong>. 
-                Our artisans set individual vintage brass typefaces, calibrate our shop arbor press to exactly 115°C, 
-                and manually deboss your name or initials deep into the full-grain hide.
+                Every Dino Leathers piece includes our <strong className="text-[#FAF3EA]">complimentary initial debossing service</strong> upon request. 
+                Personalized initials are stamped cleanly into the bovine leather.
               </p>
               <p>
-                Unlike superficial surface inks or laser burns that peel away with friction, heated brass die debossing permanently compresses the bovine collagen fibers, creating a tactile impression that deepens in character alongside your leather&rsquo;s natural patina.
+                Heated brass die debossing permanently compresses the bovine leather fibers, creating a tactile impression that deepens in character over time.
               </p>
             </div>
 
-            {/* 3 Workshop Guarantees */}
+            {/* 3 Sourcing Highlights */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
               <div className="bg-[#291D15] p-4 rounded-xl border border-[#3E2B1E]">
                 <span className="font-mono text-xs uppercase font-bold text-[#D4A359] block mb-1">
                   115°C Thermal Press
                 </span>
                 <p className="text-xs text-[#B8A695]">
-                  Engineered heat softens dermal collagen without singeing the grain.
+                  Engineered heat softens dermal fibers for a crisp impression.
                 </p>
               </div>
 
@@ -105,7 +103,7 @@ export function WorkshopCustomizationSection() {
 
               <div className="bg-[#291D15] p-4 rounded-xl border border-[#3E2B1E]">
                 <span className="font-mono text-xs uppercase font-bold text-[#D4A359] block mb-1">
-                  100% Free Service
+                  Complimentary
                 </span>
                 <p className="text-xs text-[#B8A695]">
                   Zero surcharge. Included with every single wallet and belt.
@@ -124,7 +122,7 @@ export function WorkshopCustomizationSection() {
 
               <span className="text-xs text-[#A89484] font-mono flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#D4A359]" />
-                Shipped direct from PIN 635802
+                Shipped from Ambur, PIN 635802
               </span>
             </div>
           </div>
@@ -134,7 +132,7 @@ export function WorkshopCustomizationSection() {
             <div className="flex items-center justify-between border-b border-[#3E2C20] pb-4">
               <div>
                 <span className="text-xs font-mono uppercase tracking-widest text-[#D4A359] font-bold block">
-                  Simulated Workshop Press
+                  Simulated Stamping Press
                 </span>
                 <h3 className="font-serif text-xl font-bold text-[#FAF3EA]">
                   Live Brass Die Stamping
@@ -198,7 +196,7 @@ export function WorkshopCustomizationSection() {
               {/* Debossed Impression on the Leather */}
               <div className="relative z-10 space-y-2">
                 <span className="text-[10px] uppercase font-mono tracking-widest text-[#A89382] block">
-                  Full-Grain Bovine Impression
+                  Bovine Leather Impression
                 </span>
 
                 {/* Stamped Initials Display */}
@@ -214,7 +212,7 @@ export function WorkshopCustomizationSection() {
                   }`}
                   style={{
                     textShadow:
-                      foilStyle === "blind"
+                    foilStyle === "blind"
                         ? "0px 2px 3px rgba(0,0,0,0.95), 0px -1px 1px rgba(255,255,255,0.18)"
                         : "0px 1px 2px rgba(241,196,15,0.4), 0px 3px 6px rgba(0,0,0,0.9)",
                   }}
@@ -223,7 +221,7 @@ export function WorkshopCustomizationSection() {
                 </motion.div>
 
                 <div className="text-[11px] font-mono text-[#D4C3B3]/70 pt-1">
-                  100% Solid Full-Grain Ambur Hide
+                  Solid Ambur Bovine Hide
                 </div>
               </div>
             </div>

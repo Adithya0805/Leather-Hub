@@ -27,18 +27,18 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dinoleathers.in"),
-  title: "Dino Leathers | Handcrafted Genuine Leather Goods from Ambur",
+  title: "Dino Leathers | Bovine Leather Goods Sourced from Ambur",
   description:
-    "Artisanal full-grain leather wallets and belts handcrafted in Ambur, Tamil Nadu. Factory-direct pricing with complimentary custom initial embossing.",
+    "Bovine leather wallets and belts sourced from trusted Ambur workshops. Quality-checked before dispatch.",
   keywords: [
     "Dino Leathers",
     "Ambur leather",
-    "Tamil Nadu leather craftsmanship",
-    "genuine leather wallet India",
-    "full grain leather belt India",
-    "personalized custom leather embossing",
-    "Ambur factory direct leather",
-    "oil pull up wallet",
+    "Tamil Nadu leather goods",
+    "bovine leather wallet India",
+    "bovine leather belt India",
+    "custom leather embossing",
+    "Ambur workshop leather",
+    "wholesale leather wallets",
   ],
   manifest: "/manifest.json",
   appleWebApp: {
@@ -62,9 +62,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Dino Leathers | Handcrafted Genuine Leather Goods from Ambur",
+    title: "Dino Leathers | Bovine Leather Goods Sourced from Ambur",
     description:
-      "Artisanal full-grain leather wallets and belts handcrafted in Ambur, Tamil Nadu. Factory-direct pricing with complimentary custom initial embossing.",
+      "Bovine leather wallets and belts sourced from trusted Ambur workshops. Quality-checked before dispatch.",
     url: "https://dinoleathers.in",
     siteName: "Dino Leathers",
     locale: "en_IN",
@@ -73,9 +73,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dino Leathers | Handcrafted Genuine Leather Goods from Ambur",
+    title: "Dino Leathers | Bovine Leather Goods Sourced from Ambur",
     description:
-      "Artisanal full-grain leather wallets and belts handcrafted in Ambur, Tamil Nadu. Factory-direct pricing with complimentary custom initial embossing.",
+      "Bovine leather wallets and belts sourced from trusted Ambur workshops. Quality-checked before dispatch.",
     images: ["/images/logo.png"],
   },
   robots: {

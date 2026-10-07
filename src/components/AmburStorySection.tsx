@@ -2,8 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Compass, Award, ArrowRight, ShieldCheck, Flame } from "lucide-react";
-import { motion } from "framer-motion";
+import { Compass, ArrowRight } from "lucide-react";
 
 export function AmburStorySection() {
   return (
@@ -21,37 +20,36 @@ export function AmburStorySection() {
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3ECE5] text-[#7A3E1D] text-xs font-semibold uppercase tracking-widest border border-[#EADDD3]">
                 <Compass className="w-3.5 h-3.5 text-[#7A3E1D]" />
-                <span>Palar River Basin • MC Road, Ambur (PIN 635802)</span>
+                <span>Palar River Basin • Ambur, Tamil Nadu</span>
               </div>
 
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#2C1A11]">
-                New Brand. <br />
-                <span className="text-[#7A3E1D]">Centuries of Uncompromised Mastery.</span>
+                Ambur Craftsmanship. <br />
+                <span className="text-[#7A3E1D]">A Century of Regional Tanning.</span>
               </h2>
 
               <p className="text-sm sm:text-base text-[#6B5B52] leading-relaxed">
-                While Dino Leathers is fresh to the retail market, our collections come directly from Ambur—South India&rsquo;s 
-                leather capital with over two centuries of tanning expertise along the Palar River basin. Every piece 
-                is cut from the exact same export-grade bovine hides crafted for international luxury markets.
+                Dino Leathers curates bovine leather items from Ambur—recognized as a Town of Export 
+                Excellence (TEE) for leather by the Government of India, with commercial tanning dating back to c. 1900–1905.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
                 <div className="p-4 rounded-2xl bg-[#FBF9F5] border border-[#EADDD3] space-y-1">
-                  <span className="font-serif text-2xl font-bold text-[#7A3E1D] block">200+ Yrs</span>
-                  <span className="text-xs font-bold text-[#2C1A11] block">Palar Tannage</span>
-                  <span className="text-[11px] text-[#6B5B52]">Native bark &amp; nut extracts</span>
+                  <span className="font-serif text-2xl font-bold text-[#7A3E1D] block">c. 1900</span>
+                  <span className="text-xs font-bold text-[#2C1A11] block">Palar Basin</span>
+                  <span className="text-[11px] text-[#6B5B52]">Commercial tanning origins</span>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[#FBF9F5] border border-[#EADDD3] space-y-1">
-                  <span className="font-serif text-2xl font-bold text-[#7A3E1D] block">700+ Units</span>
-                  <span className="text-xs font-bold text-[#2C1A11] block">Export Cluster</span>
-                  <span className="text-[11px] text-[#6B5B52]">Supplying global fashion capitals</span>
+                  <span className="font-serif text-2xl font-bold text-[#7A3E1D] block">40%–45%</span>
+                  <span className="text-xs font-bold text-[#2C1A11] block">Tamil Nadu Share</span>
+                  <span className="text-[11px] text-[#6B5B52]">National leather exports (CLE)</span>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[#FBF9F5] border border-[#EADDD3] space-y-1">
-                  <span className="font-serif text-2xl font-bold text-[#7A3E1D] block">0% Fillers</span>
-                  <span className="text-xs font-bold text-[#2C1A11] block">Zero Cardboard</span>
-                  <span className="text-[11px] text-[#6B5B52]">Solid single-ply bovine hide</span>
+                  <span className="font-serif text-2xl font-bold text-[#7A3E1D] block">TEE</span>
+                  <span className="text-xs font-bold text-[#2C1A11] block">DGFT Status</span>
+                  <span className="text-[11px] text-[#6B5B52]">Town of Export Excellence</span>
                 </div>
               </div>
             </div>
@@ -60,15 +58,15 @@ export function AmburStorySection() {
             <div className="lg:col-span-5 bg-[#1E140E] text-[#F3ECE5] p-8 rounded-2xl border border-[#3E2B1E] shadow-xl space-y-6">
               <div className="border-b border-[#3E2B1E] pb-4">
                 <span className="text-[11px] font-mono uppercase tracking-widest text-[#D4A359] font-bold block mb-1">
-                  The Ambur Heritage Chronicle
+                  The Ambur Heritage
                 </span>
                 <div className="font-serif text-2xl font-bold text-[#FAF3EA]">
-                  Discover the 200-Year Legacy
+                  Verified Craftsmanship
                 </div>
               </div>
 
               <p className="text-xs sm:text-sm text-[#D4C3B3] leading-relaxed">
-                Dive deep into our ancient Chola Dynasty roots, 19th-century MC Road guilds, and how our direct workshop model bypasses retail mall markups.
+                Explore the verified history of tanning in the Palar river basin, CLRI research backing, and modern zero-liquid discharge environmental compliance.
               </p>
 
               <div className="space-y-3 pt-2">
@@ -84,7 +82,7 @@ export function AmburStorySection() {
                   href="#collection"
                   className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-white/10 hover:bg-white/15 text-[#FAF3EA] text-xs font-semibold uppercase tracking-wider transition-colors text-center border border-white/10"
                 >
-                  <span>Shop Proven Collections</span>
+                  <span>View Catalog</span>
                 </a>
               </div>
             </div>
