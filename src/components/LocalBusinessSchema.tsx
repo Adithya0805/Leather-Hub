@@ -102,11 +102,47 @@ export function LocalBusinessSchema() {
     }),
   };
 
+  const websiteData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://dinoleathers.in/#website",
+    "name": "Dino Leathers",
+    "alternateName": "Ambur Leather Works",
+    "url": "https://dinoleathers.in",
+  };
+
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://dinoleathers.in",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Ambur Heritage",
+        "item": "https://dinoleathers.in/ambur-heritage",
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
       />
       <script
         type="application/ld+json"
