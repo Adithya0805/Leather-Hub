@@ -8,7 +8,6 @@ import {
   ShoppingBag,
   Check,
   MessageCircle,
-  Eye,
   Layers,
 } from "lucide-react";
 import { Product } from "@/data/products";
@@ -129,7 +128,7 @@ export function ProductCard({ product }: ProductCardProps) {
               )}
               <LeatherGrainPlaceholder
                 title={product.name}
-                subtitle="Genuine Full-Grain Ambur Bovine"
+                subtitle="Bovine Leather • Ambur"
                 aspectRatio="4:5"
               />
             </div>
@@ -199,7 +198,7 @@ export function ProductCard({ product }: ProductCardProps) {
               >
                 <LeatherGrainPlaceholder
                   title={product.name}
-                  subtitle="Full-Grain Ambur Bovine"
+                  subtitle="Bovine Leather • Ambur"
                   aspectRatio="4:5"
                 />
               </div>
@@ -328,8 +327,8 @@ export function ProductCard({ product }: ProductCardProps) {
             <span className="font-serif text-2xl font-bold text-[#2C1A11]">
               ₹{product.price.toLocaleString("en-IN")}
             </span>
-            <span className="text-[10px] text-[#6B5B52] uppercase tracking-wider">
-              Ambur Workshop Direct
+            <span className="text-[10px] text-[#7A3E1D] font-mono uppercase tracking-wider font-semibold">
+              Ambur Sourced
             </span>
           </div>
 

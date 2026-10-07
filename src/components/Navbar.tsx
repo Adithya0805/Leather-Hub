@@ -31,9 +31,9 @@ export function Navbar() {
 
   const navLinks = [
     { label: "Collections", href: "/#collection" },
-    { label: "Material Truth", href: "/#authenticity" },
-    { label: "Free Monogramming", href: "/#customization" },
-    { label: "Behind the Leather", href: "/#journal" },
+    { label: "Wholesale & Bulk", href: "/wholesale" },
+    { label: "Free Monogramming", href: "/#customizer-section" },
+    { label: "Ambur Heritage", href: "/ambur-heritage" },
   ];
 
   return (

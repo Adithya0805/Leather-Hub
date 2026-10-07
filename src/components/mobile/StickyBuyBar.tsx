@@ -108,8 +108,8 @@ export function StickyBuyBar() {
               <span className="font-serif font-extrabold text-sm text-[#7A3E1D]">
                 ₹{subtotal.toLocaleString("en-IN")}
               </span>
-              <span className="text-[10px] text-emerald-700 font-semibold">
-                Free Delivery
+              <span className="text-[10px] text-[#7A3E1D] font-medium">
+                Via WhatsApp
               </span>
             </div>
           </div>

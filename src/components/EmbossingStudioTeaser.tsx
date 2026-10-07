@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Sparkles, CheckCircle2, Shield, Flame, MessageCircle, ShoppingBag } from "lucide-react";
+import { Sparkles, CheckCircle2, Flame, MessageCircle, ShoppingBag } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { PRODUCTS } from "@/data/products";
 
@@ -46,13 +46,13 @@ export function EmbossingStudioTeaser() {
             </div>
 
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#2C1A11]">
-              Crafted in Ambur. <br />
-              <span className="text-[#7A3E1D] italic">Branded in Your Name.</span>
+              Bovine Leather Goods. <br />
+              <span className="text-[#7A3E1D] italic">Personalized in Your Name.</span>
             </h2>
 
             <p className="text-sm sm:text-base text-[#6B5B52] leading-relaxed">
-              Every wallet and belt leaves our Ambur workshop bearing
-              the indelible mark of its owner. We never charge for personalization.
+              Every wallet and belt is quality-checked before dispatch.
+              Complimentary initial debossing available.
               Type your initials or family moniker below to preview live.
             </p>
 
@@ -166,8 +166,8 @@ export function EmbossingStudioTeaser() {
 
               {/* Top Provenance Watermark */}
               <div className="flex justify-between items-center text-[10px] uppercase tracking-[0.25em] text-[#E0C07F]/80 font-semibold">
-                <span>AMBUR WORKSHOP</span>
-                <span>OIL PULL-UP GRAIN</span>
+                <span>AMBUR • TAMIL NADU</span>
+                <span>BOVINE LEATHER</span>
               </div>
 
               {/* Center Embossed Monogram */}

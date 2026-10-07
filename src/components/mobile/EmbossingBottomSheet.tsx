@@ -1,7 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useSyncExternalStore } from "react";
 import { Sparkles, X, Check, Flame } from "lucide-react";
+
+const emptySubscribe = () => () => {};
 
 interface EmbossingBottomSheetProps {
   isOpen: boolean;
@@ -20,18 +22,18 @@ export function EmbossingBottomSheet({
   productName = "Ambur Bovine Leather",
   onConfirm,
 }: EmbossingBottomSheetProps) {
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const [initials, setInitials] = useState(currentInitials);
   const [style, setStyle] = useState<"gold" | "blind">(currentStyle);
+  const [prevOpen, setPrevOpen] = useState(isOpen);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    setInitials(currentInitials);
-    setStyle(currentStyle);
-  }, [currentInitials, currentStyle, isOpen]);
+  if (prevOpen !== isOpen) {
+    setPrevOpen(isOpen);
+    if (isOpen) {
+      setInitials(currentInitials);
+      setStyle(currentStyle);
+    }
+  }
 
   useEffect(() => {
     if (isOpen) {
@@ -82,7 +84,7 @@ export function EmbossingBottomSheet({
                 Custom Name &amp; Initials
               </h3>
               <p className="text-[11px] text-[#6B5B52]">
-                Free Handcrafted Stamping • {productName}
+                Free Initial Stamping • {productName}
               </p>
             </div>
           </div>
@@ -101,7 +103,7 @@ export function EmbossingBottomSheet({
         <div className="my-4 relative rounded-2xl bg-gradient-to-br from-[#7A3E1D] via-[#633216] to-[#3D2418] p-6 text-center border-2 border-[#EADDD3] shadow-inner overflow-hidden">
           <div className="flex justify-between items-center text-[9px] font-bold uppercase tracking-[0.25em] text-[#C29B38] mb-3">
             <span>LIVE STAMP PREVIEW</span>
-            <span>AMBUR WORKSHOP</span>
+            <span>AMBUR • TAMIL NADU</span>
           </div>
 
           <div

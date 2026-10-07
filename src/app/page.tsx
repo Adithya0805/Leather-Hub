@@ -16,10 +16,8 @@ import {
 import { PRODUCTS } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { WorkshopCustomizationSection } from "@/components/WorkshopCustomizationSection";
-import { AuthenticityComparison } from "@/components/AuthenticityComparison";
 import { PatinaJourneySection } from "@/components/PatinaJourneySection";
 import { AmburStorySection } from "@/components/AmburStorySection";
-import { BehindTheLeatherJournal } from "@/components/BehindTheLeatherJournal";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -110,7 +108,7 @@ export default function Home() {
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3ECE5] border border-[#EADDD3] text-xs font-semibold uppercase tracking-widest text-[#7A3E1D]"
               >
                 <Compass className="w-3.5 h-3.5 text-[#7A3E1D]" />
-                <span>MC Road, Ambur, Tamil Nadu • PIN 635802</span>
+                <span>Ambur • Tamil Nadu</span>
               </motion.div>
 
               {/* Main Headline */}
@@ -129,8 +127,7 @@ export default function Home() {
                 variants={itemVariants}
                 className="text-base sm:text-lg text-[#6B5B52] max-w-2xl mx-auto lg:mx-0 font-sans font-light leading-relaxed"
               >
-                Market-tested, export-grade full-grain bovine wallets and belts delivered 
-                straight from our Ambur workshop floor&mdash;minus middleman markups.
+                Bovine leather wallets and belts delivered straight from Ambur&mdash;without showroom markups.
               </motion.p>
 
               {/* CTAs */}
@@ -147,11 +144,10 @@ export default function Home() {
                 </a>
 
                 <Link
-                  href="/ambur-heritage"
+                  href="/wholesale"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-white border border-[#EADDD3] text-[#2C1A11] hover:border-[#7A3E1D] hover:text-[#7A3E1D] text-xs font-semibold uppercase tracking-widest transition-all shadow-sm"
                 >
-                  <Compass className="w-3.5 h-3.5 text-[#7A3E1D]" />
-                  <span>Discover Ambur Heritage &rarr;</span>
+                  <span>Wholesale &amp; Bulk &rarr;</span>
                 </Link>
               </motion.div>
 
@@ -163,10 +159,10 @@ export default function Home() {
                 <div className="bg-white p-4 rounded-xl border border-[#EADDD3] shadow-xs space-y-1 hover:border-[#7A3E1D] transition-colors">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-[#7A3E1D] uppercase font-mono">
                     <ShieldCheck className="w-4 h-4 text-[#7A3E1D]" />
-                    <span>100% Ambur Hide</span>
+                    <span>Ambur Hide</span>
                   </div>
                   <p className="text-[11px] text-[#6B5B52] leading-snug">
-                    Genuine bovine leather. Zero bonded leather or PU plastic.
+                    Bovine leather. Zero bonded scrap or synthetic plastics.
                   </p>
                 </div>
 
@@ -183,20 +179,20 @@ export default function Home() {
                 <div className="bg-white p-4 rounded-xl border border-[#EADDD3] shadow-xs space-y-1 hover:border-[#7A3E1D] transition-colors">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-[#7A3E1D] uppercase font-mono">
                     <Flame className="w-4 h-4 text-[#C29B38]" />
-                    <span>Free 115°C Monogram</span>
+                    <span>Free Monogram</span>
                   </div>
                   <p className="text-[11px] text-[#6B5B52] leading-snug">
-                    Complimentary hand-stamped heated brass die debossing.
+                    Complimentary custom initial debossing upon request.
                   </p>
                 </div>
 
                 <div className="bg-white p-4 rounded-xl border border-[#EADDD3] shadow-xs space-y-1 hover:border-[#7A3E1D] transition-colors">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-[#7A3E1D] uppercase font-mono">
                     <Award className="w-4 h-4 text-[#7A3E1D]" />
-                    <span>PIN 635802 Direct</span>
+                    <span>Quality Checked</span>
                   </div>
                   <p className="text-[11px] text-[#6B5B52] leading-snug">
-                    Factory-direct pricing without mall lease or middleman markups.
+                    Sourced from trusted Ambur workshops. Quality-checked before dispatch.
                   </p>
                 </div>
               </motion.div>
@@ -215,7 +211,7 @@ export default function Home() {
                 <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-2 border-[#EADDD3] shadow-warm bg-[#FBF9F5]">
                   <Image
                     src="/images/products/reversible-formal-casual-belt/reversible-formal-casual-belt-hero-4x5-960.webp"
-                    alt="Dino Leathers Executive Automatic Ratchet Belt handcrafted from solid Ambur bovine leather"
+                    alt="Dino Leathers Executive Automatic Ratchet Belt in bovine leather"
                     fill
                     priority
                     className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
@@ -226,7 +222,7 @@ export default function Home() {
                   {/* Bottom Highlight Overlay */}
                   <div className="absolute bottom-6 inset-x-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-[#EADDD3] shadow-warm space-y-1 text-[#2C1A11]">
                     <span className="text-[#7A3E1D] font-bold uppercase tracking-wider text-[10px] block font-mono">
-                      Ambur Master Craftsmanship • PIN 635802
+                      Ambur Sourced • Bovine Leather
                     </span>
                     <div className="flex items-center justify-between">
                       <span className="font-serif text-lg font-bold text-[#2C1A11]">
@@ -238,7 +234,7 @@ export default function Home() {
                     </div>
                     <div className="flex items-center gap-1.5 text-[11px] text-[#6B5B52] pt-1 border-t border-[#EADDD3]">
                       <Sparkles className="w-3.5 h-3.5 text-[#C29B38]" />
-                      <span>Complimentary Brass Die Monogram Included</span>
+                      <span>Complimentary Initial Monogram Included</span>
                     </div>
                   </div>
                 </div>
@@ -247,14 +243,14 @@ export default function Home() {
                 <div className="hidden sm:flex absolute -bottom-6 -left-8 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-[#EADDD3] shadow-warm items-center gap-3 max-w-[260px]">
                   <Image
                     src="/images/logo.png"
-                    alt="Dino Leathers Workshop Atelier"
+                    alt="Dino Leathers"
                     width={42}
                     height={42}
                     className="rounded-full shadow-sm shrink-0 object-cover border border-[#EADDD3]"
                   />
                   <div className="text-xs">
                     <div className="font-bold text-[#2C1A11]">Dino Leathers</div>
-                    <div className="text-[10px] text-[#7A3E1D] font-mono">100% Full-Grain Bovine</div>
+                    <div className="text-[10px] text-[#7A3E1D] font-mono">Bovine Leather</div>
                   </div>
                 </div>
               </div>
@@ -273,8 +269,7 @@ export default function Home() {
               The Ambur Curations.
             </h2>
             <p className="text-sm sm:text-base text-[#6B5B52] leading-relaxed">
-              Export-grade Ambur bovine leather articles engineered for daily longevity
-              and personalized with your name at zero extra cost.
+              Ambur bovine leather articles sourced from trusted workshops, quality-checked before dispatch.
             </p>
           </div>
 
@@ -309,18 +304,11 @@ export default function Home() {
       {/* ── 3. INTERACTIVE MONOGRAM CUSTOMIZER WIDGET (Heated Brass Die Stamping) ── */}
       <WorkshopCustomizationSection />
 
-      {/* ── 4. QUICK MATERIAL TRUTH COMPARISON MATRIX (Condensed) ── */}
-      <AuthenticityComparison />
-
-      {/* ── 5. THE LIVING PATINA JOURNEY (Interactive 3-Stage Slider) ── */}
+      {/* ── 4. THE LIVING PATINA JOURNEY (Interactive 3-Stage Slider) ── */}
       <PatinaJourneySection />
 
-      {/* ── 6. THE AMBUR HERITAGE (Streamlined Bridge Linking to /ambur-heritage) ── */}
+      {/* ── 5. THE AMBUR HERITAGE (Streamlined Bridge Linking to /ambur-heritage) ── */}
       <AmburStorySection />
-
-      {/* ── 7. BEHIND THE LEATHER JOURNAL (4 SEO Knowledge Articles) ── */}
-      <BehindTheLeatherJournal />
-
     </div>
   );
 }

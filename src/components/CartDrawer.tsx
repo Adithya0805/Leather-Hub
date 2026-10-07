@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import {
   X,
   Plus,
   Minus,
   Trash2,
-  ShoppingBag,
   Sparkles,
   ArrowRight,
   ShieldCheck,
@@ -50,8 +49,6 @@ export function CartDrawer() {
 
   const subtotal = getSubtotal();
   const totalCount = items.reduce((total, item) => total + item.quantity, 0);
-  const freeShippingThreshold = 799;
-  const isFreeShipping = subtotal >= freeShippingThreshold || totalCount > 0;
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden font-sans">
@@ -102,14 +99,14 @@ export function CartDrawer() {
             </div>
           </div>
 
-          {/* Free Shipping / Provenance Banner */}
+          {/* Dispatch Banner */}
           <div className="bg-[#F3ECE5] px-5 py-3 border-b border-[#EADDD3] flex items-center gap-3 text-xs text-[#6B5B52]">
             <Truck className="w-4 h-4 text-[#7A3E1D] shrink-0" />
             <div className="flex-1">
               <span className="font-semibold text-[#2C1A11]">
-                Free Express Delivery
+                Direct Dispatch
               </span>{" "}
-              across Tamil Nadu &amp; Pan-India. Dispatched from Ambur.
+              from Ambur, Tamil Nadu. Shipping confirmed on WhatsApp.
             </div>
           </div>
 
@@ -130,7 +127,7 @@ export function CartDrawer() {
                   Your bag is empty
                 </h3>
                 <p className="text-xs text-[#6B5B52] max-w-xs mb-6">
-                  Handcrafted bovine leather wallets and belts await your touch.
+                  Bovine leather wallets and belts await your touch.
                 </p>
                 <button
                   onClick={closeCart}
@@ -230,13 +227,13 @@ export function CartDrawer() {
                     ₹{subtotal.toLocaleString("en-IN")}
                   </span>
                 </div>
-                <div className="flex justify-between items-center text-emerald-700 font-medium">
+                <div className="flex justify-between items-center text-[#6B5B52] font-medium text-xs">
                   <span className="flex items-center gap-1">
                     <Truck className="w-3.5 h-3.5" />
-                    Express Shipping (Pan-India)
+                    Delivery &amp; Shipping
                   </span>
-                  <span className="font-bold uppercase tracking-wider text-[11px]">
-                    FREE
+                  <span className="font-sans text-[11px] text-[#7A3E1D] font-medium text-right">
+                    Delivery time and shipping charge confirmed on WhatsApp.
                   </span>
                 </div>
                 <div className="flex justify-between items-center text-[#7A3E1D] font-medium">
@@ -268,7 +265,7 @@ export function CartDrawer() {
 
               <div className="flex items-center justify-center gap-2 text-[11px] text-[#6B5B52]">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#7A3E1D]" />
-                <span>Zero-Risk Factory Provenance • 100% Ambur Bovine Leather</span>
+                <span>Ambur Bovine Leather</span>
               </div>
             </div>
           )}

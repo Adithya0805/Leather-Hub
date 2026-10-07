@@ -7,15 +7,15 @@ export function AnnouncementBar() {
   const announcements = [
     {
       icon: MapPin,
-      text: "Handcrafted in Ambur, Tamil Nadu • Direct from Leather Craftsmen",
+      text: "Sourced from trusted Ambur workshops. Quality-checked before dispatch.",
     },
     {
       icon: Sparkles,
-      text: "Free Custom Name & Initials Embossing Across India",
+      text: "Complimentary Custom Initial Debossing Upon Request",
     },
     {
       icon: ShieldCheck,
-      text: "100% Genuine Full-Grain Ambur Bovine Leather • Zero Cardboard Fillers",
+      text: "Bovine Leather Construction • Zero Cardboard Fillers",
     },
   ];
 
@@ -52,7 +52,7 @@ export function AnnouncementBar() {
         {/* Right Dispatch Notice */}
         <div className="hidden lg:flex items-center gap-2 text-[11px] text-[#6B5B52]">
           <span className="font-medium text-[#7A3E1D] flex items-center gap-1">
-            Pan-India Dispatch <ChevronRight className="w-3 h-3 text-[#7A3E1D]" />
+            Ambur, Tamil Nadu <ChevronRight className="w-3 h-3 text-[#7A3E1D]" />
           </span>
         </div>
       </div>

@@ -1,14 +1,9 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import {
   Compass,
   ArrowRight,
-  ShieldCheck,
-  Award,
-  Layers,
-  Flame,
   CheckCircle2,
   ArrowLeft,
   Sparkles,
@@ -16,63 +11,63 @@ import {
 import { AnimatedMetrics } from "@/components/motion/AnimatedMetrics";
 
 export const metadata: Metadata = {
-  title: "The Ambur Legacy: 200 Years of Master Craftsmanship | Dino Leathers",
+  title: "Ambur Leather Heritage | Verified Industrial History | Dino Leathers",
   description:
-    "Explore the 200-year history of botanical tanning along the Palar River in Ambur, Tamil Nadu. From Chola Dynasty bark tanning to MC Road's modern export workshops.",
+    "Verified history of commercial tanning along the Palar River in Ambur, Tamil Nadu. From 1900s origins to CSIR-CLRI research and modern zero-liquid discharge environmental compliance.",
 };
 
 const CHAPTERS = [
   {
     number: "01",
-    era: "Ancient Chola Dynasty",
-    title: "Indigenous Botanical Tanning in the Palar Basin",
+    era: "c. 1900–1905",
+    title: "Origins in the Palar River Basin",
     summary:
-      "Long before commercial chemical tanning salts existed, artisans along the Palar River in Tamil Nadu perfected native vegetable drum tannage.",
+      "Commercial tanning in the Ambur and Palar river basin dates back to the early 20th century.",
     details: [
-      "Natural infusions of native Avaram senna (Cassia auriculata) bark and crushed Myrobalan nuts (Kadukkai) provided dense plant polyphenols.",
-      "The mineral composition and neutral PH of the Palar River waters opened the bovine hide's dense dermal collagen fibers without weakening tensile strength.",
-      "Resulted in royal armor, equestrian saddles, and trade vessels that resisted tropical rot, equatorial heat, and cracking.",
+      "Commercial tanning in the Palar river basin was recorded c. 1900–1905 (North Arcot District Gazetteer, 1981).",
+      "Early operations utilized regional water sources and botanical tanning infusions.",
+      "Established Ambur as an important processing center for bovine hides in southern India.",
     ],
-    tag: "Chola Botanical Guilds",
+    tag: "Commercial Origins",
   },
   {
     number: "02",
-    era: "19th Century & Colonial Era",
-    title: "The Organized Tanning Enclaves of MC Road",
+    era: "1948 Onward",
+    title: "Scientific Anchor: CSIR-CLRI",
     summary:
-      "Global maritime trade routes discovered Ambur's unique water chemistry, leading to the establishment of strict tanning guilds along MC Road.",
+      "Modernization and technological rigor were anchored by national leather research institutions.",
     details: [
-      "Generational families organized specialized work guilds: raw hide curation, botanical currying, manual skiving, and vegetable fat-liquoring.",
-      "Strict apprentice systems ensured master craftsmen passed down tactile discernment for natural grain density and unbuffed pores.",
-      "Supplied heavy-duty cavalry tack, military footwear, and expedition bags across international trade corridors.",
+      "Central Leather Research Institute (CSIR-CLRI) was established April 24, 1948 as the world's largest leather research institute.",
+      "CSIR-CLRI provided technological support and testing standards to Ambur tanners.",
+      "Supported the cluster's shift toward high-precision finished leather in the 1970s–1980s.",
     ],
-    tag: "MC Road Historic Enclave",
+    tag: "CSIR-CLRI Anchor",
   },
   {
     number: "03",
-    era: "Modern Industrial Cluster",
-    title: "South India's Undisputed Export Leather Hub",
+    era: "2009 & Modern Era",
+    title: "Town of Export Excellence & National Production",
     summary:
-      "Today, Ambur quietly houses 700+ certified manufacturing facilities and over 100,000 generational master tanners and leather artisans.",
+      "Recognized for its pivotal contribution to national leather production and export revenue.",
     details: [
-      "Supplies export-grade raw bovine hides to global fashion capitals including Paris, Milan, London, and Tokyo.",
-      "European luxury fashion houses quietly rely on Ambur's high-tensile drum-dyed bovine hides for their flagship runway accessories.",
-      "However, traditional distribution layers inflate prices by 400% to 800% through brand licensing and metropolitan showroom overheads.",
+      "Recognized as a Town of Export Excellence (TEE) for leather by the Government of India (DGFT Foreign Trade Policy, 2009).",
+      "Tamil Nadu accounts for 40%–45% of India's leather exports, with Ambur as a primary hub (CLE Annual Report, 2023).",
+      "The sector employs approximately 4.4 million workers across India with ~30% female participation (Ministry of Commerce, 2024).",
     ],
-    tag: "Global Export Powerhouse",
+    tag: "Export Excellence",
   },
   {
     number: "04",
-    era: "Dino Leathers Today",
-    title: "The Direct Workshop Link to Your Hands",
+    era: "Present",
+    title: "Zero Liquid Discharge & Sustainable Infrastructure",
     summary:
-      "Dino Leathers was founded directly on MC Road in Ambur (PIN 635802) to build a direct, transparent bridge between master workshops and patrons.",
+      "Modern Ambur tanneries operate with stringent environmental standards and effluent management.",
     details: [
-      "100% full-grain bovine hide exclusively: zero split shavings, zero PU plastic lamination, and zero cardboard sandwiches.",
-      "Factory-direct pricing from PIN 635802: luxury export quality without middleman distributor markups or high-street mall rents.",
-      "Complimentary hand-stamped 115°C heated brass die monogramming personalized on our workshop bench before dispatch.",
+      "Ambur tanneries operate Common Effluent Treatment Plants (CETPs) with Zero Liquid Discharge (ZLD) (TNPCB, 2018).",
+      "Advanced reverse osmosis and water recovery systems ensure environmental compliance.",
+      "Dino Leathers curates finished bovine leather directly from this compliant regional cluster.",
     ],
-    tag: "A Bold New Direct Era",
+    tag: "Eco Compliance",
   },
 ];
 
@@ -91,33 +86,29 @@ export default function AmburHeritagePage() {
           </Link>
 
           <span className="text-[11px] font-mono uppercase tracking-widest text-[#9A8C84]">
-            Palar River Basin • MC Road, Ambur (PIN 635802)
+            Palar River Basin • Ambur, Tamil Nadu
           </span>
         </div>
       </div>
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-6 pb-20 border-b border-[#EADDD3]">
-        {/* Atelier Glow Ambient */}
-        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#7A3E1D]/8 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute bottom-0 left-10 w-[450px] h-[450px] bg-[#C29B38]/8 rounded-full blur-[120px] pointer-events-none" />
-
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F3ECE5] border border-[#EADDD3] text-xs font-semibold uppercase tracking-widest text-[#7A3E1D]">
             <Compass className="w-3.5 h-3.5 text-[#7A3E1D]" />
-            <span>The Ambur Legacy • South India's Leather Capital</span>
+            <span>The Ambur Heritage • Grounded Fact Registry</span>
           </div>
 
           <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#2C1A11] leading-[1.08]">
-            200 Years of Botanical Tanning Mastery{" "}
+            A Century of Tanning Heritage{" "}
             <span className="text-[#7A3E1D] italic font-normal block sm:inline">
               along the Palar River.
             </span>
           </h1>
 
           <p className="text-base sm:text-xl text-[#6B5B52] max-w-3xl mx-auto font-sans font-light leading-relaxed">
-            Before European luxury fashion houses stamped their logos in Milan and Paris, their hides began 
-            their journey in the soil, mineral-rich river waters, and master tanning vats of Ambur.
+            From early 1900s commercial tanning origins to modern Zero Liquid Discharge CETP facilities, 
+            explore the verified industrial and craftsmanship heritage of Ambur, Tamil Nadu.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
@@ -125,7 +116,7 @@ export default function AmburHeritagePage() {
               href="/#collection"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#7A3E1D] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#633216] transition-all shadow-warm"
             >
-              <span>Explore Proven Collections</span>
+              <span>Explore Collections</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
 
@@ -134,7 +125,7 @@ export default function AmburHeritagePage() {
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white border border-[#EADDD3] text-[#2C1A11] hover:border-[#7A3E1D] hover:text-[#7A3E1D] text-xs font-semibold uppercase tracking-widest transition-all shadow-sm"
             >
               <Sparkles className="w-3.5 h-3.5 text-[#C29B38]" />
-              <span>Free Brass Monogramming</span>
+              <span>Complimentary Monogramming</span>
             </Link>
           </div>
         </div>
@@ -144,13 +135,13 @@ export default function AmburHeritagePage() {
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-[#EADDD3]">
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
           <span className="text-xs font-mono uppercase tracking-widest text-[#7A3E1D] font-bold">
-            The Ambur Manufacturing Cluster
+            Verified Industry Telemetry
           </span>
           <h2 className="font-serif text-3xl font-bold text-[#2C1A11]">
-            Generations of Uncompromised Industry
+            Documented Production History
           </h2>
           <p className="text-xs sm:text-sm text-[#6B5B52]">
-            Data reflecting Ambur's recognized contribution to the global luxury leather trade.
+            Data grounded in official Council for Leather Exports and District Gazetteer records.
           </p>
         </div>
 
@@ -164,15 +155,15 @@ export default function AmburHeritagePage() {
             Chronicles of Craft
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#2C1A11]">
-            From Ancient River Vats to Global Workshops
+            Verified Milestones in Ambur Leather
           </h2>
           <p className="text-sm text-[#6B5B52]">
-            Four pivotal eras that established MC Road as the gold standard in full-grain bovine leather.
+            Historical progression from early botanical vats to modern environmental standards.
           </p>
         </div>
 
         <div className="space-y-10">
-          {CHAPTERS.map((chap, idx) => (
+          {CHAPTERS.map((chap) => (
             <div
               key={chap.number}
               className="bg-white rounded-3xl border border-[#EADDD3] p-8 sm:p-12 shadow-warm hover:border-[#7A3E1D] transition-all relative overflow-hidden"
@@ -210,7 +201,7 @@ export default function AmburHeritagePage() {
                     >
                       <div className="flex items-center gap-1.5 text-[#7A3E1D] font-bold">
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#7A3E1D] shrink-0" />
-                        <span>Pillar {pIdx + 1}</span>
+                        <span>Source Fact {pIdx + 1}</span>
                       </div>
                       <p>{point}</p>
                     </div>
@@ -222,26 +213,17 @@ export default function AmburHeritagePage() {
         </div>
       </section>
 
-      {/* The Direct Workshop Link Callout */}
+      {/* Sourcing Callout */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#1E140E] text-[#F3ECE5] p-8 sm:p-14 rounded-3xl border border-[#3E2B1E] shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-[#C29B38]/10 rounded-full blur-[100px] pointer-events-none" />
-
           <div className="relative z-10 space-y-6 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2E2017] border border-[#4D382A] text-xs font-mono uppercase tracking-widest text-[#D4A359]">
-              <Flame className="w-3.5 h-3.5 text-[#D4A359]" />
-              <span>Radical Workshop Transparency</span>
-            </div>
-
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#FAF3EA] leading-tight">
-              Bypassing Mall Facades. Connecting You to the Source.
+              Bovine Leather Goods from Ambur.
             </h2>
 
             <p className="text-xs sm:text-sm text-[#D4C3B3] leading-relaxed">
-              When you purchase from Dino Leathers, your wallet or belt isn&rsquo;t passing through importers, 
-              distributors, and retail landlords. It is hand-selected from our local Ambur tanneries, 
-              carefully stitched with high-tensile nylon, hand-stamped with your initials using 115°C brass dies, 
-              and dispatched directly from MC Road (PIN 635802).
+              Dino Leathers curates bovine leather wallets and belts sourced from trusted Ambur workshops. 
+              Quality-checked before dispatch, with optional custom initial debossing.
             </p>
 
             <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
@@ -249,12 +231,12 @@ export default function AmburHeritagePage() {
                 href="/#collection"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#7A3E1D] hover:bg-[#944D25] text-white text-xs font-bold uppercase tracking-widest transition-all shadow-warm"
               >
-                <span>Shop Ambur Full-Grain</span>
+                <span>View Products</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
               <span className="text-xs font-mono text-[#A89484]">
-                Direct Dispatch: MC Road, Ambur (PIN 635802)
+                Ambur, Tamil Nadu
               </span>
             </div>
           </div>

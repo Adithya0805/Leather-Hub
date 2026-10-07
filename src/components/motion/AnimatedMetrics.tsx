@@ -15,31 +15,31 @@ interface MetricItem {
 const METRICS: MetricItem[] = [
   {
     icon: Compass,
-    value: 200,
-    suffix: "+ Years",
-    label: "Ambur Tanning Heritage",
-    sublabel: "Centuries of botanical vegetable tannage along Palar River",
+    value: 1900,
+    suffix: "s",
+    label: "Palar Basin Tanning Origins",
+    sublabel: "Commercial tanning established c. 1900–1905 (District Gazetteer, 1981)",
   },
   {
     icon: Award,
-    value: 700,
-    suffix: "+",
-    label: "Specialized Cluster Units",
-    sublabel: "South India's premier export leather manufacturing hub",
+    value: 45,
+    suffix: "%",
+    label: "Tamil Nadu Export Share",
+    sublabel: "Tamil Nadu produces 40%–45% of India's leather exports (CLE, 2023)",
   },
   {
     icon: Users,
-    value: 100,
-    suffix: "k+",
-    label: "Master Craftsmen & Women",
-    sublabel: "Generational leather curriers and pattern cutting artisans",
+    value: 1948,
+    suffix: "",
+    label: "CSIR-CLRI Research Anchor",
+    sublabel: "World's largest leather research institute established April 24, 1948",
   },
   {
     icon: Layers,
     value: 0,
     suffix: "%",
-    label: "Cardboard or Paper Fillers",
-    sublabel: "100% single-ply uncorrected bovine hide from edge to edge",
+    label: "Synthetic Fillers",
+    sublabel: "Solid bovine hide without cardboard or paper fillers",
   },
 ];
 
@@ -49,14 +49,9 @@ function CounterNumber({ target, suffix }: { target: number; suffix: string }) {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || target === 0) return;
 
-    if (target === 0) {
-      setCount(0);
-      return;
-    }
-
-    let start = 0;
+    let animId: number;
     const duration = 1800; // ms
     const startTime = performance.now();
 
@@ -70,13 +65,16 @@ function CounterNumber({ target, suffix }: { target: number; suffix: string }) {
       setCount(currentVal);
 
       if (progress < 1) {
-        requestAnimationFrame(updateCount);
+        animId = requestAnimationFrame(updateCount);
       } else {
         setCount(target);
       }
     };
 
-    requestAnimationFrame(updateCount);
+    animId = requestAnimationFrame(updateCount);
+    return () => {
+      if (animId) cancelAnimationFrame(animId);
+    };
   }, [isInView, target]);
 
   return (

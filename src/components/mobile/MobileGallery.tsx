@@ -89,7 +89,7 @@ export function MobileGallery({ images = [], productName, tag, productId }: Mobi
       <div className="absolute top-3 inset-x-3 z-20 flex items-center justify-between pointer-events-none">
         <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#7A3E1D] text-[10px] font-bold uppercase tracking-wider border border-[#EADDD3] shadow-micro pointer-events-auto">
           <span className="w-1.5 h-1.5 rounded-full bg-[#7A3E1D] animate-pulse" />
-          <span>Ambur Full-Grain Leather</span>
+          <span>Ambur Bovine Leather</span>
         </span>
 
         <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#F3ECE5]/95 backdrop-blur-md text-[#7A3E1D] text-[10px] font-bold uppercase tracking-wider border border-[#EADDD3] shadow-micro pointer-events-auto">

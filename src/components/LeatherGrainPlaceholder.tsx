@@ -8,12 +8,12 @@ interface LeatherGrainPlaceholderProps {
 }
 
 /**
- * Lightweight (<2 KB) neutral full-grain leather placeholder.
+ * Lightweight (<2 KB) neutral bovine leather placeholder.
  * Replaces unconfirmed or branded photography with a clean atelier aesthetic.
  */
 export function LeatherGrainPlaceholder({
-  title = "Full-Grain Ambur Bovine",
-  subtitle = "Atelier Photography Pending",
+  title = "Bovine Leather Article",
+  subtitle = "Studio Photography Pending",
   className = "",
   aspectRatio = "1:1",
 }: LeatherGrainPlaceholderProps) {
